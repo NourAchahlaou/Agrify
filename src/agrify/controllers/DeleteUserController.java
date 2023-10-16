@@ -22,6 +22,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+
+/**
+ *
+ * @author tbagh
+ */
+
+
+
 public class DeleteUserController {
 
     @FXML
@@ -56,15 +64,14 @@ public class DeleteUserController {
 
     @FXML
     private TextField SearchModifyUserTextFieldBtn;
-
     private Connection connect;
     private ServiceUser userService;
     private ObservableList<User> usersList;
-
     private boolean isSearching = false;
 
     @FXML
-    void initialize() {
+    void initialize() 
+    {
 
         connect = DataSource.getInstance().getConnection();
         userService = new ServiceUser(connect);
@@ -76,9 +83,7 @@ public class DeleteUserController {
         EmployeeHome_role.setCellValueFactory(new PropertyValueFactory<>("user_role"));   
         EmployeeHome_abscence.setCellValueFactory(new PropertyValueFactory<>("user_nbrabscence"));
 
-
         EmployeeHome.setItems(usersList);
-
         loadUserTable();
     }
 
@@ -153,11 +158,11 @@ public class DeleteUserController {
     
 
 
-        private void loadUserTable()
+    private void loadUserTable()
         
-        {
+     {
         List<User> users = userService.getAll();
         usersList.addAll(users);
-        }
+     }
         
 }

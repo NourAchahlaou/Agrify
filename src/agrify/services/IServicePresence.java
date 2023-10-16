@@ -9,7 +9,8 @@ package agrify.services;
  *
  * @author tbagh
  */
-interface IServicePresence<T> {
+interface IServicePresence<T>
+    {
         boolean savePresence(T presence);
 
-}
+    }

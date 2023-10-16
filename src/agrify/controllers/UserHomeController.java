@@ -20,6 +20,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+
+/**
+ *
+ * @author tbagh
+ */
+
+
+
 public class UserHomeController {
 
     @FXML
@@ -72,19 +80,19 @@ public class UserHomeController {
     private TextField SearchUserTextFieldBtn;
     
     @FXML
-private Label EditUserMessage11;
+    private Label EditUserMessage11;
     
-     private ServiceUser userService;
-    private ObservableList<User> usersList;
+private ServiceUser userService;
+private ObservableList<User> usersList;
 
     
-    @FXML
-       void initialize() {
-        // Initialize your service and observable list
+@FXML
+  void initialize() 
+    
+  {
         userService = new ServiceUser(DataSource.getInstance().getConnection());
         usersList = FXCollections.observableArrayList();
 
-        // Associate the table columns with User properties
         EmployeeHome_abscence.setCellValueFactory(new PropertyValueFactory<>("user_nbrabscence"));
         EmployeeHome_email.setCellValueFactory(new PropertyValueFactory<>("user_email"));
         EmployeeHome_id.setCellValueFactory(new PropertyValueFactory<>("user_id"));
@@ -92,175 +100,159 @@ private Label EditUserMessage11;
         EmployeeHome_phone.setCellValueFactory(new PropertyValueFactory<>("user_telephone"));
         EmployeeHome_prenom.setCellValueFactory(new PropertyValueFactory<>("user_prenom"));
         EmployeeHome_role.setCellValueFactory(new PropertyValueFactory<>("user_role"));
-
-        // Set the items in the table
         EmployeeHome.setItems(usersList);
 
-        // Load the user data into the table
         loadUserData();
-    }
+  }
 
-    private void loadUserData() {
+private void loadUserData() 
+
+  {
         List<User> users = userService.getAll();
         usersList.addAll(users);
-    }
+  }
     
+      
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    @FXML
-    void AddUser(ActionEvent event) throws Exception{
-      // Load the sign-Up interface
-   Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/AddUser.fxml"));
-   Scene signUpScene = new Scene(signUpRoot);
-   
+@FXML
+void AddUser(ActionEvent event) throws Exception
 
-   // Create a new stage for the sign-in interface
-   Stage signUpStage = new Stage();
-   signUpStage.initStyle(StageStyle.TRANSPARENT);
-   signUpStage.setScene(signUpScene);
-   signUpStage.show();
+ {
+        Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/AddUser.fxml"));
+        Scene signUpScene = new Scene(signUpRoot);
 
-   // Close the splash screen stage
-   Stage splashSignInStage = (Stage) AddUserBtn.getScene().getWindow();
-   splashSignInStage.close();
-    }
+        Stage signUpStage = new Stage();
+        signUpStage.initStyle(StageStyle.TRANSPARENT);
+        signUpStage.setScene(signUpScene);
+        signUpStage.show();
 
-    @FXML
-    void BestEmployee(ActionEvent event)throws Exception{
-      // Load the sign-Up interface
-   Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/BestUser.fxml"));
-   Scene signUpScene = new Scene(signUpRoot);
-   
+        Stage splashSignInStage = (Stage) AddUserBtn.getScene().getWindow();
+        splashSignInStage.close();
+  }
 
-   // Create a new stage for the sign-in interface
-   Stage signUpStage = new Stage();
-   signUpStage.initStyle(StageStyle.TRANSPARENT);
-   signUpStage.setScene(signUpScene);
-   signUpStage.show();
 
-   // Close the splash screen stage
-   Stage splashSignInStage = (Stage) BestEmployeeBtn.getScene().getWindow();
-   splashSignInStage.close();
-    }
+
+@FXML
+ void BestEmployee(ActionEvent event)throws Exception
+ 
+ {
+        Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/BestUser.fxml"));
+        Scene signUpScene = new Scene(signUpRoot);
+
+        Stage signUpStage = new Stage();
+        signUpStage.initStyle(StageStyle.TRANSPARENT);
+        signUpStage.setScene(signUpScene);
+        signUpStage.show();
+
+        Stage splashSignInStage = (Stage) BestEmployeeBtn.getScene().getWindow();
+        splashSignInStage.close();
+ }
 
 
 
 
+@FXML
+  void DeleteUser(ActionEvent event) throws Exception
+  
+    {
+        Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/DeleteUser.fxml"));
+        Scene signUpScene = new Scene(signUpRoot);
 
-    @FXML
-    void DeleteUser(ActionEvent event) throws Exception{
-      // Load the sign-Up interface
-   Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/DeleteUser.fxml"));
-   Scene signUpScene = new Scene(signUpRoot);
-   
+        Stage signUpStage = new Stage();
+        signUpStage.initStyle(StageStyle.TRANSPARENT);
+        signUpStage.setScene(signUpScene);
+        signUpStage.show();
 
-   // Create a new stage for the sign-in interface
-   Stage signUpStage = new Stage();
-   signUpStage.initStyle(StageStyle.TRANSPARENT);
-   signUpStage.setScene(signUpScene);
-   signUpStage.show();
-
-   // Close the splash screen stage
-   Stage splashSignInStage = (Stage) DeleteUserBtn.getScene().getWindow();
-   splashSignInStage.close();
+        Stage splashSignInStage = (Stage) DeleteUserBtn.getScene().getWindow();
+        splashSignInStage.close();
     }
 
 
 
+@FXML
+  void ModifyUser(ActionEvent event) throws Exception
+          
+    {
+        Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/ModifyUser.fxml"));
+        Scene signUpScene = new Scene(signUpRoot);
+ 
+        Stage signUpStage = new Stage();
+        signUpStage.initStyle(StageStyle.TRANSPARENT);
+        signUpStage.setScene(signUpScene);
+        signUpStage.show();
 
-    @FXML
-    void ModifyUser(ActionEvent event) throws Exception{
-      // Load the sign-Up interface
-   Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/ModifyUser.fxml"));
-   Scene signUpScene = new Scene(signUpRoot);
-   
+        Stage splashSignInStage = (Stage) ModifyUserBtn.getScene().getWindow();
+        splashSignInStage.close();
+   }
 
-   // Create a new stage for the sign-in interface
-   Stage signUpStage = new Stage();
-   signUpStage.initStyle(StageStyle.TRANSPARENT);
-   signUpStage.setScene(signUpScene);
-   signUpStage.show();
+    
+@FXML
+  void PreseanceListe(ActionEvent event)throws Exception
+  
+  {
+        Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/PresenceUser.fxml"));
+        Scene signUpScene = new Scene(signUpRoot);
 
-   // Close the splash screen stage
-   Stage splashSignInStage = (Stage) ModifyUserBtn.getScene().getWindow();
-   splashSignInStage.close();
-    }
+        Stage signUpStage = new Stage();
+        signUpStage.initStyle(StageStyle.TRANSPARENT);
+        signUpStage.setScene(signUpScene);
+        signUpStage.show();
 
-    @FXML
-    void PreseanceListe(ActionEvent event)throws Exception{
-      // Load the sign-Up interface
-   Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/PresenceUser.fxml"));
-   Scene signUpScene = new Scene(signUpRoot);
-   
+        Stage splashSignInStage = (Stage) PreseanceListeBtn.getScene().getWindow();
+        splashSignInStage.close();
+   }
 
-   // Create a new stage for the sign-in interface
-   Stage signUpStage = new Stage();
-   signUpStage.initStyle(StageStyle.TRANSPARENT);
-   signUpStage.setScene(signUpScene);
-   signUpStage.show();
-
-   // Close the splash screen stage
-   Stage splashSignInStage = (Stage) PreseanceListeBtn.getScene().getWindow();
-   splashSignInStage.close();
-    }
-
-   @FXML
-void SearchUser(ActionEvent event) {
-    // Get the user ID from the text field
+  
+@FXML
+void SearchUser(ActionEvent event) 
+{
     String userIdText = SearchUserTextFieldBtn.getText();
 
-    if (userIdText.isEmpty()) {
-        // Show an error message if the text field is empty
-        EditUserMessage11.setText("Please enter a user ID to search for.");
-    } else {
-        try {
+    if (userIdText.isEmpty()) 
+      {
+            EditUserMessage11.setText("Please enter a user ID to search for.");
+      } 
+    else 
+      {
+        try 
+         {
             int userId = Integer.parseInt(userIdText);
             User user = userService.getOne(userId);
-            if (user != null) {
+            if (user != null) 
+              {
                 usersList.clear();
                 usersList.add(user);
                 EditUserMessage11.setText("User found.");
-            } else {
+              } 
+            else 
+              {
                 EditUserMessage11.setText("No user found with ID " + userId);
-            }
-        } catch (NumberFormatException e) {
+              }
+         } 
+        catch (NumberFormatException e) 
+         {
             EditUserMessage11.setText("Invalid user ID. Please enter a valid numeric ID.");
-        }
-    }
+         }
+      }
 }
     
     
 
    
-
-
-    @FXML
-    void userHomeBack(ActionEvent event) throws Exception{
-
+@FXML
+ void userHomeBack(ActionEvent event) throws Exception
+ 
+    {
         Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/AdminDashboard.fxml"));
-   Scene signUpScene = new Scene(signUpRoot);
+        Scene signUpScene = new Scene(signUpRoot);
    
-   Stage signUpStage = new Stage();
-   signUpStage.initStyle(StageStyle.TRANSPARENT);
-   signUpStage.setScene(signUpScene);
-   signUpStage.show();
+        Stage signUpStage = new Stage();
+        signUpStage.initStyle(StageStyle.TRANSPARENT);
+        signUpStage.setScene(signUpScene);
+        signUpStage.show();
 
-   Stage splashSignInStage = (Stage) userHomeBackBtn.getScene().getWindow();
-   splashSignInStage.close();
+        Stage splashSignInStage = (Stage) userHomeBackBtn.getScene().getWindow();
+        splashSignInStage.close();
     }
 
 }

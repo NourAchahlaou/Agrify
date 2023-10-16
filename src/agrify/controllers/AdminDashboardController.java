@@ -9,6 +9,12 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ *
+ * @author tbagh
+ */
+
+
 public class AdminDashboardController {
 
     @FXML

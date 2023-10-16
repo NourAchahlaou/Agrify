@@ -19,6 +19,13 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+
+/**
+ *
+ * @author tbagh
+ */
+
+
 public class BestUserController {
     
     
@@ -59,52 +66,49 @@ public class BestUserController {
     
       
   @FXML
-void BestUserSearch(ActionEvent event) {
-    try {
-        // Read the year from the BestUserSearchYear TextField
+void BestUserSearch(ActionEvent event)
+{
+    try 
+      {
         int year = Integer.parseInt(BestUserSearchYear.getText());
-
-        // Use the updated method name to retrieve the user with the smallest number of absences for the given year
         User userBest = userService.getUserBest(year);
 
-        if (userBest != null) {
-            // Create an ObservableList with the found user and set it in the TableView
-            ObservableList<User> observableUser = FXCollections.observableArrayList(userBest);
-            BestUserView.setItems(observableUser);
-        } else {
-            // Handle the case where no user is found for the specified year
-            System.out.println("No user found for the specified year.");
-        }
-    } catch (NumberFormatException ex) {
-        // Handle the case where the year entered in BestUserSearchYear is not a valid integer
+            if (userBest != null)
+              {
+                ObservableList<User> observableUser = FXCollections.observableArrayList(userBest);
+                BestUserView.setItems(observableUser);
+              } 
+            else 
+              {
+                System.out.println("No user found for the specified year.");
+               }
+      } 
+    catch (NumberFormatException ex) 
+      {
         System.out.println("Invalid year input. Please enter a valid year.");
-    } catch (SQLException ex) {
+      } 
+    catch (SQLException ex) 
+      {
         System.out.println("An error occurred while searching for the best user.");
         ex.printStackTrace();
-    }
+      }
 }
-
-
-
-
-
-
 
 
     @FXML
-    void UserBestBack(ActionEvent event)throws Exception{
-      // Load the sign-Up interface
-   Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/UserHome.fxml"));
-   Scene signUpScene = new Scene(signUpRoot);
+    void UserBestBack(ActionEvent event)throws Exception
+    
+    {
+        Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/UserHome.fxml"));
+        Scene signUpScene = new Scene(signUpRoot);
    
+        Stage signUpStage = new Stage();
+        signUpStage.initStyle(StageStyle.TRANSPARENT);
+        signUpStage.setScene(signUpScene);
+        signUpStage.show();
 
-   Stage signUpStage = new Stage();
-   signUpStage.initStyle(StageStyle.TRANSPARENT);
-   signUpStage.setScene(signUpScene);
-   signUpStage.show();
+        Stage splashSignInStage = (Stage) UserBestBackBtn.getScene().getWindow();
+        splashSignInStage.close();
 
-   Stage splashSignInStage = (Stage) UserBestBackBtn.getScene().getWindow();
-   splashSignInStage.close();
-
-}
+    }
 }

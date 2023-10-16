@@ -22,6 +22,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+
+/**
+ *
+ * @author tbagh
+ */
+
+
 public class FieldDeleteController {
 
     @FXML
@@ -39,7 +46,7 @@ public class FieldDeleteController {
     @FXML
     private Label EditUserMessage11;
 
- @FXML
+    @FXML
     private TableView<Field> FieldHome; 
     @FXML
     private TableColumn<Field, Integer> FieldHome_id; 
@@ -52,68 +59,57 @@ public class FieldDeleteController {
     @FXML
     private TableColumn<Field, String> FieldHome_type;
     
+    
+    
     private boolean isSearching = false;
-
-
-    
-    
-    
-        private ServiceField serviceField; // Initialize the ServiceField
-        private ObservableList<Field> fieldsList;
+    private ServiceField serviceField; 
+    private ObservableList<Field> fieldsList;
 
         
  @FXML
-void initialize() {
-    // Initialize your service and observable list
+void initialize() 
+        
+{
     serviceField = new ServiceField(DataSource.getInstance().getConnection());
     fieldsList = FXCollections.observableArrayList();
 
-    // Associate the table columns with Field properties
     FieldHome_id.setCellValueFactory(new PropertyValueFactory<>("field_Id"));
     FieldHome_nom.setCellValueFactory(new PropertyValueFactory<>("field_Nom"));
     FieldHome_quantité.setCellValueFactory(new PropertyValueFactory<>("field_quantity"));
     FieldHome_superficie.setCellValueFactory(new PropertyValueFactory<>("field_Superficie"));
     FieldHome_type.setCellValueFactory(new PropertyValueFactory<>("field_type"));
-
-    // Set the items in the table
     FieldHome.setItems(fieldsList);
 
-    // Load the field data into the table
     loadFieldData();
 }
 
-private void loadFieldData() {
-    List<Field> fields = serviceField.getAll(); // Modify this based on your ServiceField
+
+
+
+private void loadFieldData()
+
+{
+    List<Field> fields = serviceField.getAll();
     fieldsList.addAll(fields);
 }
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    @FXML
-    void DeleteBackField(ActionEvent event) throws IOException{
-      // Load the sign-Up interface
+@FXML
+void DeleteBackField(ActionEvent event) throws IOException
+
+{
    Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/FiledHome.fxml"));
    Scene signUpScene = new Scene(signUpRoot);
    
-
-   // Create a new stage for the sign-in interface
    Stage signUpStage = new Stage();
    signUpStage.initStyle(StageStyle.TRANSPARENT);
    signUpStage.setScene(signUpScene);
    signUpStage.show();
 
-   // Close the splash screen stage
    Stage splashSignInStage = (Stage) DeleteBackFieldBtn1.getScene().getWindow();
    splashSignInStage.close();
-    }
+}
 
     
     
@@ -125,9 +121,9 @@ void DeleteDeleteField(ActionEvent event) {
         } else {
             Field selectedField = FieldHome.getSelectionModel().getSelectedItem();
             if (selectedField != null) {
-                serviceField.supprimerByName(selectedField.getField_Nom()); // Use the supprimerByName method
+                serviceField.supprimerByName(selectedField.getField_Nom()); 
                 EditUserMessage11.setText("Field deleted successfully.");
-                fieldsList.remove(selectedField); // Remove the selected field from the list
+                fieldsList.remove(selectedField);
             } else {
                 EditUserMessage11.setText("Please select a field to delete.");
             }
@@ -138,13 +134,8 @@ void DeleteDeleteField(ActionEvent event) {
 }
 
 
-
-
-
-
-
-    @FXML
-    void DeleteSearchField(ActionEvent event) throws SQLException {
+@FXML
+void DeleteSearchField(ActionEvent event) throws SQLException {
         {
             String searchName = DeleteFieldSearchFieldTextfile.getText();
                 if (!searchName.isEmpty())  

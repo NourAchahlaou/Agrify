@@ -23,6 +23,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+
+
+/**
+ *
+ * @author tbagh
+ */
+
+
+
+
 public class PresenceUserController {
 
     @FXML
@@ -79,38 +89,87 @@ public class PresenceUserController {
     private ServiceUser userService;
     private ServicePresence presenceService;
 
-    @FXML
-    void ActualiserPresenceUser(ActionEvent event) {
+    
+    
+public void initialize() 
+            
+        {
+        userService = new ServiceUser(DataSource.getInstance().getConnection());
+        presenceService = new ServicePresence(DataSource.getInstance().getConnection());
+        initializeTableColumns();
+        loadUserData();
+        }
+
+
+private void loadUserData() 
+    
+{
+        List<User> users = userService.getAll();
+        EmployeeHome.getItems().setAll(users);
+    }
+    
+private void initializeTableColumns() 
+    
+    {
+        EmployeeHome_abscence.setCellValueFactory(new PropertyValueFactory<>("user_nbrabscence"));
+        EmployeeHome_email.setCellValueFactory(new PropertyValueFactory<>("user_email"));
+        EmployeeHome_id.setCellValueFactory(new PropertyValueFactory<>("user_id"));
+        EmployeeHome_nom.setCellValueFactory(new PropertyValueFactory<>("user_nom"));
+        EmployeeHome_phone.setCellValueFactory(new PropertyValueFactory<>("user_telephone"));
+        EmployeeHome_prenom.setCellValueFactory(new PropertyValueFactory<>("user_prenom"));
+        EmployeeHome_role.setCellValueFactory(new PropertyValueFactory<>("user_role"));
+    }
+
+
+
+    
+@FXML
+ void ActualiserPresenceUser(ActionEvent event) 
+    {
         loadUserData();
     }
     
-    @FXML
-    void PresenceSarch(ActionEvent event) {
+@FXML
+ void PresenceSarch(ActionEvent event) 
+ 
+ {
         String searchIdText = PrescenceUserIDSearch.getText();
 
-        if (searchIdText.isEmpty()) {
+        if (searchIdText.isEmpty()) 
+          {
             PresenceMessage1.setText("Please enter a user ID to search for.");
-        } else {
-            try {
+          } 
+        else 
+          {
+           try 
+            {
                 int searchId = Integer.parseInt(searchIdText);
-
                 User user = userService.getOne(searchId);
 
-                if (user == null) {
+                if (user == null) 
+                  {
                     PresenceMessage1.setText("No user found with ID " + searchId);
-                } else {
+                 } 
+                else 
+                 {
                     PresenceMessage1.setText("User found:");
                     EmployeeHome.getItems().clear();
                     EmployeeHome.getItems().add(user);
-                }
-            } catch (NumberFormatException e) {
+                 }
+            } 
+           catch (NumberFormatException e) 
+            {
                 PresenceMessage1.setText("Invalid user ID. Please enter a valid numeric ID.");
             }
-        }
-    }
+         }
+}
 
-    @FXML
-    void PresenceBackUser(ActionEvent event) throws Exception {
+
+ 
+ @FXML
+  void PresenceBackUser(ActionEvent event) throws Exception 
+    
+    {
         Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/UserHome.fxml"));
         Scene signUpScene = new Scene(signUpRoot);
 
@@ -124,7 +183,9 @@ public class PresenceUserController {
     }
     
 @FXML
-void PresencePresence(ActionEvent event) {
+ void PresencePresence(ActionEvent event) 
+ 
+ {
     System.out.println("PresencePresence method started");
     System.out.println("userService: " + userService);
     System.out.println("presenceService: " + presenceService);
@@ -139,8 +200,6 @@ void PresencePresence(ActionEvent event) {
 
     if (userService != null && presenceService != null) {
         System.out.println("userService and presenceService are not null");
-
-        // Save the presence record
         presenceService.savePresence(presence);
 
         User user = userService.getOne(userId);
@@ -169,27 +228,5 @@ void PresencePresence(ActionEvent event) {
 
 
 
-    public void initialize() 
-        {
-        userService = new ServiceUser(DataSource.getInstance().getConnection());
-        presenceService = new ServicePresence(DataSource.getInstance().getConnection());
-        initializeTableColumns();
-        loadUserData();
-        }
 
-
-    private void loadUserData() {
-        List<User> users = userService.getAll();
-        EmployeeHome.getItems().setAll(users);
-    }
-    
-    private void initializeTableColumns() {
-        EmployeeHome_abscence.setCellValueFactory(new PropertyValueFactory<>("user_nbrabscence"));
-        EmployeeHome_email.setCellValueFactory(new PropertyValueFactory<>("user_email"));
-        EmployeeHome_id.setCellValueFactory(new PropertyValueFactory<>("user_id"));
-        EmployeeHome_nom.setCellValueFactory(new PropertyValueFactory<>("user_nom"));
-        EmployeeHome_phone.setCellValueFactory(new PropertyValueFactory<>("user_telephone"));
-        EmployeeHome_prenom.setCellValueFactory(new PropertyValueFactory<>("user_prenom"));
-        EmployeeHome_role.setCellValueFactory(new PropertyValueFactory<>("user_role"));
-    }
 }

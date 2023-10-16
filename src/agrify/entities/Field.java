@@ -9,6 +9,7 @@ package agrify.entities;
  *
  * @author tbagh
  */
+
 public class Field {
     private int field_Id;
     private String field_Nom;

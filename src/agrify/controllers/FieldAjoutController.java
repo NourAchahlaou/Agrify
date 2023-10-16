@@ -15,6 +15,12 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ *
+ * @author tbagh
+ */
+
+
 public class FieldAjoutController {
 
     @FXML
@@ -37,11 +43,15 @@ public class FieldAjoutController {
 
     @FXML
     private TextField FieldTypeTextFill;
+    
+    
+    
 
     @FXML
-    void AddField(ActionEvent event) throws IOException {
-        ServiceField fieldService = new ServiceField(DataSource.getInstance().getConnection());
+    void AddField(ActionEvent event) throws IOException 
     
+    {
+        ServiceField fieldService = new ServiceField(DataSource.getInstance().getConnection());
     
         String fieldNom = FieldNomTextFill.getText();
         String fieldType = FieldTypeTextFill.getText();
@@ -51,37 +61,35 @@ public class FieldAjoutController {
          Field field = new Field(fieldNom, fieldType, fieldSuperficie, fieldQuantity);
          fieldService.ajouter(field);
       
-   Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/FiledHome.fxml"));
-   Scene signUpScene = new Scene(signUpRoot);
+            Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/FiledHome.fxml"));
+            Scene signUpScene = new Scene(signUpRoot);
    
+            Stage signUpStage = new Stage();
+            signUpStage.initStyle(StageStyle.TRANSPARENT);
+            signUpStage.setScene(signUpScene);
+            signUpStage.show();
 
-   // Create a new stage for the sign-in interface
-   Stage signUpStage = new Stage();
-   signUpStage.initStyle(StageStyle.TRANSPARENT);
-   signUpStage.setScene(signUpScene);
-   signUpStage.show();
-
-   // Close the splash screen stage
-   Stage splashSignInStage = (Stage) AddFieldBtn.getScene().getWindow();
-   splashSignInStage.close();
+            Stage splashSignInStage = (Stage) AddFieldBtn.getScene().getWindow();
+            splashSignInStage.close();
     }
+    
+    
+    
+    
 
     @FXML
-    void AddFieldBack(ActionEvent event) throws IOException{
-      // Load the sign-Up interface
-   Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/FiledHome.fxml"));
-   Scene signUpScene = new Scene(signUpRoot);
+    void AddFieldBack(ActionEvent event) throws IOException
+    {
+        Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/FiledHome.fxml"));
+        Scene signUpScene = new Scene(signUpRoot);
    
+        Stage signUpStage = new Stage();
+        signUpStage.initStyle(StageStyle.TRANSPARENT);
+        signUpStage.setScene(signUpScene);
+        signUpStage.show();
 
-   // Create a new stage for the sign-in interface
-   Stage signUpStage = new Stage();
-   signUpStage.initStyle(StageStyle.TRANSPARENT);
-   signUpStage.setScene(signUpScene);
-   signUpStage.show();
-
-   // Close the splash screen stage
-   Stage splashSignInStage = (Stage) AddFieldBackBtn1.getScene().getWindow();
-   splashSignInStage.close();
+        Stage splashSignInStage = (Stage) AddFieldBackBtn1.getScene().getWindow();
+        splashSignInStage.close();
     }
 
 }

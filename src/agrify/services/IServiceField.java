@@ -9,18 +9,19 @@ package agrify.services;
  *
  * @author tbagh
  */
-import agrify.entities.Field;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface IServiceField<T> {
-    void ajouter(T entity);
-    void modifier(T entity);
-    void supprimer(int entityId);
-    T getOne(int entityId);
-    void supprimerByName(String field_Nom) ;
-    List<T> getAll();
-    List<T> searchFieldsByName(String name) throws SQLException;
-}
+public interface IServiceField<T> 
+
+    {
+        void ajouter(T entity);
+        void modifier(T entity);
+        void supprimer(int entityId);
+        T getOne(int entityId);
+        void supprimerByName(String field_Nom) ;
+        List<T> getAll();
+        List<T> searchFieldsByName(String name) throws SQLException;
+    }
 
 

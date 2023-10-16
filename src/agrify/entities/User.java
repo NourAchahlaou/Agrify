@@ -22,8 +22,7 @@ public class User {
     private String username;
     private String password;
 
-    public User() {
-    }
+    public User() {}
 
     public User(String user_nom, String user_prenom, String user_email, String user_telephone, String user_role, String user_genre, int user_nbrabscence, String username, String password) {
         this.user_nom = user_nom;

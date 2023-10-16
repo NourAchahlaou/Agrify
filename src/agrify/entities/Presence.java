@@ -11,7 +11,6 @@ package agrify.entities;
  */
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Presence {
     private int id_p;                
@@ -19,8 +18,7 @@ public class Presence {
     private LocalDate date;             
     private String presenceState;   
 
-    public Presence() {
-    }
+    public Presence() {}
 
     public Presence(int user_id, LocalDate date, String presenceState) {
         this.user_id = user_id;

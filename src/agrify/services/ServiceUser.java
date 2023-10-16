@@ -23,46 +23,55 @@ import java.util.List;
 
 public class ServiceUser implements IServiceUser<User> {
     private Connection connect;
-    private DataSource dataSource; // Add a dataSource field
+    private DataSource dataSource;
 
 
-    public ServiceUser(Connection connection) {
+public ServiceUser(Connection connection) 
+    {
         this.connect = connection;
     }
     
-    public ServiceUser(DataSource dataSource) {
+public ServiceUser(DataSource dataSource) 
+{
     this.dataSource = dataSource;
 }
 
 
-   @Override
-public void ajouter(User user) {
-        try {
+
+
+@Override
+public void ajouter(User user) 
+{
+        try 
+        {
            System.out.println(connect);
-PreparedStatement statement = connect.prepareStatement ("INSERT INTO user(user_nom, user_prenom, user_email, user_telephone, user_role, user_genre, user_nbrabscence, username, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement statement = connect.prepareStatement ("INSERT INTO user(user_nom, user_prenom, user_email, user_telephone, user_role, user_genre, user_nbrabscence, username, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-        statement.setString(1, user.getUser_nom());
-        statement.setString(2, user.getUser_prenom());
-        statement.setString(3, user.getUser_email());
-        statement.setString(4, user.getUser_telephone());
-        statement.setString(5, user.getUser_role());
-        statement.setString(6, user.getUser_genre());
-        statement.setInt(7, user.getUser_nbrabscence());
-        statement.setString(8, user.getUsername());
-        statement.setString(9, user.getPassword());
+            statement.setString(1, user.getUser_nom());
+            statement.setString(2, user.getUser_prenom());
+            statement.setString(3, user.getUser_email());
+            statement.setString(4, user.getUser_telephone());
+            statement.setString(5, user.getUser_role());
+            statement.setString(6, user.getUser_genre());
+            statement.setInt(7, user.getUser_nbrabscence());
+            statement.setString(8, user.getUsername());
+            statement.setString(9, user.getPassword());
 
-        statement.executeUpdate();
-        statement.close();
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
-    }
+                statement.executeUpdate();
+                statement.close();
+        } 
+        catch (SQLException ex) 
+        {
+             System.out.println(ex.getMessage());
+        }
 }
 
 
     
 
-    @Override
-    public void modifier(User user) {
+@Override
+public void modifier(User user) 
+    {
         try {
             String updateQuery = "UPDATE `user` SET `user_nom`=?, `user_prenom`=?, `user_email`=?, `user_telephone`=?, `user_role`=?, `user_genre`=?, `user_nbrabscence`=?, `username`=?, `password`=? WHERE `user_id`=?";
 
@@ -85,8 +94,12 @@ PreparedStatement statement = connect.prepareStatement ("INSERT INTO user(user_n
         }
     }
 
-    @Override
-    public void supprimer(int userId) {
+
+
+
+@Override
+public void supprimer(int userId) 
+    {
         try {
             String deleteQuery = "DELETE FROM `personne` WHERE `user_id`=?";
 
@@ -100,7 +113,12 @@ PreparedStatement statement = connect.prepareStatement ("INSERT INTO user(user_n
         }
     }
 
-  public List<User> searchUsersByName(String name) throws SQLException {
+ 
+
+
+
+public List<User> searchUsersByName(String name) throws SQLException 
+    {
         List<User> users = new ArrayList<>();
         String selectQuery = "SELECT * FROM `user` WHERE `user_nom` LIKE ?";
 
@@ -133,8 +151,11 @@ PreparedStatement statement = connect.prepareStatement ("INSERT INTO user(user_n
     }
   
 
-    @Override
-    public User getOne(int userId) {
+
+
+@Override
+public User getOne(int userId)  
+    {
         try {
             String selectQuery = "SELECT * FROM `user` WHERE `user_id`=?";
             PreparedStatement preparedStatement = connect.prepareStatement(selectQuery);
@@ -161,8 +182,14 @@ PreparedStatement statement = connect.prepareStatement ("INSERT INTO user(user_n
         return null;
     }
 
-    @Override
-    public List<User> getAll() {
+
+
+
+
+
+@Override
+public List<User> getAll() 
+    {
         List<User> users = new ArrayList<>();
         try {
             String selectQuery = "SELECT * FROM `user`";
@@ -190,7 +217,13 @@ PreparedStatement statement = connect.prepareStatement ("INSERT INTO user(user_n
         return users;
     }
     
-    public void supprimerByName(String name) {
+ 
+
+
+
+
+public void supprimerByName(String name)
+{
     try {
         String deleteQuery = "DELETE FROM `user` WHERE `user_nom` = ?";
 
@@ -204,7 +237,11 @@ PreparedStatement statement = connect.prepareStatement ("INSERT INTO user(user_n
     }
 }
     
-      public void updateUser(User user) {
+
+
+
+public void updateUser(User user)
+{
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
@@ -223,7 +260,13 @@ PreparedStatement statement = connect.prepareStatement ("INSERT INTO user(user_n
         }
     }
 
-    public void updateUserr(User user) {
+
+
+
+
+public void updateUserr(User user)
+
+{
     PreparedStatement preparedStatement = null;
 
     try {
@@ -248,13 +291,22 @@ PreparedStatement statement = connect.prepareStatement ("INSERT INTO user(user_n
 }
 
     
-public User getUserBest(int year) throws SQLException {
-    // Query to find the user with the smallest number of absences for the specified year
+
+
+
+
+
+
+
+
+
+public User getUserBest(int year) throws SQLException 
+{
     String query = "SELECT u.* " +
                    "FROM user u " +
                    "INNER JOIN presence p ON u.user_id = p.user_id " +
-                   "WHERE YEAR(p.date) = ? " + // Filter by year
-                   "ORDER BY u.user_nbrabscence ASC " + // Order by smallest number of absences
+                   "WHERE YEAR(p.date) = ? " + 
+                   "ORDER BY u.user_nbrabscence ASC " + 
                    "LIMIT 1";
 
     try (PreparedStatement preparedStatement = connect.prepareStatement(query)) {

@@ -18,20 +18,28 @@ import java.util.List;
  *
  * @author tbagh
  */
+
 public class ServiceField implements IServiceField<Field> {
     private Connection connect;
     private DataSource dataSource;
 
-    public ServiceField(Connection connection) {
+
+public ServiceField(Connection connection)
+    
+{
         this.connect = connection;
     }
 
-    public ServiceField(DataSource dataSource) {
+public ServiceField(DataSource dataSource) 
+    
+    {
         this.dataSource = dataSource;
     }
 
-    @Override
-    public void ajouter(Field field) {
+
+@Override
+public void ajouter(Field field) 
+  {
         try {
             PreparedStatement statement = connect.prepareStatement("INSERT INTO field(field_Nom, field_type, field_Superficie, Field_quantity) VALUES (?, ?, ?, ?)");
 
@@ -45,10 +53,13 @@ public class ServiceField implements IServiceField<Field> {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-    }
+  }
 
-    @Override
-    public void modifier(Field field) {
+
+
+@Override
+ public void modifier(Field field) 
+    {
         try {
             String updateQuery = "UPDATE field SET field_Nom=?, field_type=?, field_Superficie=?, Field_quantity=? WHERE field_Id=?";
 
@@ -66,8 +77,12 @@ public class ServiceField implements IServiceField<Field> {
         }
     }
 
-    @Override
-    public void supprimer(int fieldId) {
+ 
+ 
+ 
+@Override
+public void supprimer(int fieldId) 
+    {
         try {
             String deleteQuery = "DELETE FROM field WHERE field_Id=?";
 
@@ -81,8 +96,11 @@ public class ServiceField implements IServiceField<Field> {
         }
     }
 
-    @Override
-    public Field getOne(int fieldId) {
+
+
+@Override
+public Field getOne(int fieldId)
+    {
         try {
             String selectQuery = "SELECT * FROM field WHERE field_Id=?";
             PreparedStatement preparedStatement = connect.prepareStatement(selectQuery);
@@ -104,8 +122,12 @@ public class ServiceField implements IServiceField<Field> {
         return null;
     }
 
-    @Override
-    public List<Field> getAll() {
+
+
+
+@Override
+public List<Field> getAll() 
+    {
         List<Field> fields = new ArrayList<>();
         try {
             String selectQuery = "SELECT * FROM field";
@@ -130,8 +152,9 @@ public class ServiceField implements IServiceField<Field> {
 
     
     
-    @Override
-    public List<Field> searchFieldsByName(String name) throws SQLException {
+@Override
+public List<Field> searchFieldsByName(String name) throws SQLException 
+{
     List<Field> fields = new ArrayList<>();
     String selectQuery = "SELECT * FROM field WHERE field_Nom LIKE ?";
 
@@ -159,9 +182,11 @@ public class ServiceField implements IServiceField<Field> {
 }
 
     
-    @Override
-   public void supprimerByName(String field_Nom) {
-    try {
+@Override
+public void supprimerByName(String field_Nom) 
+{
+    try 
+     {
         String deleteQuery = "DELETE FROM `field` WHERE `field_Nom` = ?";
 
         PreparedStatement preparedStatement = connect.prepareStatement(deleteQuery);
@@ -169,9 +194,10 @@ public class ServiceField implements IServiceField<Field> {
 
         preparedStatement.executeUpdate();
         preparedStatement.close();
-    } catch (SQLException ex) {
+     } 
+    catch (SQLException ex) 
+     {
         System.out.println(ex.getMessage());
-    }
+     }
 }
-
 }

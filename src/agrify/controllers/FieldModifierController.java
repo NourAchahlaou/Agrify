@@ -15,6 +15,14 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+
+
+/**
+ *
+ * @author tbagh
+ */
+
+
 public class FieldModifierController {
 
     @FXML
@@ -48,56 +56,62 @@ public class FieldModifierController {
     private TextField SearchModifyFieldTextFieldBtn;
 
     
-            private Field currentField; 
+    private Field currentField; 
+    
             
-    @FXML
-    void ModifyField(ActionEvent event) {
-    if (currentField != null) {
-    try {
-        // Retrieve the values from the input fields
-        String nom = EditFieldNomTextField.getText();
-        String type = EditFieldTypeTextField.getText();
-        double superficie = Double.parseDouble(EditFieldSuperficieTextField.getText());
-        int quantity = Integer.parseInt(EditFieldQuantitéTextField.getText());
+    
+@FXML
+    void ModifyField(ActionEvent event)
+    
+    {
+        if (currentField != null) 
+          {
+            try 
+              {
+                String nom = EditFieldNomTextField.getText();
+                String type = EditFieldTypeTextField.getText();
+                double superficie = Double.parseDouble(EditFieldSuperficieTextField.getText());
+                int quantity = Integer.parseInt(EditFieldQuantitéTextField.getText());
 
-        // Update the currently selected field
-        currentField.setField_Nom(nom);
-        currentField.setField_type(type);
-        currentField.setField_Superficie(superficie);
-        currentField.setField_quantity(quantity);
+                // Update
+                currentField.setField_Nom(nom);
+                currentField.setField_type(type);
+                currentField.setField_Superficie(superficie);
+                currentField.setField_quantity(quantity);
 
-        // Create a ServiceField instance
-        ServiceField serviceField = new ServiceField(DataSource.getInstance().getConnection());
+                ServiceField serviceField = new ServiceField(DataSource.getInstance().getConnection());
+                serviceField.modifier(currentField);
 
-        // Call the modification method
-        serviceField.modifier(currentField);
+                EditUserMessage111.setText("Champ mis à jour avec succès.");
+              } 
+            catch (NumberFormatException e) 
+              {
+                EditUserMessage111.setText("Veuillez saisir un nombre valide ");
+              }
+          } 
+        else 
+          {
+                EditUserMessage111.setText("Veuillez recherchez d'abord");
+          }
 
-        EditUserMessage111.setText("Champ mis à jour avec succès.");
-    } catch (NumberFormatException e) {
-        EditUserMessage111.setText("Veuillez saisir un nombre valide pour la superficie ou la quantité.");
     }
-} else {
-    EditUserMessage111.setText("Aucun champ à mettre à jour. Veuillez effectuer une recherche d'abord.");
-}
+    
+    
 
-    }
-
-    @FXML
-    void ModifyFieldBack(ActionEvent event)  throws IOException{
-      // Load the sign-Up interface
-   Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/FiledHome.fxml"));
-   Scene signUpScene = new Scene(signUpRoot);
+@FXML
+    void ModifyFieldBack(ActionEvent event)  throws IOException
+    
+    {
+        Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/FiledHome.fxml"));
+        Scene signUpScene = new Scene(signUpRoot);
    
+        Stage signUpStage = new Stage();
+        signUpStage.initStyle(StageStyle.TRANSPARENT);
+        signUpStage.setScene(signUpScene);
+        signUpStage.show();
 
-   // Create a new stage for the sign-in interface
-   Stage signUpStage = new Stage();
-   signUpStage.initStyle(StageStyle.TRANSPARENT);
-   signUpStage.setScene(signUpScene);
-   signUpStage.show();
-
-   // Close the splash screen stage
-   Stage splashSignInStage = (Stage) ModifyFieldBackBtn.getScene().getWindow();
-   splashSignInStage.close();
+        Stage splashSignInStage = (Stage) ModifyFieldBackBtn.getScene().getWindow();
+        splashSignInStage.close();
     }
 
     
@@ -106,31 +120,37 @@ public class FieldModifierController {
     
     
     
-    @FXML
-    void ModifySearchField(ActionEvent event) {
-
+@FXML
+    void ModifySearchField(ActionEvent event) 
+    
+    {
         String searchQuery = SearchModifyFieldTextFieldBtn.getText();
+        
+            if (searchQuery.isEmpty()) 
+              {
+                    EditUserMessage1.setText("Veuillez entrer un ID valide.");
+              } 
+            else 
+              {
+                // Create a ServiceField instance
+                ServiceField serviceField = new ServiceField(DataSource.getInstance().getConnection());
+                Field field = serviceField.getOne(Integer.parseInt(searchQuery));
+                
+                if (field != null) 
+                  {
+                    currentField = field;
+                    EditFieldNomTextField.setText(field.getField_Nom());
+                    EditFieldTypeTextField.setText(field.getField_type());
+                    EditFieldSuperficieTextField.setText(String.valueOf(field.getField_Superficie()));
+                    EditFieldQuantitéTextField.setText(String.valueOf(field.getField_quantity()));
 
-    if (searchQuery.isEmpty()) {
-        EditUserMessage1.setText("Veuillez entrer un ID valide.");
-    } else {
-        // Create a ServiceField instance
-        ServiceField serviceField = new ServiceField(DataSource.getInstance().getConnection());
-
-        Field field = serviceField.getOne(Integer.parseInt(searchQuery));
-
-        if (field != null) {
-            currentField = field;
-            EditFieldNomTextField.setText(field.getField_Nom());
-            EditFieldTypeTextField.setText(field.getField_type());
-            EditFieldSuperficieTextField.setText(String.valueOf(field.getField_Superficie()));
-            EditFieldQuantitéTextField.setText(String.valueOf(field.getField_quantity()));
-
-            EditUserMessage1.setText("Champ trouvé.");
-        } else {
-            EditUserMessage1.setText("Champ non trouvé.");
-        }
-    }
+                    EditUserMessage1.setText("Champ trouvé.");
+                  } 
+                else 
+                  {
+                    EditUserMessage1.setText("Champ non trouvé.");
+                  }
+              }
 }
 
 

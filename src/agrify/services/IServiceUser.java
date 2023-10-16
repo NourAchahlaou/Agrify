@@ -10,10 +10,11 @@ import java.util.List;
  *
  * @author tbagh
  */
-public interface IServiceUser <T>{
-      public void ajouter(T t);
-    public void modifier(T t);
-    public void supprimer(int id);
-    public T getOne(int id);  // Changed to getOne by user_id
-    public List<T> getAll();
-}
+public interface IServiceUser <T>
+    {
+        public void ajouter(T t);
+        public void modifier(T t);
+        public void supprimer(int id);
+        public T getOne(int id);  
+        public List<T> getAll();
+    }

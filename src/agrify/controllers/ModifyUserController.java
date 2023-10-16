@@ -16,6 +16,13 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+
+/**
+ *
+ * @author tbagh
+ */
+
+
 public class ModifyUserController {
 
     @FXML
@@ -65,30 +72,37 @@ public class ModifyUserController {
 
     @FXML
     private TextField SearchModifyUserTextFieldBtn;
+    
+    
     private Connection connect;
     private ServiceUser userService;
     private User currentUser;
 
 
  @FXML
-    void initialize() {
+    void initialize() 
+    {
         // Initialisation de la connexion à la base de données et du service
         connect = DataSource.getInstance().getConnection();
         userService = new ServiceUser(connect);
     }
 
     
-    @FXML
+    
+@FXML
     void ModifySearchUser(ActionEvent event) {
         String searchQuery = SearchModifyUserTextFieldBtn.getText();
 
-        if (searchQuery.isEmpty()) {
+       if (searchQuery.isEmpty()) 
+        {
             EditUserMessage1.setText("Veuillez entrer un ID valide.");
-        } else {
+        } 
+       else 
+        {
             User user = userService.getOne(Integer.parseInt(searchQuery));
 
-            if (user != null) {
-                // Remplir les champs avec les informations de l'utilisateur
+            if (user != null) 
+            {
                 currentUser = user;
                 EditUserNomTextField.setText(user.getUser_nom());
                 EditUserPrenomTextField.setText(user.getUser_prenom());
@@ -105,7 +119,9 @@ public class ModifyUserController {
                 EditUserUsernameTextField.setText(user.getUsername());
                 EditUserPasswordTextField.setText(user.getPassword());
                 EditUserMessage1.setText("Utilisateur trouvé.");
-            } else {
+            } 
+            else 
+            {
                 EditUserMessage1.setText("Utilisateur non trouvé.");
             }
         }
@@ -116,7 +132,7 @@ public class ModifyUserController {
     void ModifyUser1(ActionEvent event) {
         if (currentUser != null) {
             try {
-                // Récupérez les valeurs des champs
+                // Récupérez les valeurs 
                 String nom = EditUserNomTextField.getText();
                 String prenom = EditUserPrenomTextField.getText();
                 String email = EditUserEmailTextField.getText();
@@ -127,7 +143,7 @@ public class ModifyUserController {
                 String username = EditUserUsernameTextField.getText();
                 String password = EditUserPasswordTextField.getText();
 
-                // Mettez à jour l'utilisateur actuellement modifié
+                // Mettez à jour
                 currentUser.setUser_nom(nom);
                 currentUser.setUser_prenom(prenom);
                 currentUser.setUser_email(email);
@@ -149,23 +165,20 @@ public class ModifyUserController {
         }
     }
 
-    @FXML
-    void ModifyUserBack(ActionEvent event) throws Exception{
-      // Load the sign-Up interface
-   Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/UserHome.fxml"));
-   Scene signUpScene = new Scene(signUpRoot);
+@FXML
+  void ModifyUserBack(ActionEvent event) throws Exception
+   {
+        Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/UserHome.fxml"));
+        Scene signUpScene = new Scene(signUpRoot);
    
+        Stage signUpStage = new Stage();
+        signUpStage.initStyle(StageStyle.TRANSPARENT);
+        signUpStage.setScene(signUpScene);
+        signUpStage.show();
 
-   // Create a new stage for the sign-in interface
-   Stage signUpStage = new Stage();
-   signUpStage.initStyle(StageStyle.TRANSPARENT);
-   signUpStage.setScene(signUpScene);
-   signUpStage.show();
-
-   // Close the splash screen stage
-   Stage splashSignInStage = (Stage) ModifyUserBackBtn.getScene().getWindow();
-   splashSignInStage.close();
-    }
+        Stage splashSignInStage = (Stage) ModifyUserBackBtn.getScene().getWindow();
+        splashSignInStage.close();
+   }
 
     
     @FXML
