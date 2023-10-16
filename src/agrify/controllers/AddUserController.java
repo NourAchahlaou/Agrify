@@ -82,65 +82,65 @@ void Add0User(ActionEvent event) throws IOException
     System.out.println("Database instance connection");
     System.out.println(DataSource.getInstance().getConnection());
     ServiceUser userService = new ServiceUser(DataSource.getInstance().getConnection());
+    
     String nom = UserFNameField.getText();
     String prenom = UserLNameField.getText();
     String email = UserEmailField.getText();
     String telephone = UserPhoneField.getText();
-    String role = UserRoleField.getValue(); // Assurez-vous de remplir le ChoiceBox avec des valeurs appropriées
-    String genre = UserSexField.getValue(); // Assurez-vous de remplir le ChoiceBox avec des valeurs appropriées
-    int nbrAbsence = 0; // Vous pouvez changer cela si nécessaire
+    String role = UserRoleField.getValue(); 
+    String genre = UserSexField.getValue(); 
+    int nbrAbsence = 0; 
     String username = UserUsernameField.getText();
     String password = UserPasswordField.getText();
+    
+    
     User user = new User(nom, prenom, email, telephone, role, genre, nbrAbsence, username, password);
     userService.ajouter(user);
     
-      Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/UserHome.fxml"));
-   Scene signUpScene = new Scene(signUpRoot);
+        Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/UserHome.fxml"));
+        Scene signUpScene = new Scene(signUpRoot);
    
+        Stage signUpStage = new Stage();
+        signUpStage.initStyle(StageStyle.TRANSPARENT);
+        signUpStage.setScene(signUpScene);
+        signUpStage.show();
 
-   // Create a new stage for the sign-in interface
-   Stage signUpStage = new Stage();
-   signUpStage.initStyle(StageStyle.TRANSPARENT);
-   signUpStage.setScene(signUpScene);
-   signUpStage.show();
-
-   // Close the splash screen stage
-   Stage splashSignInStage = (Stage) AddUser0Btn.getScene().getWindow();
-   splashSignInStage.close();
+        Stage splashSignInStage = (Stage) AddUser0Btn.getScene().getWindow();
+    splashSignInStage.close();
 }
 
 
     @FXML
-    void AddUserBack(ActionEvent event) throws Exception{
-      // Load the sign-Up interface
-   Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/UserHome.fxml"));
-   Scene signUpScene = new Scene(signUpRoot);
+    void AddUserBack(ActionEvent event) throws Exception
+    {
+
+        Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/UserHome.fxml"));
+        Scene signUpScene = new Scene(signUpRoot);
    
+        Stage signUpStage = new Stage();
+        signUpStage.initStyle(StageStyle.TRANSPARENT);
+        signUpStage.setScene(signUpScene);
+        signUpStage.show();
 
-   // Create a new stage for the sign-in interface
-   Stage signUpStage = new Stage();
-   signUpStage.initStyle(StageStyle.TRANSPARENT);
-   signUpStage.setScene(signUpScene);
-   signUpStage.show();
-
-   // Close the splash screen stage
-   Stage splashSignInStage = (Stage) AddUserBackBtn1.getScene().getWindow();
-   splashSignInStage.close();
+        Stage splashSignInStage = (Stage) AddUserBackBtn1.getScene().getWindow();
+        splashSignInStage.close();
     }
 
-        @FXML
-    void Role(ActionEvent event) {
- String selectedRole = UserRoleField.getSelectionModel().getSelectedItem();
-    System.out.println("Selected Role: " + selectedRole);
-    }
+    
+    @FXML
+    void Role(ActionEvent event) 
+      {
+        String selectedRole = UserRoleField.getSelectionModel().getSelectedItem();
+        System.out.println("Selected Role: " + selectedRole);
+      }
 
     @FXML
-    void Sex(ActionEvent event) {
- String selectedSex = UserSexField.getSelectionModel().getSelectedItem();
-    System.out.println("Selected Sex: " + selectedSex);
-    }
-    
-    
-    
+    void Sex(ActionEvent event) 
+      {
+          
+        String selectedSex = UserSexField.getSelectionModel().getSelectedItem();
+        System.out.println("Selected Sex: " + selectedSex);
+      
+      }
     
 }

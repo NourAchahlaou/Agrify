@@ -13,6 +13,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import agrify.entities.Field;
+import agrify.services.ServiceField;
+import agrify.utils.DataSource;
+import java.sql.SQLException;
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class FieldHomeController {
 
@@ -25,23 +33,18 @@ public class FieldHomeController {
     @FXML
     private Label EditUserMessage11;
 
+ @FXML
+    private TableView<Field> FieldHome; 
     @FXML
-    private TableView<?> FieldHome;
-
+    private TableColumn<Field, Integer> FieldHome_id; 
     @FXML
-    private TableColumn<?, ?> FieldHome_id;
-
+    private TableColumn<Field, String> FieldHome_nom;
     @FXML
-    private TableColumn<?, ?> FieldHome_nom;
-
+    private TableColumn<Field, Integer> FieldHome_quantité;
     @FXML
-    private TableColumn<?, ?> FieldHome_quantité;
-
+    private TableColumn<Field, Double> FieldHome_superficie;
     @FXML
-    private TableColumn<?, ?> FieldHome_superficie;
-
-    @FXML
-    private TableColumn<?, ?> FieldHome_type;
+    private TableColumn<Field, String> FieldHome_type;
 
     @FXML
     private Button ModifyFieldBtn;
@@ -54,6 +57,37 @@ public class FieldHomeController {
 
     @FXML
     private Button userFieldBackBtn;
+    private ServiceField serviceField; // Initialize the ServiceField
+    private ObservableList<Field> fieldsList;
+
+    
+ @FXML
+void initialize() {
+    // Initialize your service and observable list
+    serviceField = new ServiceField(DataSource.getInstance().getConnection());
+    fieldsList = FXCollections.observableArrayList();
+
+    // Associate the table columns with Field properties
+    FieldHome_id.setCellValueFactory(new PropertyValueFactory<>("field_Id"));
+    FieldHome_nom.setCellValueFactory(new PropertyValueFactory<>("field_Nom"));
+    FieldHome_quantité.setCellValueFactory(new PropertyValueFactory<>("field_quantity"));
+    FieldHome_superficie.setCellValueFactory(new PropertyValueFactory<>("field_Superficie"));
+    FieldHome_type.setCellValueFactory(new PropertyValueFactory<>("field_type"));
+
+    // Set the items in the table
+    FieldHome.setItems(fieldsList);
+
+    // Load the field data into the table
+    loadFieldData();
+}
+
+private void loadFieldData() {
+    List<Field> fields = serviceField.getAll(); // Modify this based on your ServiceField
+    fieldsList.addAll(fields);
+}
+
+    
+    
 
     @FXML
     void AddField(ActionEvent event) throws IOException {
@@ -141,8 +175,32 @@ public class FieldHomeController {
     
   
     @FXML
-    void SearchField(ActionEvent event) {
+    void SearchField(ActionEvent event) throws SQLException {
+  
+        
+        // Get the field ID from the text field
+String fieldIdText = SearchFieldTextFieldBtn.getText();
 
+if (fieldIdText.isEmpty()) {
+    // Show an error message if the text field is empty
+    EditUserMessage11.setText("Please enter a field ID to search for.");
+} else {
+    try {
+        int fieldId = Integer.parseInt(fieldIdText);
+        Field field = serviceField.getOne(fieldId);
+        if (field != null) {
+            fieldsList.clear();
+            fieldsList.add(field);
+            EditUserMessage11.setText("Field found.");
+        } else {
+            EditUserMessage11.setText("No field found with ID " + fieldId);
+        }
+    } catch (NumberFormatException e) {
+        EditUserMessage11.setText("Invalid field ID. Please enter a valid numeric ID.");
     }
-
 }
+    }
+}
+
+
+

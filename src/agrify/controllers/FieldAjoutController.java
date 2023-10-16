@@ -1,5 +1,8 @@
 package agrify.controllers;
 
+import agrify.entities.Field;
+import agrify.services.ServiceField;
+import agrify.utils.DataSource;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,8 +39,31 @@ public class FieldAjoutController {
     private TextField FieldTypeTextFill;
 
     @FXML
-    void AddField(ActionEvent event) {
+    void AddField(ActionEvent event) throws IOException {
+        ServiceField fieldService = new ServiceField(DataSource.getInstance().getConnection());
+    
+    
+        String fieldNom = FieldNomTextFill.getText();
+        String fieldType = FieldTypeTextFill.getText();
+        double fieldSuperficie = Double.parseDouble(FieldSuperficieTextFill.getText());
+        int fieldQuantity = Integer.parseInt(FieldQuantitéTextFill.getText());
 
+         Field field = new Field(fieldNom, fieldType, fieldSuperficie, fieldQuantity);
+         fieldService.ajouter(field);
+      
+   Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/FiledHome.fxml"));
+   Scene signUpScene = new Scene(signUpRoot);
+   
+
+   // Create a new stage for the sign-in interface
+   Stage signUpStage = new Stage();
+   signUpStage.initStyle(StageStyle.TRANSPARENT);
+   signUpStage.setScene(signUpScene);
+   signUpStage.show();
+
+   // Close the splash screen stage
+   Stage splashSignInStage = (Stage) AddFieldBtn.getScene().getWindow();
+   splashSignInStage.close();
     }
 
     @FXML

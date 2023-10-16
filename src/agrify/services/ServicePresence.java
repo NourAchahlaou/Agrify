@@ -6,7 +6,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class ServicePresence {
+public class ServicePresence implements IServicePresence<Presence> {
     private Connection connection;
 
     public ServicePresence(Connection connection) {

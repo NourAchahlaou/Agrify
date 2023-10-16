@@ -149,6 +149,8 @@ public class DeleteUserController {
                         EditUserMessage11.setText("Recherchez des utilisateurs d'abord svp.");
               }
     }
+    
+    
 
 
         private void loadUserTable()

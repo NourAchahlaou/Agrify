@@ -1,5 +1,8 @@
 package agrify.controllers;
 
+import agrify.entities.Field;
+import agrify.services.ServiceField;
+import agrify.utils.DataSource;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,9 +33,6 @@ public class FieldModifierController {
     private Label EditUserMessage1;
 
     @FXML
-    private Label EditUserMessage11;
-
-    @FXML
     private Label EditUserMessage111;
 
     @FXML
@@ -47,13 +47,43 @@ public class FieldModifierController {
     @FXML
     private TextField SearchModifyFieldTextFieldBtn;
 
+    
+            private Field currentField; 
+            
     @FXML
     void ModifyField(ActionEvent event) {
+    if (currentField != null) {
+    try {
+        // Retrieve the values from the input fields
+        String nom = EditFieldNomTextField.getText();
+        String type = EditFieldTypeTextField.getText();
+        double superficie = Double.parseDouble(EditFieldSuperficieTextField.getText());
+        int quantity = Integer.parseInt(EditFieldQuantitéTextField.getText());
+
+        // Update the currently selected field
+        currentField.setField_Nom(nom);
+        currentField.setField_type(type);
+        currentField.setField_Superficie(superficie);
+        currentField.setField_quantity(quantity);
+
+        // Create a ServiceField instance
+        ServiceField serviceField = new ServiceField(DataSource.getInstance().getConnection());
+
+        // Call the modification method
+        serviceField.modifier(currentField);
+
+        EditUserMessage111.setText("Champ mis à jour avec succès.");
+    } catch (NumberFormatException e) {
+        EditUserMessage111.setText("Veuillez saisir un nombre valide pour la superficie ou la quantité.");
+    }
+} else {
+    EditUserMessage111.setText("Aucun champ à mettre à jour. Veuillez effectuer une recherche d'abord.");
+}
 
     }
 
     @FXML
-    void ModifyFieldBack(ActionEvent event) throws IOException{
+    void ModifyFieldBack(ActionEvent event)  throws IOException{
       // Load the sign-Up interface
    Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/FiledHome.fxml"));
    Scene signUpScene = new Scene(signUpRoot);
@@ -70,9 +100,38 @@ public class FieldModifierController {
    splashSignInStage.close();
     }
 
+    
+    
+    
+    
+    
+    
     @FXML
     void ModifySearchField(ActionEvent event) {
 
+        String searchQuery = SearchModifyFieldTextFieldBtn.getText();
+
+    if (searchQuery.isEmpty()) {
+        EditUserMessage1.setText("Veuillez entrer un ID valide.");
+    } else {
+        // Create a ServiceField instance
+        ServiceField serviceField = new ServiceField(DataSource.getInstance().getConnection());
+
+        Field field = serviceField.getOne(Integer.parseInt(searchQuery));
+
+        if (field != null) {
+            currentField = field;
+            EditFieldNomTextField.setText(field.getField_Nom());
+            EditFieldTypeTextField.setText(field.getField_type());
+            EditFieldSuperficieTextField.setText(String.valueOf(field.getField_Superficie()));
+            EditFieldQuantitéTextField.setText(String.valueOf(field.getField_quantity()));
+
+            EditUserMessage1.setText("Champ trouvé.");
+        } else {
+            EditUserMessage1.setText("Champ non trouvé.");
+        }
     }
+}
+
 
 }

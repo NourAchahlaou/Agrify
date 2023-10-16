@@ -39,13 +39,13 @@
       </Button>
       <TableView fx:id="EmployeeHome" editable="true" layoutX="40.0" layoutY="321.0" prefHeight="329.0" prefWidth="1200.0" style="-fx-background-color: #000; -fx-border-color: #fff;">
          <columns>
-            <TableColumn fx:id="EmployeeHome_id" prefWidth="100.0" style="-fx-background-insets: 0 0 0 0; -fx-table-cell-border-color: transparant; -fx-background-color: #2E5D42; -fx-alignment: center; -fx-font-size: 14; -fx-font-weight: Bold; -fx-text-fill: #000;" text="ID" />
-            <TableColumn fx:id="EmployeeHome_nom" prefWidth="200.0" style="-fx-background-insets: 0 0 0 0; -fx-table-cell-border-color: transparant; -fx-alignment: center; -fx-font-size: 14; -fx-font-weight: Bold; -fx-background-color: #fff; -fx-text-fill: #4A5C97;" text="Nom" />
-            <TableColumn fx:id="EmployeeHome_prenom" prefWidth="200.0" style="-fx-background-insets: 0 0 0 0; -fx-table-cell-border-color: transparant; -fx-background-color: #2E674F; -fx-alignment: center; -fx-font-size: 14; -fx-font-weight: Bold; -fx-text-fill: #000;" text="Prenom" />
-            <TableColumn fx:id="EmployeeHome_email" prefWidth="150.0" style="-fx-background-insets: 0 0 0 0; -fx-table-cell-border-color: transparant; -fx-alignment: center; -fx-font-size: 14; -fx-font-weight: Bold; -fx-background-color: #fff; -fx-text-fill: #4A5C97;" text="Email" />
-            <TableColumn fx:id="EmployeeHome_phone" prefWidth="150.0" style="-fx-background-insets: 0 0 0 0; -fx-table-cell-border-color: transparant; -fx-background-color: #2E674F; -fx-alignment: center; -fx-font-size: 14; -fx-font-weight: Bold; -fx-text-fill: #000;" text="Telephone" />
-            <TableColumn fx:id="EmployeeHome_role" prefWidth="400.0" style="-fx-background-insets: 0 0 0 0; -fx-table-cell-border-color: transparant; -fx-alignment: center; -fx-font-size: 14; -fx-font-weight: Bold; -fx-background-color: #fff; -fx-text-fill: #4A5C97;" text="Role" />
-            <TableColumn fx:id="EmployeeHome_abscence" prefWidth="75.0" style="-fx-background-color: #2E674F; -fx-font-weight: Bold; -fx-font-size: 14;" text="Nombre Abscence" />
+            <TableColumn fx:id="EmployeeHome_id" prefWidth="100.0" style="-fx-background-insets: 0 0 0 0; -fx-background-color: #55A605; -fx-alignment: center; -fx-font-size: 14; -fx-font-weight: Bold; -fx-text-fill: #fff;" text="ID" />
+            <TableColumn fx:id="EmployeeHome_nom" prefWidth="200.0" style="-fx-background-insets: 0 0 0 0; -fx-alignment: center; -fx-font-size: 14; -fx-font-weight: Bold; -fx-background-color: #fff; -fx-text-fill: #2B5836;" text="Nom" />
+            <TableColumn fx:id="EmployeeHome_prenom" prefWidth="200.0" style="-fx-background-insets: 0 0 0 0; -fx-background-color: #2E674F; -fx-alignment: center; -fx-font-size: 14; -fx-font-weight: Bold; -fx-text-fill: #000;" text="Prenom" />
+            <TableColumn fx:id="EmployeeHome_email" prefWidth="150.0" style="-fx-background-insets: 0 0 0 0; -fx-alignment: center; -fx-font-size: 14; -fx-font-weight: Bold; -fx-background-color: #fff; -fx-text-fill: #2B5836;" text="Email" />
+            <TableColumn fx:id="EmployeeHome_phone" prefWidth="150.0" style="-fx-background-insets: 0 0 0 0; -fx-background-color: #2E674F; -fx-alignment: center; -fx-font-size: 14; -fx-font-weight: Bold; -fx-text-fill: #000;" text="Telephone" />
+            <TableColumn fx:id="EmployeeHome_role" prefWidth="400.0" style="-fx-background-insets: 0 0 0 0; -fx-alignment: center; -fx-font-size: 14; -fx-font-weight: Bold; -fx-background-color: #fff; -fx-text-fill: #2B5836;" text="Role" />
+            <TableColumn fx:id="EmployeeHome_abscence" prefWidth="75.0" style="-fx-background-color: #2E674F; -fx-font-weight: Bold; -fx-font-size: 14; -fx-text-fill: #000;" text="Nombre Abscence" />
          </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

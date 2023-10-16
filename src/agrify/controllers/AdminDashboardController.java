@@ -47,50 +47,59 @@ public class AdminDashboardController {
     }
 
     @FXML
-    void AdminDashboardDeconnexion(ActionEvent event)throws Exception{
-      // Load the sign-Up interface
-   Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/Home.fxml"));
-   Scene signUpScene = new Scene(signUpRoot);
+    void AdminDashboardDeconnexion(ActionEvent event)throws Exception
+    
+    {
+        Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/Home.fxml"));
+        Scene signUpScene = new Scene(signUpRoot);
+      
+        Stage signUpStage = new Stage();
+        signUpStage.initStyle(StageStyle.TRANSPARENT);
+        signUpStage.setScene(signUpScene);
+        signUpStage.show();
+
+        Stage splashSignInStage = (Stage) AdminDashboardDeconnexionBtn.getScene().getWindow();
+        splashSignInStage.close();
+    }
+
+ 
+
+    @FXML
+    void AdminDashboardGestionField(ActionEvent event) throws Exception
+    
+    {
+            Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/FiledHome.fxml"));
+            Scene signUpScene = new Scene(signUpRoot);
+  
+            Stage signUpStage = new Stage();
+            signUpStage.initStyle(StageStyle.TRANSPARENT);
+            signUpStage.setScene(signUpScene);
+            signUpStage.show();
+
+            Stage splashSignInStage = (Stage) AdminDashboardGestionFieldBtn.getScene().getWindow();
+            splashSignInStage.close();
+    }
+    
+    
+    
+       @FXML
+    void AdminDashboardGestionUser(ActionEvent event) throws Exception
+    
+    {
+        Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/UserHome.fxml"));
+        Scene signUpScene = new Scene(signUpRoot);
    
+        Stage signUpStage = new Stage();
+        signUpStage.initStyle(StageStyle.TRANSPARENT);
+        signUpStage.setScene(signUpScene);
+        signUpStage.show();
 
-   // Create a new stage for the sign-in interface
-   Stage signUpStage = new Stage();
-   signUpStage.initStyle(StageStyle.TRANSPARENT);
-   signUpStage.setScene(signUpScene);
-   signUpStage.show();
-
-   // Close the splash screen stage
-   Stage splashSignInStage = (Stage) AdminDashboardDeconnexionBtn.getScene().getWindow();
-   splashSignInStage.close();
+        Stage splashSignInStage = (Stage) AdminDashboardGestionUserBtn.getScene().getWindow();
+        splashSignInStage.close();
+    
     }
-
-    @FXML
-    void AdminDashboardGestionAchat(ActionEvent event) {
-
-    }
-
-    @FXML
-    void AdminDashboardGestionAnimal(ActionEvent event) {
-
-    }
-
-    @FXML
-    void AdminDashboardGestionField(ActionEvent event) throws Exception{
-      // Load the sign-Up interface
-   Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/FiledHome.fxml"));
-   Scene signUpScene = new Scene(signUpRoot);
-   
-
-   // Create a new stage for the sign-in interface
-   Stage signUpStage = new Stage();
-   signUpStage.initStyle(StageStyle.TRANSPARENT);
-   signUpStage.setScene(signUpScene);
-   signUpStage.show();
-
-   // Close the splash screen stage
-   Stage splashSignInStage = (Stage) AdminDashboardGestionFieldBtn.getScene().getWindow();
-   splashSignInStage.close();
-    }
+    
+    
 
     @FXML
     void AdminDashboardGestionMaterial(ActionEvent event) {
@@ -112,26 +121,15 @@ public class AdminDashboardController {
 
     }
 
-    @FXML
-    void AdminDashboardGestionUser(ActionEvent event) throws Exception{
-      // Load the sign-Up interface
-   Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/UserHome.fxml"));
-   Scene signUpScene = new Scene(signUpRoot);
-   
+       @FXML
+    void AdminDashboardGestionAchat(ActionEvent event) {
 
-   // Create a new stage for the sign-in interface
-   Stage signUpStage = new Stage();
-   signUpStage.initStyle(StageStyle.TRANSPARENT);
-   signUpStage.setScene(signUpScene);
-   signUpStage.show();
-
-   // Close the splash screen stage
-   Stage splashSignInStage = (Stage) AdminDashboardGestionUserBtn.getScene().getWindow();
-   splashSignInStage.close();
-    
     }
+
+    @FXML
+    void AdminDashboardGestionAnimal(ActionEvent event) {
+
+    }
+ 
     
-
-   
-
 }

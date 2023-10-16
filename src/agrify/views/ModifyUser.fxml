@@ -22,7 +22,7 @@
       <TextField fx:id="EditUserEmailTextField" alignment="CENTER" layoutX="242.0" layoutY="356.0" prefHeight="40.0" prefWidth="297.0" promptText="Email du Employée" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-font-size: 16px; -fx-border-color: #8d8;" />
       <TextField fx:id="EditUserPhoneTextField" alignment="CENTER" layoutX="242.0" layoutY="411.0" prefHeight="40.0" prefWidth="297.0" promptText="Téléphone du Employée" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-font-size: 16px; -fx-border-color: #8d8;" />
       <TextField fx:id="EditUserNbrAbscTextField" alignment="CENTER" layoutX="298.0" layoutY="525.0" prefHeight="40.0" prefWidth="241.0" promptText="Nbr D'abscence" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-font-size: 16px; -fx-border-color: #8d8;" />
-      <TextField fx:id="SearchModifyUserTextFieldBtn" layoutX="736.0" layoutY="183.0" prefHeight="44.0" prefWidth="148.0" promptText="Chercher ID" style="-fx-background-color: transparant; -fx-text-fill: #000; -fx-font-size: 18px; -fx-font-family: Berlin Sans FB;">
+      <TextField fx:id="SearchModifyUserTextFieldBtn" layoutX="736.0" layoutY="183.0" prefHeight="44.0" prefWidth="148.0" promptText="Chercher ID" style="-fx-background-color: transparent; -fx-text-fill: #000; -fx-font-size: 18px; -fx-font-family: Berlin Sans FB;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
