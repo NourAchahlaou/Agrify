@@ -14,20 +14,40 @@ import java.sql.SQLException;
  *
  * @author alien kami sama
  */
+
 public class Database {
-    public static Connection connectDB(){
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connect = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/(gestion_animal)", "root","" );
-        return connect;
-        }catch (ClassNotFoundException | SQLException e){
-        }
-        return null;
-  
-       
+    private static java.sql.Connection cnx;
+    private static Database instance;
     
-}     
+    private static final  String url = "jdbc:mysql://localhost:3306/agrify";
+    private static final String user = "root";
+    private static final  String password = "";
+    
+    private Database(){
+        try {
+            cnx = DriverManager.getConnection(url, user, password);
+            System.out.println("Connected to DB !");
+        }  catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("unable to connect to DB !");
+
+        }
+    }
+    
+    public static Database getInstance(){
+        if(instance == null){
+            instance = new Database();
+        }
+        return instance;
+    }
+    
+    public java.sql.Connection getConnection(){
+        return this.cnx;
+    }
+    
+}
 
 
- }
+
+ 
     
