@@ -209,6 +209,9 @@ public class AnimalManagementController implements Initializable {
     private Button btn_reclamation;
 
     @FXML
+    private Button btn_cree_ingredient;
+
+    @FXML
     private Button btn_reinitialisation_filtre;
 
     @FXML
@@ -348,9 +351,6 @@ public class AnimalManagementController implements Initializable {
 
     @FXML
     private ComboBox<String> combobox_udm_popup_ingredient_management;
-
-    @FXML
-    private ComboBox<String> cree_ingredient_combobox;
 
     @FXML
     private TableColumn<AnimauxEnGestationEntity, Date> dashboard_elvage_imminent;
@@ -603,20 +603,19 @@ public class AnimalManagementController implements Initializable {
     private ResultSet resultSet;
     private Statement statement;
 
-    public void changeWithCombobox() {
-        cree_ingredient_combobox.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
-            if ("ingredient individual".equals(newValue)) {
-                popup_ingredient_managment.setVisible(true);
-                //
-                anchor_valeur_nutritionnelles1.setVisible(true);
-                anchor_valeur_nutritionnelles2.setVisible(false);
-
-            } else {
-                popup_ingredient_managment.setVisible(false);
-            }
-        });
+    /*public void changeWithCombobox() {
+    cree_ingredient_combobox.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+    if ("ingredient individual".equals(newValue)) {
+    popup_ingredient_managment.setVisible(true);
+    //
+    anchor_valeur_nutritionnelles1.setVisible(true);
+    anchor_valeur_nutritionnelles2.setVisible(false);
+    
+    } else {
+    popup_ingredient_managment.setVisible(false);
     }
-
+    });
+    }*/
     //exit is done 
     public void exit(ActionEvent event) {
         if (event.getSource() == btn_exit) {
@@ -767,6 +766,9 @@ public class AnimalManagementController implements Initializable {
             //
             anchor_besoin_nutritionnel.setVisible(true);
             anchor_valeur_nutritionnelles02.setVisible(false);
+            anchor_btn_enregistrer_besoin_nutritionnel.setVisible(true);
+            anchor_btn_modify_delete_besoin_nutritionnel.setVisible(false);
+
             //
             page_ration_managemnt.setVisible(false);
             //
@@ -780,33 +782,7 @@ public class AnimalManagementController implements Initializable {
             popup_animal_management.setVisible(false);
             //
             anchor_animaux_management.setVisible(false);
-        } else if (event.getSource() == btn_enregistrer_popup_besoin_nutritionnel) {
-            page_tableau_bord.setVisible(false);
-            page_ingredient_main.setVisible(false);
-            popup_ingredient_managment.setVisible(false);
-            //
-            anchor_valeur_nutritionnelles1.setVisible(false);
-            anchor_valeur_nutritionnelles2.setVisible(false);
-            //
-            page_besoin_nutritionnels_management.setVisible(true);
-            //
-            popup_besoin_nutritionnels_management.setVisible(true);
-            //
-            anchor_besoin_nutritionnel.setVisible(false);
-            anchor_valeur_nutritionnelles02.setVisible(true);
-            //
-            page_ration_managemnt.setVisible(false);
-            //
-            popup_ration_management.setVisible(false);
-            //
-            anchor_ration_selection_ingredient.setVisible(false);
-            anchor_ration_management.setVisible(false);
-            //
-            page_animaux_management.setVisible(false);
-            //
-            popup_animal_management.setVisible(false);
-            //
-            anchor_animaux_management.setVisible(false);
+
             //pour acceder lel valeur de nutrition de la partie gestion de besoin nutritionnel 
         } else if (event.getSource() == btn_enregistrer_popup2_besoin_nutritionnel) {
             page_tableau_bord.setVisible(false);
@@ -970,6 +946,34 @@ public class AnimalManagementController implements Initializable {
             popup_animal_management.setVisible(true);
             //
             anchor_animaux_management.setVisible(true);
+        } else if (event.getSource() == btn_cree_ingredient) {
+            page_tableau_bord.setVisible(false);
+            page_ingredient_main.setVisible(true);
+            popup_ingredient_managment.setVisible(true);
+            //
+            anchor_valeur_nutritionnelles1.setVisible(true);
+            anchor_valeur_nutritionnelles2.setVisible(false);
+            anchor_valeur_nutritionnelles1.setVisible(true);
+            //
+            page_besoin_nutritionnels_management.setVisible(false);
+            //
+            popup_besoin_nutritionnels_management.setVisible(false);
+            //
+            anchor_besoin_nutritionnel.setVisible(false);
+            anchor_valeur_nutritionnelles02.setVisible(false);
+            //
+            page_ration_managemnt.setVisible(false);
+            //
+            popup_ration_management.setVisible(false);
+            //
+            anchor_ration_selection_ingredient.setVisible(false);
+            anchor_ration_management.setVisible(false);
+            //
+            page_animaux_management.setVisible(false);
+            //
+            popup_animal_management.setVisible(false);
+            //
+            anchor_animaux_management.setVisible(false);
         }
     }
 
@@ -999,7 +1003,6 @@ public class AnimalManagementController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         page_tableau_bord.setVisible(true);
-        cree_ingredient_combobox.setItems(FXCollections.observableArrayList("Créer un nouvel ingrédient", "ingredient individual", "nuriture animal"));
         nutriment_principal_combobox.setItems(FXCollections.observableArrayList("Fibre", "Énergie", "Protéine", "Minéral"));
         combobox_bute_production_popup2_ration.setItems(FXCollections.observableArrayList("Viande", "Lait", "Œufs"));
         combobox_popup_espece_ration.setItems(FXCollections.observableArrayList("Moutons", "Bovins", "Poules", "Dindes", "abeilles"));
@@ -1200,11 +1203,13 @@ public class AnimalManagementController implements Initializable {
         List<IngrediantEntity> dataFromDatabase = service.getSpecificColumnsFromDatabase();
         return FXCollections.observableArrayList(dataFromDatabase);
     }
-     private ObservableList<Animal> loadAnimalFromDatabase() {
-ServiceAnimal service = new ServiceAnimal(Database.getInstance().getConnection());
+
+    private ObservableList<Animal> loadAnimalFromDatabase() {
+        ServiceAnimal service = new ServiceAnimal(Database.getInstance().getConnection());
 
         List<Animal> dataFromDatabase = service.getSpecificColumnsFromDatabase();
-        return FXCollections.observableArrayList(dataFromDatabase);    }
+        return FXCollections.observableArrayList(dataFromDatabase);
+    }
 
     //ajout
     @FXML
@@ -1259,8 +1264,19 @@ ServiceAnimal service = new ServiceAnimal(Database.getInstance().getConnection()
             nutrimentPrincipal = "Protien";
         }
 
+        // Create a BesoinNutritionnelEntity object
         IngrediantEntity ingredient = new IngrediantEntity(nom, type, description, prix, quantite, udm, source, nutrimentPrincipal);
+
+        System.out.println(ingredient);
+
+        // Assuming that table_besoin_nutritionnel is your TableView and
+        // besoinNutritionnelsList is the ObservableList that backs it.
+        ObservableList<IngrediantEntity> ingredientList = table_igredient_management.getItems();
+        ingredientList.add(ingredient);
         ingredientService.ajouter(ingredient);
+
+        // Refresh the TableView to reflect the changes
+        table_besoin_nutritionnel.refresh();
     }
 
     @FXML
@@ -1301,6 +1317,7 @@ ServiceAnimal service = new ServiceAnimal(Database.getInstance().getConnection()
 
     @FXML
     void addBesoinNutritionnel(ActionEvent event) throws IOException {
+
         page_tableau_bord.setVisible(false);
         page_ingredient_main.setVisible(false);
         popup_ingredient_managment.setVisible(false);
@@ -1312,8 +1329,8 @@ ServiceAnimal service = new ServiceAnimal(Database.getInstance().getConnection()
         //
         popup_besoin_nutritionnels_management.setVisible(true);
         //
-        anchor_besoin_nutritionnel.setVisible(true);
-        anchor_valeur_nutritionnelles02.setVisible(false);
+        anchor_besoin_nutritionnel.setVisible(false);
+        anchor_valeur_nutritionnelles02.setVisible(true);
         anchor_btn_enregistrer_besoin_nutritionnel.setVisible(true);
         anchor_btn_modify_delete_besoin_nutritionnel.setVisible(false);
         //
@@ -1346,13 +1363,18 @@ ServiceAnimal service = new ServiceAnimal(Database.getInstance().getConnection()
         // Create a BesoinNutritionnelEntity object
         BesoinNutritionnelsEntity besoinNutritionnel = new BesoinNutritionnelsEntity(
                 espece, statutProduction, sexe, poidsMin, poidsMax, buteProduction);
-
         System.out.println(besoinNutritionnel);
-        serviceBesoinNutritionnel.ajouter(besoinNutritionnel);
 
+        // Assuming that table_besoin_nutritionnel is your TableView and
+        // besoinNutritionnelsList is the ObservableList that backs it.
+        ObservableList<BesoinNutritionnelsEntity> besoinNutritionnelsList = table_besoin_nutritionnel.getItems();
+        besoinNutritionnelsList.add(besoinNutritionnel);
+
+        // Refresh the TableView to reflect the changes
+        table_besoin_nutritionnel.refresh();
     }
 
-    //supprimer
+    //supprimerfiltr
     @FXML
     private void deleteSelectedBesoinNutritionnel() {
         // Récupérez l'élément sélectionné dans la table
@@ -1377,7 +1399,5 @@ ServiceAnimal service = new ServiceAnimal(Database.getInstance().getConnection()
         }
     }
 // filtrage et recherche 
-    
-   
 
 }

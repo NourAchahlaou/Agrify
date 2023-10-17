@@ -237,7 +237,7 @@
                         </AnchorPane>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="page_ingredient_main" prefHeight="662.0" prefWidth="1174.0" visible="false" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="page_ingredient_main" prefHeight="661.0" prefWidth="1181.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutX="13.0" layoutY="153.0" prefHeight="492.0" prefWidth="1134.0" stylesheets="@../design/TableauBordStyle.css">
                            <styleClass>
@@ -309,15 +309,20 @@
                               </ImageView>
                            </children>
                         </AnchorPane>
-                        <ComboBox fx:id="cree_ingredient_combobox" layoutX="931.0" layoutY="17.0" onAction="#changeWithCombobox" prefHeight="34.0" prefWidth="217.0" promptText="Créer un nouvel ingrédient" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
-                        <ImageView fitHeight="37.0" fitWidth="34.0" layoutX="1082.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                        <Button fx:id="btn_cree_ingredient" layoutX="915.0" layoutY="14.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="36.0" prefWidth="224.0" stylesheets="@../design/TableauBordStyle.css" text="Créer un nouvel ingrédient">
+                           <styleClass>
+                              <String fx:value="com_box" />
+                              <String fx:value="btn-2" />
+                           </styleClass>
+                        </Button>
+                        <ImageView fitHeight="37.0" fitWidth="34.0" layoutX="1109.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Image/grain.png" />
                            </image>
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="popup_ingredient_managment" layoutX="221.0" layoutY="28.0" prefHeight="579.0" prefWidth="731.0" stylesheets="@../design/TableauBordStyle.css" visible="false" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="244.0" AnchorPane.topAnchor="25.0">
+                  <AnchorPane fx:id="popup_ingredient_managment" layoutX="221.0" layoutY="28.0" prefHeight="579.0" prefWidth="731.0" stylesheets="@../design/TableauBordStyle.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="244.0" AnchorPane.topAnchor="25.0">
                      <styleClass>
                         <String fx:value="border" />
                         <String fx:value="white-bg" />
@@ -365,7 +370,6 @@
                                     <Image url="@../Image/fiber(1).png" />
                                  </image>
                               </ImageView>
-                              <Button fx:id="btn_enregistrer" layoutX="522.0" layoutY="538.0" mnemonicParsing="false" onAction="#AddIngredient" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="enregistrer" />
                               <Button fx:id="btn_exit" layoutX="666.0" layoutY="19.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: transparent;">
                                  <graphic>
                                     <ImageView fitHeight="29.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
@@ -375,6 +379,16 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
+                              <AnchorPane fx:id="anchor_enregistrer_ingredient" layoutX="512.0" layoutY="520.0" prefHeight="54.0" prefWidth="192.0">
+                                 <children>
+                                    <Button fx:id="btn_enregistrer1" layoutX="24.0" layoutY="17.0" mnemonicParsing="false" onAction="#AddIngredient" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="enregistrer" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Button fx:id="btn_enregistrer" mnemonicParsing="false" onAction="#AddIngredient" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="enregistrer" />
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="anchor_valeur_nutritionnelles2" prefHeight="606.0" prefWidth="736.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -434,9 +448,9 @@
                         </AnchorPane>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="page_besoin_nutritionnels_management" layoutX="10.0" layoutY="10.0" prefHeight="671.0" prefWidth="1175.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="page_besoin_nutritionnels_management" layoutX="10.0" layoutY="10.0" prefHeight="671.0" prefWidth="1175.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button fx:id="btn_cree_besoin" layoutX="930.0" layoutY="17.0" mnemonicParsing="false" onAction="#addBesoinNutritionnel" prefHeight="34.0" prefWidth="217.0" stylesheets="@../design/TableauBordStyle.css" text="Créer un Besoin">
+                        <Button fx:id="btn_cree_besoin" layoutX="930.0" layoutY="17.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="34.0" prefWidth="217.0" stylesheets="@../design/TableauBordStyle.css" text="Créer un Besoin">
                            <styleClass>
                               <String fx:value="com_box" />
                               <String fx:value="btn-2" />
