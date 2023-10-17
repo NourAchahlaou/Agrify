@@ -9,11 +9,11 @@ import java.sql.SQLException;
 public class ServicePresence implements IServicePresence<Presence> {
     private Connection connection;
 
-    public ServicePresence(Connection connection) {
+public ServicePresence(Connection connection) {
         this.connection = connection;
     }
 
-    public boolean savePresence(Presence presence) {
+public boolean savePresence(Presence presence) {
         String insertQuery = "INSERT INTO presence (user_id, date, presenceState) VALUES (?, ?, ?)";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) 

@@ -94,7 +94,7 @@ public class PresenceUserController {
 public void initialize() 
             
         {
-        userService = new ServiceUser(DataSource.getInstance().getConnection());
+        //userService = new ServiceUser(DataSource.getInstance().getConnection());
         presenceService = new ServicePresence(DataSource.getInstance().getConnection());
         initializeTableColumns();
         loadUserData();
@@ -187,8 +187,6 @@ private void initializeTableColumns()
  
  {
     System.out.println("PresencePresence method started");
-    System.out.println("userService: " + userService);
-    System.out.println("presenceService: " + presenceService);
 
     int userId = Integer.parseInt(PrescenceUserIDSearch.getText());
     LocalDate selectedDate = PrescenceUserDateSearch.getValue();

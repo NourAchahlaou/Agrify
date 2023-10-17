@@ -123,7 +123,7 @@ public List<User> searchUsersByName(String name) throws SQLException
         String selectQuery = "SELECT * FROM `user` WHERE `user_nom` LIKE ?";
 
         try (PreparedStatement preparedStatement = connect.prepareStatement(selectQuery)) {
-            preparedStatement.setString(1, "%" + name + "%"); // Search for names that contain the provided name
+            preparedStatement.setString(1, "%" + name + "%"); 
 
             try (ResultSet rs = preparedStatement.executeQuery()) {
                 while (rs.next()) {
@@ -239,31 +239,6 @@ public void supprimerByName(String name)
     
 
 
-
-public void updateUser(User user)
-{
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-
-        try {
-            connection = dataSource.getConnection();
-            String updateQuery = "UPDATE user SET user_nbrabscence = ? WHERE user_id = ?";
-            preparedStatement = connection.prepareStatement(updateQuery);
-
-            preparedStatement.setInt(1, user.getUser_nbrabscence());
-            preparedStatement.setInt(2, user.getUser_id());
-
-            preparedStatement.executeUpdate();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-        }
-    }
-
-
-
-
-
 public void updateUserr(User user)
 
 {
@@ -291,11 +266,6 @@ public void updateUserr(User user)
 }
 
     
-
-
-
-
-
 
 
 
@@ -329,7 +299,7 @@ public User getUserBest(int year) throws SQLException
         }
     }
 
-    return null; // Return null if no user is found
+    return null; 
 }
 
     

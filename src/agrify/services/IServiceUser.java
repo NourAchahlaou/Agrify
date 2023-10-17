@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package agrify.services;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -15,6 +16,12 @@ public interface IServiceUser <T>
         public void ajouter(T t);
         public void modifier(T t);
         public void supprimer(int id);
+        public List<T> searchUsersByName(String name) throws SQLException ;
         public T getOne(int id);  
         public List<T> getAll();
+        public void supprimerByName(String name);
+        public void updateUserr(T t);
+        public T getUserBest(int year) throws SQLException ;
+
+
     }
