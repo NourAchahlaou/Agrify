@@ -28,7 +28,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Image/icons8-add-user-100%20(1).png" />
+                  <Image url="@../Image/icons8-add-100.png" />
                </image>
             </ImageView>
          </graphic>
@@ -43,7 +43,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Image/icons8-edit-account-100%20(2).png" />
+                  <Image url="@../Image/icons8-update-80.png" />
                </image>
             </ImageView>
          </graphic>
@@ -58,7 +58,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Image/icons8-denied-100%20(1).png" />
+                  <Image url="@../Image/icons8-delete-100.png" />
                </image>
             </ImageView>
          </graphic>
@@ -73,7 +73,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Image/icons8-search-user-64.png" />
+                  <Image url="@../Image/icons8-search-100%20(1).png" />
                </image>
             </ImageView>
          </graphic>

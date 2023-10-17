@@ -30,7 +30,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Image/icons8-add-administrator-100.png" />
+                  <Image url="@../Image/icons8-add-100%20(1).png" />
                </image>
             </ImageView>
          </graphic>
@@ -45,7 +45,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Image/IconsLogout.png" />
+                  <Image url="@../Image/icons8-logout-rounded-left-100.png" />
                </image>
             </ImageView>
          </graphic>

@@ -332,11 +332,6 @@ public User getUserBest(int year) throws SQLException
     return null; // Return null if no user is found
 }
 
-
- 
-
-
-    
     
 }
 

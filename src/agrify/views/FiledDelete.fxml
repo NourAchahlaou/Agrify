@@ -63,12 +63,12 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Image/icons8-remove-administrator-100.png" />
+                  <Image url="@../Image/icons8-delete-100.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="EditUserMessage11" layoutX="603.0" layoutY="216.0" prefHeight="44.0" prefWidth="631.0" style="-fx-font-size: 14px; -fx-text-fill: #fff; -fx-font-family: Berlin Sans FB; -fx-font-size: 16px;" text="ID Non Trouvé" textAlignment="CENTER" textFill="#d01010">
+      <Label fx:id="EditUserMessage11" layoutX="603.0" layoutY="216.0" prefHeight="44.0" prefWidth="552.0" style="-fx-font-size: 14px; -fx-text-fill: #fff; -fx-font-family: Berlin Sans FB; -fx-font-size: 16px;" text="ID Non Trouvé" textAlignment="CENTER" textFill="#d01010">
          <font>
             <Font size="14.0" />
          </font>
