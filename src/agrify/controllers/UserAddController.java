@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import agrify.api.SendEmail;
 
 /**
  *
@@ -139,7 +140,9 @@ void Add0User(ActionEvent event) throws IOException
     
     User user = new User(nom, prenom, email, telephone, role, genre, nbrAbsence, username, password);
     userService.ajouter(user);
-    
+    SendEmail emailSender = new SendEmail();
+    emailSender.sendEmail(email, "Welcome to Our Application", "Hello, " + nom + "! You have been successfully registered.");
+
         Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/UserHome.fxml"));
         Scene signUpScene = new Scene(signUpRoot);
    

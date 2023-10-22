@@ -109,7 +109,7 @@ void Sginin0(ActionEvent event) throws IOException {
                 
             } 
             else if ("User".equals(role)) {
-                Parent animalDashboardRoot = FXMLLoader.load(getClass().getResource("/agrify/views/AnimalDashboard.fxml"));
+                Parent animalDashboardRoot = FXMLLoader.load(getClass().getResource("/agrify/views/UserDashboard.fxml"));
                 Scene animalDashboardScene = new Scene(animalDashboardRoot);
 
                 Stage animalDashboardStage = new Stage();

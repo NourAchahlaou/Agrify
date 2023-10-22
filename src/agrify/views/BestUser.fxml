@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agrify.controllers.BestUserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agrify.controllers.UserBestController">
    <children>
       <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -33,12 +33,12 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="EditUserMessage11" layoutX="765.0" layoutY="181.0" prefHeight="44.0" prefWidth="240.0" style="-fx-font-size: 14px; -fx-text-fill: #D90D1E; -fx-font-family: Berlin Sans FB;" textAlignment="CENTER" textFill="#d01010">
+      <Label fx:id="EditUserMessage11" layoutX="765.0" layoutY="179.0" prefHeight="44.0" prefWidth="498.0" style="-fx-font-size: 14px; -fx-text-fill: #D90D1E; -fx-font-family: Berlin Sans FB;" textAlignment="CENTER" textFill="#d01010">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="EditUserMessage111" layoutX="817.0" layoutY="648.0" prefHeight="44.0" prefWidth="240.0" style="-fx-font-size: 14px; -fx-text-fill: #D90D1E; -fx-font-family: Berlin Sans FB;" textAlignment="CENTER" textFill="#d01010">
+      <Label fx:id="EditUserMessage111" layoutX="817.0" layoutY="648.0" prefHeight="44.0" prefWidth="446.0" style="-fx-font-size: 14px; -fx-text-fill: #D90D1E; -fx-font-family: Berlin Sans FB;" textAlignment="CENTER" textFill="#d01010">
          <font>
             <Font size="14.0" />
          </font>

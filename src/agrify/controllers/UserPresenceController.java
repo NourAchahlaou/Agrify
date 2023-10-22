@@ -94,7 +94,7 @@ public class UserPresenceController {
 public void initialize() 
             
         {
-        //userService = new ServiceUser(DataSource.getInstance().getConnection());
+        userService = new ServiceUser(DataSource.getInstance().getConnection());
         presenceService = new ServicePresence(DataSource.getInstance().getConnection());
         initializeTableColumns();
         loadUserData();

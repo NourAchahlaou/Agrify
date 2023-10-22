@@ -53,7 +53,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="SigninMessage" layoutX="824.0" layoutY="604.0" prefHeight="45.0" prefWidth="334.0" style="-fx-text-fill: #731702; -fx-font-size: 16px;" text="Error messgae" />
+      <Label fx:id="SigninMessage" layoutX="824.0" layoutY="604.0" prefHeight="45.0" prefWidth="334.0" style="-fx-text-fill: #731702; -fx-font-size: 16px;" />
       <Label fx:id="SigninUsernameMessage" layoutX="867.0" layoutY="392.0" prefHeight="45.0" prefWidth="232.0" style="-fx-text-fill: #731702; -fx-font-size: 16px;" />
    </children>
 </AnchorPane>
