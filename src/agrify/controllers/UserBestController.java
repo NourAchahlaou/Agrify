@@ -26,7 +26,7 @@ import javafx.stage.StageStyle;
  */
 
 
-public class BestUserController {
+public class UserBestController {
     
     
 

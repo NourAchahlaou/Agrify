@@ -79,11 +79,6 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="EditUserMessage11" layoutX="1073.0" layoutY="367.0" prefHeight="44.0" prefWidth="156.0" style="-fx-font-size: 14px; -fx-text-fill: #D90D1E; -fx-font-family: Berlin Sans FB;" textAlignment="CENTER" textFill="#d01010">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
       <Label fx:id="EditUserMessage111" layoutX="291.0" layoutY="657.0" prefHeight="40.0" prefWidth="308.0" style="-fx-font-size: 14px; -fx-text-fill: #D90D1E; -fx-font-family: Berlin Sans FB;" textAlignment="CENTER" textFill="#d01010">
          <font>
             <Font size="14.0" />
@@ -91,5 +86,10 @@
       </Label>
       <ComboBox fx:id="EditUserRoleCombo" layoutX="241.0" layoutY="468.0" onAction="#RoleModify" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-border-color: #8d8; -fx-font-size: 16px;" />
       <ComboBox fx:id="EditUserSexCombo" layoutX="241.0" layoutY="584.0" onAction="#GenreModify" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: fff; -fx-text-fill: #000; -fx-border-color: #8d8; -fx-font-size: 16px;" />
+      <Label fx:id="EditUserEmailMessage" layoutX="549.0" layoutY="354.0" prefHeight="44.0" prefWidth="156.0" style="-fx-font-size: 12px; -fx-text-fill: #D90D1E; -fx-font-family: Berlin Sans FB;" textAlignment="CENTER" textFill="#d01010">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

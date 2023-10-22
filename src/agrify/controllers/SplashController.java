@@ -18,7 +18,7 @@ import javafx.stage.StageStyle;
 
 
 
-public class HomeController {
+public class SplashController {
 
       @FXML
     private Button HomequitterBtn;
@@ -46,26 +46,6 @@ void HomeLogin(ActionEvent event) throws Exception
    Stage splashSignInStage = (Stage) HomeLoginBtn.getScene().getWindow();
    splashSignInStage.close();
  }
-
-    
-@FXML
-void HomeRegister(ActionEvent event)throws Exception
-        
-  {
-    Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/register.fxml"));
-    Scene signUpScene = new Scene(signUpRoot);
-   
-    Stage signUpStage = new Stage();
-    signUpStage.initStyle(StageStyle.TRANSPARENT);
-    signUpStage.setScene(signUpScene);
-    signUpStage.show();
-   
-    Stage splashSignInStage = (Stage) HomeRegisterBtn.getScene().getWindow();
-    splashSignInStage.close();
-  }
-
-
-
     
 @FXML
   void Homequitter(ActionEvent event) 

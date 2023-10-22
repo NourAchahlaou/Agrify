@@ -33,7 +33,7 @@ import javafx.stage.StageStyle;
 
 
 
-public class PresenceUserController {
+public class UserPresenceController {
 
     @FXML
     private DatePicker PrescenceUserDateSearch;

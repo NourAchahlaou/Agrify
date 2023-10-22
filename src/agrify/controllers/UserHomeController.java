@@ -82,8 +82,8 @@ public class UserHomeController {
     @FXML
     private Label EditUserMessage11;
     
-private ServiceUser userService;
-private ObservableList<User> usersList;
+    private ServiceUser userService;
+    private ObservableList<User> usersList;
 
     
 @FXML

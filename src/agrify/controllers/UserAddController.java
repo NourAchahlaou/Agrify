@@ -12,7 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -24,13 +23,22 @@ import javafx.stage.StageStyle;
  * @author tbagh
  */
 
-public class AddUserController {
+public class UserAddController {
 
    @FXML
     private Button AddUser0Btn;
    
-       @FXML
+    @FXML
+    private Label AddUserEmailMessage;
+
+    @FXML
     private Label AddUserMessage;
+
+    @FXML
+    private Label AddUserPhoneMessage;
+
+    @FXML
+    private Label AddUserUsernameMessage;
 
     @FXML
     private Button AddUserBackBtn1;
@@ -60,7 +68,11 @@ public class AddUserController {
     private TextField UserUsernameField;
     
     
-    
+     private ServiceUser userService; // You need to set this when initializing the controller
+
+    public void setUserService(ServiceUser userService) {
+        this.userService = userService;
+    }
     
     
     public void initialize() {
@@ -84,9 +96,35 @@ public class AddUserController {
 void Add0User(ActionEvent event) throws IOException 
 
 {
+    ServiceUser userService = new ServiceUser(DataSource.getInstance().getConnection());
+    
+      String emaill = UserEmailField.getText();
+    if (!emaill.contains("@")) {
+        AddUserEmailMessage.setText("Invalid email format (missing '@').");
+        return; 
+    } else {
+        AddUserEmailMessage.setText("");
+    }
+    
+    String telephonee = UserPhoneField.getText();
+        if (userService.isPhoneExists(telephonee)) {
+            AddUserPhoneMessage.setText("Phone number already exists. Choose another.");
+            return; 
+        } else {
+            AddUserPhoneMessage.setText(""); 
+        }
+
+     String usernamee = UserUsernameField.getText();
+        if (userService.isUsernameExists(usernamee)) {
+            AddUserUsernameMessage.setText("Username already exists. Choose another.");
+                return; 
+        } else {
+            AddUserUsernameMessage.setText(""); 
+                }
+        
+        
     System.out.println("Database instance connection");
     System.out.println(DataSource.getInstance().getConnection());
-    ServiceUser userService = new ServiceUser(DataSource.getInstance().getConnection());
     
     String nom = UserFNameField.getText();
     String prenom = UserLNameField.getText();

@@ -3,6 +3,7 @@ package agrify.controllers;
 import agrify.entities.User;
 import agrify.services.ServiceUser;
 import agrify.utils.DataSource;
+import java.io.IOException;
 import java.sql.Connection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,16 +24,13 @@ import javafx.stage.StageStyle;
  */
 
 
-public class ModifyUserController {
+public class UserModifyController {
 
     @FXML
     private TextField EditUserEmailTextField;
 
     @FXML
-    private Label EditUserMessage1;
-
-    @FXML
-    private Label EditUserMessage11;
+    private Label EditUserMessage1; 
 
     @FXML
     private Label EditUserMessage111;
@@ -69,7 +67,10 @@ public class ModifyUserController {
 
     @FXML
     private Button ModifyUserBackBtn;
-
+    
+    @FXML
+    private Label EditUserEmailMessage;
+        
     @FXML
     private TextField SearchModifyUserTextFieldBtn;
     
@@ -82,7 +83,6 @@ public class ModifyUserController {
  @FXML
     void initialize() 
     {
-        // Initialisation de la connexion à la base de données et du service
         connect = DataSource.getInstance().getConnection();
         userService = new ServiceUser(connect);
     }
@@ -109,7 +109,6 @@ public class ModifyUserController {
                 EditUserEmailTextField.setText(user.getUser_email());
                 EditUserPhoneTextField.setText(user.getUser_telephone());
 
-                // Remplir les ComboBox avec les valeurs statiques
                 EditUserRoleCombo.getItems().setAll("Admin", "User");
                 EditUserSexCombo.getItems().setAll("Homme", "Femme");
 
@@ -129,21 +128,51 @@ public class ModifyUserController {
 
        
 @FXML
-    void ModifyUser1(ActionEvent event) {
+    void ModifyUser1(ActionEvent event) throws IOException {
         if (currentUser != null) {
             try {
-                // Récupérez les valeurs 
                 String nom = EditUserNomTextField.getText();
                 String prenom = EditUserPrenomTextField.getText();
                 String email = EditUserEmailTextField.getText();
                 String telephone = EditUserPhoneTextField.getText();
+                
+            if (!email.contains("@")) {
+                EditUserMessage111.setText("Invalid email format missing '@'");
+                return;
+            }
+                
                 String role = EditUserRoleCombo.getValue();
                 String genre = EditUserSexCombo.getValue();
                 int nbrAbscences = Integer.parseInt(EditUserNbrAbscTextField.getText());
                 String username = EditUserUsernameTextField.getText();
                 String password = EditUserPasswordTextField.getText();
 
-                // Mettez à jour
+
+                currentUser.setUser_nom(nom);
+                currentUser.setUser_prenom(prenom);
+                currentUser.setUser_email(email);
+                currentUser.setUser_telephone(telephone);
+                currentUser.setUser_role(role);
+                currentUser.setUser_genre(genre);
+                currentUser.setUser_nbrabscence(nbrAbscences);
+                currentUser.setUsername(username);
+                currentUser.setPassword(password);
+                
+                
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/agrify/views/UserModiferNotif.fxml"));
+                Parent notifRoot = loader.load();
+                UserModifierNotif notifController = loader.getController();
+                notifController.setUserData(currentUser);
+
+                Stage notifStage = new Stage();
+                notifStage.initStyle(StageStyle.TRANSPARENT);
+                notifStage.setScene(new Scene(notifRoot));
+                notifStage.showAndWait();
+                
+                
+            boolean confirmation = notifController.getConfirmation();
+
+             if (confirmation) {
                 currentUser.setUser_nom(nom);
                 currentUser.setUser_prenom(prenom);
                 currentUser.setUser_email(email);
@@ -155,15 +184,18 @@ public class ModifyUserController {
                 currentUser.setPassword(password);
 
                 userService.modifier(currentUser);
-
                 EditUserMessage111.setText("Utilisateur mis à jour avec succès.");
-            } catch (NumberFormatException e) {
-                EditUserMessage111.setText("Veuillez saisir un nombre valide pour le nombre d'absences.");
+            } else {
+                EditUserMessage111.setText("Modification annulée.");
             }
-        } else {
-            EditUserMessage111.setText("Aucun utilisateur à mettre à jour. Veuillez effectuer une recherche d'abord.");
+        } catch (NumberFormatException e) {
+            EditUserMessage111.setText("Veuillez saisir un nombre valide pour le nombre d'absences.");
         }
+    } else {
+        EditUserMessage111.setText("Aucun utilisateur à mettre à jour. Veuillez rechercher d'abord.");
     }
+    }
+    
 
 @FXML
   void ModifyUserBack(ActionEvent event) throws Exception

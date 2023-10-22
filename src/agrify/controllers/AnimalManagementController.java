@@ -26,14 +26,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 import java.util.ResourceBundle;
-<<<<<<< HEAD
 
-=======
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
->>>>>>> 0d663bd5753441ffe2d8fd02510e4a41bf283d71
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -55,10 +52,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-<<<<<<< HEAD
-=======
 import javafx.scene.control.cell.PropertyValueFactory;
->>>>>>> 0d663bd5753441ffe2d8fd02510e4a41bf283d71
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;

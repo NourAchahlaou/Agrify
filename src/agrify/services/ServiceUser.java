@@ -302,6 +302,81 @@ public User getUserBest(int year) throws SQLException
     return null; 
 }
 
+    @Override
+    public boolean isPhoneExists(String phone) {
+    try {
+        // Assuming you have a Connection object named "connection" from DataSource
+        Connection connection = DataSource.getInstance().getConnection();
+
+        // Create a PreparedStatement to execute a query
+        PreparedStatement statement = connection.prepareStatement("SELECT COUNT(*) FROM user WHERE user_telephone = ?");
+        statement.setString(1, phone);
+
+        // Execute the query
+        ResultSet resultSet = statement.executeQuery();
+
+        // Check if a user with the given phone number exists
+        if (resultSet.next()) {
+            int count = resultSet.getInt(1);
+            return count > 0;
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    // In case of an error, return false
+    return false;
+}
+    
+    
+    
+    
+    @Override
+    public boolean isUsernameExists(String username) {
+    try {
+        PreparedStatement statement = connect.prepareStatement("SELECT COUNT(*) FROM user WHERE username = ?");
+        statement.setString(1, username);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            int count = resultSet.getInt(1);
+            return count > 0;
+        }
+    } catch (SQLException e) {
+    }    return false;
+}
+    
+@Override
+public User authenticateUser(String username, String password) {
+    try {
+        String selectQuery = "SELECT * FROM user WHERE username = ? AND password = ?";
+        PreparedStatement preparedStatement = connect.prepareStatement(selectQuery);
+        preparedStatement.setString(1, username);
+        preparedStatement.setString(2, password);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if (resultSet.next()) {
+            User user = new User();
+            user.setUser_id(resultSet.getInt("user_id"));
+            user.setUser_nom(resultSet.getString("user_nom"));
+            user.setUser_prenom(resultSet.getString("user_prenom"));
+            user.setUser_email(resultSet.getString("user_email"));
+            user.setUser_telephone(resultSet.getString("user_telephone"));
+            user.setUser_role(resultSet.getString("user_role"));
+            user.setUser_genre(resultSet.getString("user_genre"));
+            user.setUser_nbrabscence(resultSet.getInt("user_nbrabscence"));
+            user.setUsername(resultSet.getString("username"));
+            user.setPassword(resultSet.getString("password"));
+            return user;
+        }
+    } catch (SQLException ex) {
+        ex.printStackTrace(); // Log any SQL exceptions
+    }
+    return null;
+}
+
+
+
+
     
 }
 
