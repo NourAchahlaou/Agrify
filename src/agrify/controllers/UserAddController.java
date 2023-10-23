@@ -141,7 +141,8 @@ void Add0User(ActionEvent event) throws IOException
     User user = new User(nom, prenom, email, telephone, role, genre, nbrAbsence, username, password);
     userService.ajouter(user);
     SendEmail emailSender = new SendEmail();
-    emailSender.sendEmail(email, "Welcome to Our Application", "Hello, " + nom + "! You have been successfully registered.");
+emailSender.sendEmail(email, "Welcome to Our Application", "Hello, " + nom + "! You have been successfully registered.\n\n"
+        + "Votre Username est: " + username + " et votre Password est: " + password);
 
         Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/UserHome.fxml"));
         Scene signUpScene = new Scene(signUpRoot);

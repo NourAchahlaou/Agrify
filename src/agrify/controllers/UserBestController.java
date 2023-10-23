@@ -92,27 +92,25 @@ private void initializeTableColumns()
     }
     
       
-   @FXML
+@FXML
 void BestUserSearch(ActionEvent event) {
     try {
         int year = Integer.parseInt(BestUserSearchYear.getText());
-        User userBest = userService.getUserBest(year);
+        List<User> bestUsers = userService.getUserBest(year);
 
-        if (userBest != null) {
-            ObservableList<User> observableUser = FXCollections.observableArrayList(userBest);
-            BestUserView.setItems(observableUser);
-            EditUserMessage11.setText(""); // Clear the error message
+        if (!bestUsers.isEmpty()) {
+            ObservableList<User> observableUsers = FXCollections.observableArrayList(bestUsers);
+            BestUserView.setItems(observableUsers);
         } else {
-            BestUserView.getItems().clear();
-            EditUserMessage11.setText("No user found for the specified year.");
+           EditUserMessage11.setText("No users found for the specified year.");
         }
     } catch (NumberFormatException ex) {
         EditUserMessage11.setText("Invalid year input. Please enter a valid year.");
     } catch (SQLException ex) {
-        EditUserMessage11.setText("An error occurred while searching for the best user.");
+        EditUserMessage111.setText("An error occurred while searching for the best users.");
+        ex.printStackTrace();
     }
 }
-
 
 
 

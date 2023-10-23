@@ -17,6 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -268,22 +269,27 @@ public void updateUserr(User user)
     
 
 
-
-
-public User getUserBest(int year) throws SQLException 
-{
-    String query = "SELECT u.* " +
-                   "FROM user u " +
-                   "INNER JOIN presence p ON u.user_id = p.user_id " +
-                   "WHERE YEAR(p.date) = ? " + 
-                   "ORDER BY u.user_nbrabscence ASC " + 
-                   "LIMIT 1";
+    @Override
+    public List<User> getUserBest(int year) throws SQLException {
+    String query = "            SELECT u.* \n" +
+        "                       FROM user u\n" +
+        "                       INNER JOIN presence p ON u.user_id = p.user_id\n" +
+        "                       WHERE YEAR(p.date) = ? \n" +
+        "                       AND (u.user_nbrabscence = 0 OR u.user_nbrabscence = (\n" +
+        "                       SELECT MIN(user_nbrabscence) \n" +
+        "                       FROM user u2\n" +
+        "                       INNER JOIN presence p2 ON u2.user_id = p2.user_id\n" +
+        "                       WHERE YEAR(p2.date) = ?\n" +
+                                        "))"; 
 
     try (PreparedStatement preparedStatement = connect.prepareStatement(query)) {
         preparedStatement.setInt(1, year);
-        ResultSet resultSet = preparedStatement.executeQuery();
+        preparedStatement.setInt(2, year);
 
-        if (resultSet.next()) {
+        ResultSet resultSet = preparedStatement.executeQuery();
+        List<User> users = new ArrayList<>();
+
+        while (resultSet.next()) {
             User user = new User();
             user.setUser_id(resultSet.getInt("user_id"));
             user.setUser_nom(resultSet.getString("user_nom"));
@@ -295,27 +301,22 @@ public User getUserBest(int year) throws SQLException
             user.setUser_nbrabscence(resultSet.getInt("user_nbrabscence"));
             user.setUsername(resultSet.getString("username"));
             user.setPassword(resultSet.getString("password"));
-            return user;
+            users.add(user);
         }
-    }
 
-    return null; 
+        return users;
+    }
 }
+
 
     @Override
     public boolean isPhoneExists(String phone) {
     try {
-        // Assuming you have a Connection object named "connection" from DataSource
         Connection connection = DataSource.getInstance().getConnection();
-
-        // Create a PreparedStatement to execute a query
         PreparedStatement statement = connection.prepareStatement("SELECT COUNT(*) FROM user WHERE user_telephone = ?");
         statement.setString(1, phone);
 
-        // Execute the query
         ResultSet resultSet = statement.executeQuery();
-
-        // Check if a user with the given phone number exists
         if (resultSet.next()) {
             int count = resultSet.getInt(1);
             return count > 0;
@@ -323,8 +324,6 @@ public User getUserBest(int year) throws SQLException
     } catch (SQLException e) {
         e.printStackTrace();
     }
-
-    // In case of an error, return false
     return false;
 }
     
@@ -369,7 +368,6 @@ public User authenticateUser(String username, String password) {
             return user;
         }
     } catch (SQLException ex) {
-        ex.printStackTrace(); // Log any SQL exceptions
     }
     return null;
 }

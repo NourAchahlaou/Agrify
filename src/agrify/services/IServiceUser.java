@@ -21,10 +21,11 @@ public interface IServiceUser <T>
         public List<T> getAll();
         public void supprimerByName(String name);
         public void updateUserr(T t);
-        public T getUserBest(int year) throws SQLException ;
+        //public T getUserBest(int year) throws SQLException ;
         public boolean isPhoneExists(String phone) ;
         public boolean isUsernameExists(String username);
         public T authenticateUser(String username, String password);
+        public List<T> getUserBest(int year) throws SQLException ;
 
 
 
