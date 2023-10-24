@@ -77,8 +77,8 @@ public class UserPresenceController {
     @FXML
     private CheckBox PresenceUserAbscentBtn;
 
-    @FXML
-    private CheckBox PresenceUserPrésentBtn;
+    //@FXML
+  //  private CheckBox PresenceUserPrésentBtn;
     
     @FXML
     private Label PresenceMessage1;
@@ -119,8 +119,6 @@ private void initializeTableColumns()
         EmployeeHome_prenom.setCellValueFactory(new PropertyValueFactory<>("user_prenom"));
         EmployeeHome_role.setCellValueFactory(new PropertyValueFactory<>("user_role"));
     }
-
-
 
     
 @FXML
@@ -163,8 +161,6 @@ private void initializeTableColumns()
             }
          }
 }
-
-
  
  @FXML
   void PresenceBackUser(ActionEvent event) throws Exception 
@@ -220,11 +216,5 @@ private void initializeTableColumns()
     loadUserData();
     System.out.println("PresencePresence method finished");
 }
-
-
-
-
-
-
 
 }
