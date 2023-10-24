@@ -10,6 +10,7 @@ package agrify.entities;
  * @author alien kami sama
  */
 public class Animal {
+
     private int idAnimal;
     private String especeAnimal;
     private String sexeRation;
@@ -28,8 +29,26 @@ public class Animal {
         this.nombreAnimal = nombreAnimal;
     }
 
+    public Animal(String especeAnimal, String sexeRation, double poidsmaxRation, double poidsminRation, int ageAnimal, int nombreAnimal) {
+
+        this.especeAnimal = especeAnimal;
+        this.sexeRation = sexeRation;
+        this.poidsmaxRation = poidsmaxRation;
+        this.poidsminRation = poidsminRation;
+        this.ageAnimal = ageAnimal;
+        this.nombreAnimal = nombreAnimal;
+    }
+
     public Animal() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Animal(int idAnimal, String especeAnimal, double poidsmaxRation) {
+        this.idAnimal = idAnimal;
+
+        this.especeAnimal = especeAnimal;
+        this.poidsmaxRation = poidsmaxRation;
+
     }
 
     // Getters and Setters

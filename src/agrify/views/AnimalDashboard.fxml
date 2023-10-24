@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
-<?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -69,7 +68,7 @@
                   <Button fx:id="btn_ingredient" layoutX="9.0" layoutY="233.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="40.0" prefWidth="180.0" styleClass="btn-1" stylesheets="@../design/TableauBordStyle.css" text="Ingrédients" />
                   <Button fx:id="btn_besoin_nutritionnel" layoutX="9.0" layoutY="281.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="40.0" prefWidth="180.0" styleClass="btn-1" stylesheets="@../design/TableauBordStyle.css" text="Besoins nutritionnels" />
                   <Button fx:id="btn_rations" layoutX="9.0" layoutY="330.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="40.0" prefWidth="180.0" styleClass="btn-1" stylesheets="@../design/TableauBordStyle.css" text="Rations" />
-                  <Button fx:id="btn_animaux" layoutX="9.0" layoutY="380.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="40.0" prefWidth="180.0" styleClass="btn-1" stylesheets="@../design/TableauBordStyle.css" text="Animaux" />
+                  <Button fx:id="btn_animaux_side" layoutX="9.0" layoutY="380.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="40.0" prefWidth="180.0" styleClass="btn-1" stylesheets="@../design/TableauBordStyle.css" text="Animaux" />
                   <Label layoutX="9.0" layoutY="485.0" text="Tache :" textFill="WHITE" />
                   <Button fx:id="btn_tache" layoutX="10.0" layoutY="510.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="btn-1" stylesheets="@../design/TableauBordStyle.css" text="Tache" />
                   <Button fx:id="btn_reclamation" layoutX="9.0" layoutY="559.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="btn-1" stylesheets="@../design/TableauBordStyle.css" text="Reclamation" />
@@ -84,9 +83,9 @@
          <center>
             <AnchorPane prefHeight="717.0" prefWidth="1214.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="page_tableau_bord" prefHeight="654.0" prefWidth="1166.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="page_tableau_bord" layoutX="77.0" layoutY="25.0" prefHeight="661.0" prefWidth="1181.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <AnchorPane prefHeight="654.0" prefWidth="1166.0" stylesheets="@../design/TableauBordStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="linechart12" layoutX="-5.0" prefHeight="661.0" prefWidth="1181.0" stylesheets="@../design/TableauBordStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
                            <styleClass>
                               <String fx:value="shadow" />
                               <String fx:value="radius" />
@@ -100,12 +99,12 @@
                                     <String fx:value="radius" />
                                  </styleClass>
                                  <children>
-                                    <LineChart fx:id="line_chart_nouveau_nes" layoutX="7.0" layoutY="38.0" prefHeight="188.0" prefWidth="526.0" title="Nombre des animaux nouveau-nés" AnchorPane.bottomAnchor="6.0" AnchorPane.topAnchor="38.0">
+                                    <LineChart fx:id="ingredient_quantity" layoutX="7.0" layoutY="38.0" prefHeight="188.0" prefWidth="526.0" title="ingredient_qunatite" AnchorPane.bottomAnchor="6.0" AnchorPane.topAnchor="38.0">
                                        <xAxis>
-                                          <CategoryAxis prefHeight="1.0" prefWidth="469.0" side="BOTTOM" />
+                                          <CategoryAxis prefHeight="1.0" prefWidth="469.0" side="BOTTOM" fx:id="x" />
                                        </xAxis>
                                        <yAxis>
-                                          <NumberAxis side="LEFT" />
+                                          <NumberAxis fx:id="y" side="LEFT" />
                                        </yAxis>
                                     </LineChart>
                                  </children>
@@ -117,14 +116,14 @@
                                     <String fx:value="radius" />
                                  </styleClass>
                                  <children>
-                                    <BarChart fx:id="bar_chart_produit" layoutX="-32.0" layoutY="34.0" prefHeight="198.0" prefWidth="528.0" title="Rendement mensuel des produits" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="38.0">
+                                    <LineChart fx:id="linechart_animal" layoutX="15.0" layoutY="33.0" prefHeight="188.0" prefWidth="526.0" title="ingredient_qunatite">
                                        <xAxis>
-                                          <CategoryAxis side="BOTTOM" />
+                                          <CategoryAxis prefHeight="1.0" prefWidth="469.0" side="BOTTOM" fx:id="x2" />
                                        </xAxis>
                                        <yAxis>
-                                          <NumberAxis side="LEFT" />
+                                          <NumberAxis fx:id="y2" side="LEFT" />
                                        </yAxis>
-                                    </BarChart>
+                                    </LineChart>
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="14.0" layoutY="161.0" prefHeight="483.0" prefWidth="576.0" stylesheets="@../design/TableauBordStyle.css" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="157.0">
@@ -246,19 +245,7 @@
                               <String fx:value="shadow" />
                            </styleClass>
                            <children>
-                              <Button fx:id="btn_tous_ingredient" layoutX="276.0" layoutY="32.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="194.0" stylesheets="@../design/TableauBordStyle.css" text="Tous les ingrédients" AnchorPane.leftAnchor="276.0">
-                                 <styleClass>
-                                    <String fx:value="com_box" />
-                                    <String fx:value="btn-2" />
-                                 </styleClass>
-                              </Button>
-                              <Button fx:id="btn_nourriture_animale" layoutX="664.0" layoutY="32.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="194.0" stylesheets="@../design/TableauBordStyle.css" text="nourriture animale">
-                                 <styleClass>
-                                    <String fx:value="com_box" />
-                                    <String fx:value="btn-2" />
-                                 </styleClass>
-                              </Button>
-                              <Button fx:id="btn_ingredient_indiv" layoutX="470.0" layoutY="32.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="194.0" stylesheets="@../design/TableauBordStyle.css" text="Ingrédient individuel">
+                              <Button fx:id="btn_tous_ingredient" layoutX="470.0" layoutY="28.0" mnemonicParsing="false" onAction="#refreshFilters" prefHeight="43.0" prefWidth="194.0" stylesheets="@../design/TableauBordStyle.css" text="Tous les ingrédients" AnchorPane.leftAnchor="470.0">
                                  <styleClass>
                                     <String fx:value="com_box" />
                                     <String fx:value="btn-2" />
@@ -273,7 +260,7 @@
                                     <TableColumn fx:id="colonne_principal_nutriment_ingredient_management" minWidth="8.0" prefWidth="263.25" text=" Principal Nutriment" />
                                  </columns>
                               </TableView>
-                              <ImageView fitHeight="37.0" fitWidth="34.0" layoutX="833.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="37.0" fitWidth="34.0" layoutX="647.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Image/rice.png" />
                                  </image>
@@ -291,7 +278,7 @@
                               <ComboBox fx:id="plage_prix_combobox" layoutX="227.0" layoutY="20.0" prefHeight="34.0" prefWidth="190.0" promptText=" plage de prix" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
                               <ComboBox fx:id="plage_quantite_combobox" layoutX="437.0" layoutY="20.0" prefHeight="34.0" prefWidth="190.0" promptText="Plage de quantité" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
                               <TextField fx:id="rechercher_input" layoutX="771.0" layoutY="20.0" prefHeight="34.0" prefWidth="190.0" promptText="rechercher" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
-                              <Button fx:id="btn_reinitialisation_filtre" layoutX="977.0" layoutY="20.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="140.0" stylesheets="@../design/TableauBordStyle.css" text="Réinitialiser le filtre" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="20.0">
+                              <Button fx:id="btn_reinitialisation_filtre" layoutX="977.0" layoutY="20.0" mnemonicParsing="false" onAction="#refreshFilters" prefHeight="27.0" prefWidth="140.0" stylesheets="@../design/TableauBordStyle.css" text="Réinitialiser le filtre" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="20.0">
                                  <styleClass>
                                     <String fx:value="com_box" />
                                     <String fx:value="btn-2" />
@@ -302,11 +289,15 @@
                                     <Image url="@../Image/proteins.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="25.0" fitWidth="21.0" layoutX="933.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Image/chercher.png" />
-                                 </image>
-                              </ImageView>
+                              <Button fx:id="searchingredient_btn" layoutX="924.0" layoutY="22.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="33.0" style="-fx-background-color: none;">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/chercher.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
                            </children>
                         </AnchorPane>
                         <Button fx:id="btn_cree_ingredient" layoutX="915.0" layoutY="14.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="36.0" prefWidth="224.0" stylesheets="@../design/TableauBordStyle.css" text="Créer un nouvel ingrédient">
@@ -322,7 +313,7 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="popup_ingredient_managment" layoutX="221.0" layoutY="28.0" prefHeight="579.0" prefWidth="731.0" stylesheets="@../design/TableauBordStyle.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="244.0" AnchorPane.topAnchor="25.0">
+                  <AnchorPane fx:id="popup_ingredient_managment" layoutX="221.0" layoutY="28.0" prefHeight="579.0" prefWidth="731.0" stylesheets="@../design/TableauBordStyle.css" visible="false" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="244.0" AnchorPane.topAnchor="25.0">
                      <styleClass>
                         <String fx:value="border" />
                         <String fx:value="white-bg" />
@@ -352,11 +343,6 @@
                                     <ComboBox fx:id="combobox_udm_popup_ingredient_management" layoutX="435.0" layoutY="38.0" prefWidth="150.0" promptText="Sélectionnez U.d.m" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="13.0" />
                                  </children>
                               </AnchorPane>
-                              <ImageView fitHeight="84.0" fitWidth="89.0" layoutX="438.0" layoutY="444.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Image/rice.png" />
-                                 </image>
-                              </ImageView>
                               <Label layoutX="65.0" layoutY="295.0" prefHeight="17.0" prefWidth="109.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Prix du marché :" />
                               <Label layoutX="461.0" layoutY="32.0" prefHeight="17.0" prefWidth="129.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Nutriment principal :" />
                               <CheckBox fx:id="chekbox_protien_popup_ingredient_management" layoutX="567.0" layoutY="71.0" mnemonicParsing="false" stylesheets="@../design/TableauBordStyle.css" text="Protéine" AnchorPane.bottomAnchor="496.7999999999997" AnchorPane.topAnchor="71.0" />
@@ -379,16 +365,22 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <AnchorPane fx:id="anchor_enregistrer_ingredient" layoutX="512.0" layoutY="520.0" prefHeight="54.0" prefWidth="192.0">
+                              <AnchorPane fx:id="anchor_enregistrer_ingredient" layoutX="512.0" layoutY="520.0" prefHeight="54.0" prefWidth="192.0" visible="false">
                                  <children>
-                                    <Button fx:id="btn_enregistrer1" layoutX="24.0" layoutY="17.0" mnemonicParsing="false" onAction="#AddIngredient" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="enregistrer" />
+                                    <Button fx:id="btn_enregistrer" layoutY="9.0" mnemonicParsing="false" onAction="#addIngredient" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="enregistrer" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                              <AnchorPane fx:id="anchore_delete_modify_ingredient" layoutX="324.0" layoutY="523.0" prefHeight="49.0" prefWidth="376.0">
                                  <children>
-                                    <Button fx:id="btn_enregistrer" mnemonicParsing="false" onAction="#AddIngredient" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="enregistrer" />
+                                    <Button fx:id="btn_supprimer" layoutY="5.0" mnemonicParsing="false" onAction="#deleteSelectedIngredient" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="supprimer" />
+                                    <Button fx:id="btn_modifier" layoutX="188.0" layoutY="5.0" mnemonicParsing="false" onAction="#modifySelectedIngredient" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="modifier " />
                                  </children>
                               </AnchorPane>
+                              <ImageView fitHeight="53.0" fitWidth="35.0" layoutX="505.0" layoutY="506.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/rice.png" />
+                                 </image>
+                              </ImageView>
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="anchor_valeur_nutritionnelles2" prefHeight="606.0" prefWidth="736.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -463,7 +455,7 @@
                               <String fx:value="shadow" />
                            </styleClass>
                            <children>
-                              <Button fx:id="btn_tous_filter" layoutX="276.0" layoutY="32.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="194.0" stylesheets="@../design/TableauBordStyle.css" text="Tous " AnchorPane.leftAnchor="276.0">
+                              <Button fx:id="btn_tous_filter" layoutX="276.0" layoutY="32.0" mnemonicParsing="false" onAction="#refreshFilters" prefHeight="43.0" prefWidth="194.0" stylesheets="@../design/TableauBordStyle.css" text="Tous " AnchorPane.leftAnchor="276.0">
                                  <styleClass>
                                     <String fx:value="com_box" />
                                     <String fx:value="btn-2" />
@@ -475,7 +467,7 @@
                                     <String fx:value="btn-2" />
                                  </styleClass>
                               </Button>
-                              <Button fx:id="btn_ovins_filter" layoutX="470.0" layoutY="32.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="194.0" stylesheets="@../design/TableauBordStyle.css" text="ovins">
+                              <Button fx:id="btn_ovins_filter" layoutX="470.0" layoutY="32.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="194.0" stylesheets="@../design/TableauBordStyle.css" text="volaille">
                                  <styleClass>
                                     <String fx:value="com_box" />
                                     <String fx:value="btn-2" />
@@ -506,11 +498,10 @@
                               <String fx:value="shadow" />
                            </styleClass>
                            <children>
-                              <ComboBox fx:id="nutriment_principal_combobox1" layoutX="17.0" layoutY="20.0" prefHeight="34.0" prefWidth="190.0" promptText="Nutriment  Principal " styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" AnchorPane.leftAnchor="17.0" />
-                              <ComboBox fx:id="espece_combobox" layoutX="227.0" layoutY="20.0" prefHeight="34.0" prefWidth="190.0" promptText=" espèce" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
-                              <ComboBox fx:id="status_combobox" layoutX="437.0" layoutY="20.0" prefHeight="34.0" prefWidth="190.0" promptText="Status de production" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
+                              <ComboBox fx:id="espece_combobox" layoutX="19.0" layoutY="19.0" prefHeight="34.0" prefWidth="190.0" promptText=" espèce" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
+                              <ComboBox fx:id="status_combobox" layoutX="233.0" layoutY="19.0" prefHeight="34.0" prefWidth="190.0" promptText="Status de production" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
                               <TextField fx:id="rechercher_input1" layoutX="771.0" layoutY="20.0" prefHeight="34.0" prefWidth="190.0" promptText="rechercher" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
-                              <Button fx:id="btn_reinitialisation_filtre1" layoutX="977.0" layoutY="20.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="140.0" stylesheets="@../design/TableauBordStyle.css" text="Réinitialiser le filtre" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="20.0">
+                              <Button fx:id="btn_reinitialisation_filtre1" layoutX="977.0" layoutY="20.0" mnemonicParsing="false" onAction="#refreshFilters" prefHeight="27.0" prefWidth="140.0" stylesheets="@../design/TableauBordStyle.css" text="Réinitialiser le filtre" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="20.0">
                                  <styleClass>
                                     <String fx:value="com_box" />
                                     <String fx:value="btn-2" />
@@ -585,7 +576,7 @@
                                     <Image url="@../Image/fiber.png" />
                                  </image>
                               </ImageView>
-                              <Button fx:id="btn_enregistrer_popup2_besoin_nutritionnel" layoutX="529.0" layoutY="518.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="Enregistrer" />
+                              <Button fx:id="btn_enregistrer_popup2_besoin_nutritionnel" layoutX="529.0" layoutY="518.0" mnemonicParsing="false" onAction="#addValeurNutritionnelBesoin" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="Enregistrer" />
                               <Button fx:id="btn_exit3" layoutX="665.0" layoutY="26.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: transparent;">
                                  <graphic>
                                     <ImageView fitHeight="29.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
@@ -637,7 +628,7 @@
                               </Button>
                               <ComboBox fx:id="popup_status_production_besoin_nutritionnel" layoutX="65.0" layoutY="233.0" prefWidth="150.0" promptText="Statut " styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
                               <ComboBox fx:id="popup_combox_bute_producion" layoutX="65.0" layoutY="472.0" prefWidth="162.0" promptText="Bute de Production" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
-                              <AnchorPane fx:id="anchor_btn_enregistrer_besoin_nutritionnel" layoutX="483.0" layoutY="502.0" prefHeight="62.0" prefWidth="237.0" visible="false">
+                              <AnchorPane fx:id="anchor_btn_enregistrer_besoin_nutritionnel" layoutX="483.0" layoutY="502.0" prefHeight="62.0" prefWidth="237.0">
                                  <children>
                                     <Button fx:id="btn_enregistrer_popup_besoin_nutritionnel" layoutX="41.0" layoutY="17.0" mnemonicParsing="false" onAction="#addBesoinNutritionnel" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="enregistrer" />
                                     <ImageView fitHeight="57.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
@@ -647,7 +638,7 @@
                                     </ImageView>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="anchor_btn_modify_delete_besoin_nutritionnel" layoutX="307.0" layoutY="489.0" prefHeight="72.0" prefWidth="415.0">
+                              <AnchorPane fx:id="anchor_btn_modify_delete_besoin_nutritionnel" layoutX="307.0" layoutY="489.0" prefHeight="72.0" prefWidth="415.0" visible="false">
                                  <children>
                                     <Button fx:id="btn_modify_popup_besoin_nutritionnel" layoutX="221.0" layoutY="16.0" mnemonicParsing="false" onAction="#modifySelectedBesoinNutritionnel" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="modify" />
                                     <Button fx:id="btn_delete_popup_besoin_nutritionnel" layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onAction="#deleteSelectedBesoinNutritionnel" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="delete" />
@@ -677,7 +668,7 @@
                               <String fx:value="shadow" />
                            </styleClass>
                            <children>
-                              <Button fx:id="btn_tous_filter_ration" layoutX="276.0" layoutY="32.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="194.0" stylesheets="@../design/TableauBordStyle.css" text="Tous " AnchorPane.leftAnchor="276.0">
+                              <Button fx:id="btn_tous_filter_ration" layoutX="276.0" layoutY="32.0" mnemonicParsing="false" onAction="#refreshFilters" prefHeight="43.0" prefWidth="194.0" stylesheets="@../design/TableauBordStyle.css" text="Tous " AnchorPane.leftAnchor="276.0">
                                  <styleClass>
                                     <String fx:value="com_box" />
                                     <String fx:value="btn-2" />
@@ -689,7 +680,7 @@
                                     <String fx:value="btn-2" />
                                  </styleClass>
                               </Button>
-                              <Button fx:id="btn_ovins_filter_ration" layoutX="470.0" layoutY="32.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="194.0" stylesheets="@../design/TableauBordStyle.css" text="ovins">
+                              <Button fx:id="btn_ovins_filter_ration" layoutX="470.0" layoutY="32.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="194.0" stylesheets="@../design/TableauBordStyle.css" text="volaille">
                                  <styleClass>
                                     <String fx:value="com_box" />
                                     <String fx:value="btn-2" />
@@ -697,18 +688,14 @@
                               </Button>
                               <TableView fx:id="table_ration" layoutX="38.0" layoutY="106.0" prefHeight="369.0" prefWidth="1054.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
                                  <columns>
-                                    <TableColumn fx:id="colonee_ration_nom_ingredient" prefWidth="150.3333" text="Nom d' ingrédient " />
+                                    <TableColumn fx:id="colonee_ration_nom_ingredient" prefWidth="150.2" text="Nom d' ingrédient " />
                                     <TableColumn minWidth="0.0" prefWidth="0.0" text="Producteur/Fournisseurs" />
-                                    <TableColumn fx:id="coloone_ration_espece" prefWidth="150.3333" text=" espèce" />
-                                    <TableColumn fx:id="colonne_ration_bute_production" minWidth="0.0" prefWidth="150.3333" text="Bute de production" />
-                                    <TableColumn fx:id="colonne_ration_prix100" prefWidth="150.3333" text="prix /100kg" />
-                                    <TableColumn fx:id="colonne_ration_eb" prefWidth="64.0" text="EB%" />
-                                    <TableColumn fx:id="colonne_ration_pb" prefWidth="64.0" text="PB%" />
-                                    <TableColumn fx:id="colonne_ration_fb" prefWidth="64.0" text="FB%" />
-                                    <TableColumn fx:id="colonne_ration_ndf" prefWidth="64.0" text="NDF%" />
-                                    <TableColumn fx:id="colonne_ration_adf" prefWidth="64.0" text="ADF%" />
-                                    <TableColumn fx:id="colonne_ration_ca" prefWidth="64.0" text="Ca%" />
-                                    <TableColumn fx:id="colonne_ration_p" prefWidth="64.0" text="P%" />
+                                    <TableColumn fx:id="coloone_ration_espece" prefWidth="150.2" text=" espèce" />
+                                    <TableColumn fx:id="colonne_ration_bute_production" minWidth="0.0" prefWidth="150.2" text="Bute de production" />
+                                    <TableColumn fx:id="colonne_ration_sexe_animal" prefWidth="150.2" text="sexe" />
+                                    <TableColumn fx:id="colonne_ration_statut_production" prefWidth="150.2" text="statut de production" />
+                                    <TableColumn fx:id="colonne_ration_poids_min" prefWidth="150.2" text="poids minimal" />
+                                    <TableColumn fx:id="colonne_ration_poids_max" prefWidth="150.2" text="poids maximal" />
                                  </columns>
                               </TableView>
                               <ImageView fitHeight="47.0" fitWidth="48.0" layoutX="831.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
@@ -725,11 +712,10 @@
                               <String fx:value="shadow" />
                            </styleClass>
                            <children>
-                              <ComboBox fx:id="nutriment_principal_combobox_ration" layoutX="17.0" layoutY="20.0" prefHeight="34.0" prefWidth="190.0" promptText="Nutriment  Principal " styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" AnchorPane.leftAnchor="17.0" />
-                              <ComboBox fx:id="espece_combobox_ration" layoutX="227.0" layoutY="20.0" prefHeight="34.0" prefWidth="190.0" promptText=" espèce" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
-                              <ComboBox fx:id="status_combobox_ration" layoutX="437.0" layoutY="20.0" prefHeight="34.0" prefWidth="190.0" promptText="Status de production" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
+                              <ComboBox fx:id="espece_combobox_ration" layoutX="19.0" layoutY="19.0" prefHeight="34.0" prefWidth="190.0" promptText=" espèce" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
+                              <ComboBox fx:id="status_combobox_ration" layoutX="227.0" layoutY="18.0" prefHeight="34.0" prefWidth="190.0" promptText="Status de production" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
                               <TextField fx:id="rechercher_input2" layoutX="771.0" layoutY="20.0" prefHeight="34.0" prefWidth="190.0" promptText="rechercher" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
-                              <Button fx:id="btn_reinitialisation_filtre2" layoutX="977.0" layoutY="20.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="140.0" stylesheets="@../design/TableauBordStyle.css" text="Réinitialiser le filtre" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="20.0">
+                              <Button fx:id="btn_reinitialisation_filtre2" layoutX="977.0" layoutY="20.0" mnemonicParsing="false" onAction="#refreshFilters" prefHeight="27.0" prefWidth="140.0" stylesheets="@../design/TableauBordStyle.css" text="Réinitialiser le filtre" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="20.0">
                                  <styleClass>
                                     <String fx:value="com_box" />
                                     <String fx:value="btn-2" />
@@ -761,104 +747,7 @@
                         <String fx:value="shadow" />
                      </styleClass>
                      <children>
-                        <AnchorPane fx:id="anchor_ration_selection_ingredient" layoutY="-1.0" prefHeight="586.0" prefWidth="731.0" visible="false" AnchorPane.bottomAnchor="1.400000000000091" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
-                           <children>
-                              <AnchorPane layoutX="20.0" layoutY="102.0" prefHeight="416.0" prefWidth="210.0" stylesheets="@../design/TableauBordStyle.css">
-                                 <styleClass>
-                                    <String fx:value="radius" />
-                                    <String fx:value="shadow" />
-                                    <String fx:value="white-bg" />
-                                 </styleClass>
-                                 <children>
-                                    <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="151.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Fibres Brutes (FB) %" />
-                                    <Label layoutX="14.0" layoutY="81.0" prefHeight="17.0" prefWidth="199.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Fibres Detergentes Acides (ADF) %" />
-                                    <Label layoutX="14.0" layoutY="148.0" prefHeight="17.0" prefWidth="208.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Fibres Detergentes Neutres (NDF) %" />
-                                    <TextField layoutX="34.0" layoutY="44.0" promptText="(FB) %" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
-                                    <TextField layoutX="34.0" layoutY="112.0" promptText="(ADF) %" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
-                                    <TextField layoutX="34.0" layoutY="179.0" promptText="(NDF) %" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
-                                    <Label layoutX="14.0" layoutY="217.0" prefHeight="17.0" prefWidth="151.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Fibres Brutes (FB) %" />
-                                    <Label layoutX="14.0" layoutY="284.0" prefHeight="17.0" prefWidth="199.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Fibres Detergentes Acides (ADF) %" />
-                                    <Label layoutX="14.0" layoutY="351.0" prefHeight="17.0" prefWidth="208.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Fibres Detergentes Neutres (NDF) %" />
-                                    <TextField layoutX="34.0" layoutY="247.0" promptText="(FB) %" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
-                                    <TextField layoutX="34.0" layoutY="315.0" promptText="(ADF) %" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
-                                    <TextField layoutX="34.0" layoutY="382.0" promptText="(NDF) %" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane fx:id="anchor_ajouter_ingrediant111" layoutX="529.0" layoutY="516.0" prefHeight="66.0" prefWidth="196.0">
-                                 <children>
-                                    <Button fx:id="btn_enregistrer_poupup2_ration" layoutX="5.0" layoutY="16.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="Enregistrer" />
-                                 </children>
-                              </AnchorPane>
-                              <Button fx:id="btn_exit5" layoutX="665.0" layoutY="26.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: transparent;">
-                                 <graphic>
-                                    <ImageView fitHeight="29.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Image/annuler.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <ComboBox layoutX="67.0" layoutY="59.0" prefWidth="150.0" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
-                              <Label layoutX="46.0" layoutY="34.0" prefHeight="17.0" prefWidth="131.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Nom de l'ingrédient :" AnchorPane.bottomAnchor="531.1999999999998" AnchorPane.leftAnchor="46.0" />
-                              <AnchorPane layoutX="251.0" layoutY="102.0" prefHeight="416.0" prefWidth="210.0" stylesheets="@../design/TableauBordStyle.css">
-                                 <styleClass>
-                                    <String fx:value="radius" />
-                                    <String fx:value="shadow" />
-                                    <String fx:value="white-bg" />
-                                 </styleClass>
-                                 <children>
-                                    <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="151.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Fibres Brutes (FB) %" />
-                                    <Label layoutX="14.0" layoutY="81.0" prefHeight="17.0" prefWidth="199.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Fibres Detergentes Acides (ADF) %" />
-                                    <Label layoutX="14.0" layoutY="148.0" prefHeight="17.0" prefWidth="208.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Fibres Detergentes Neutres (NDF) %" />
-                                    <TextField layoutX="34.0" layoutY="44.0" promptText="(FB) %" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
-                                    <TextField layoutX="34.0" layoutY="112.0" promptText="(ADF) %" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
-                                    <TextField layoutX="34.0" layoutY="179.0" promptText="(NDF) %" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
-                                    <Label layoutX="14.0" layoutY="217.0" prefHeight="17.0" prefWidth="151.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Fibres Brutes (FB) %" />
-                                    <Label layoutX="14.0" layoutY="284.0" prefHeight="17.0" prefWidth="199.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Fibres Detergentes Acides (ADF) %" />
-                                    <Label layoutX="14.0" layoutY="351.0" prefHeight="17.0" prefWidth="208.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Fibres Detergentes Neutres (NDF) %" />
-                                    <TextField layoutX="34.0" layoutY="247.0" promptText="(FB) %" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
-                                    <TextField layoutX="34.0" layoutY="315.0" promptText="(ADF) %" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
-                                    <TextField layoutX="34.0" layoutY="382.0" promptText="(NDF) %" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
-                                 </children>
-                              </AnchorPane>
-                              <ComboBox layoutX="287.0" layoutY="59.0" prefWidth="150.0" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
-                              <Label layoutX="265.0" layoutY="34.0" prefHeight="17.0" prefWidth="131.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Nom de l'ingrédient :" />
-                              <ImageView fitHeight="84.0" fitWidth="89.0" layoutX="405.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Image/fiber(1).png" />
-                                 </image>
-                              </ImageView>
-                              <AnchorPane layoutX="482.0" layoutY="102.0" prefHeight="416.0" prefWidth="210.0" stylesheets="@../design/TableauBordStyle.css">
-                                 <styleClass>
-                                    <String fx:value="radius" />
-                                    <String fx:value="shadow" />
-                                    <String fx:value="white-bg" />
-                                 </styleClass>
-                                 <children>
-                                    <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="151.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Fibres Brutes (FB) %" />
-                                    <Label layoutX="14.0" layoutY="81.0" prefHeight="17.0" prefWidth="199.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Fibres Detergentes Acides (ADF) %" />
-                                    <Label layoutX="14.0" layoutY="148.0" prefHeight="17.0" prefWidth="208.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Fibres Detergentes Neutres (NDF) %" />
-                                    <TextField layoutX="34.0" layoutY="44.0" promptText="(FB) %" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
-                                    <TextField layoutX="34.0" layoutY="112.0" promptText="(ADF) %" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
-                                    <TextField layoutX="34.0" layoutY="179.0" promptText="(NDF) %" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
-                                    <Label layoutX="14.0" layoutY="217.0" prefHeight="17.0" prefWidth="151.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Fibres Brutes (FB) %" />
-                                    <Label layoutX="14.0" layoutY="284.0" prefHeight="17.0" prefWidth="199.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Fibres Detergentes Acides (ADF) %" />
-                                    <Label layoutX="14.0" layoutY="351.0" prefHeight="17.0" prefWidth="208.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Fibres Detergentes Neutres (NDF) %" />
-                                    <TextField layoutX="34.0" layoutY="247.0" promptText="(FB) %" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
-                                    <TextField layoutX="34.0" layoutY="315.0" promptText="(ADF) %" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
-                                    <TextField layoutX="34.0" layoutY="382.0" promptText="(NDF) %" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
-                                 </children>
-                              </AnchorPane>
-                              <ComboBox layoutX="529.0" layoutY="59.0" prefWidth="150.0" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
-                              <Label layoutX="508.0" layoutY="34.0" prefHeight="17.0" prefWidth="131.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Nom de l'ingrédient :" />
-                              <ImageView fitHeight="103.0" fitWidth="92.0" layoutX="412.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Image/fiber.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane fx:id="anchor_ration_management" prefHeight="585.0" prefWidth="722.0" AnchorPane.bottomAnchor="0.8000000000001819" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="anchor_ration_management" prefHeight="585.0" prefWidth="722.0" visible="false" AnchorPane.bottomAnchor="0.8000000000001819" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <ComboBox fx:id="combobox_popup_espece_ration" layoutX="65.0" layoutY="95.0" prefWidth="150.0" promptText="espèce " styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
                               <Label layoutX="65.0" layoutY="66.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="espèce :" />
@@ -874,10 +763,10 @@
                                     <Label layoutX="76.0" layoutY="12.0" prefHeight="17.0" prefWidth="37.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="sexe :" />
                                     <Label layoutX="243.0" layoutY="12.0" prefHeight="17.0" prefWidth="113.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="poids minimal (kg) :" />
                                     <Label layoutX="467.0" layoutY="12.0" prefHeight="17.0" prefWidth="117.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="poids maximal (kg) :" />
-                                    <Slider fx:id="popup2_poid_min_slider_ration" layoutX="229.0" layoutY="47.0" AnchorPane.bottomAnchor="24.0" />
-                                    <Slider fx:id="popup2_poid_max_slider_ration" layoutX="455.0" layoutY="46.0" AnchorPane.bottomAnchor="24.0" />
-                                    <Label fx:id="label_poid_min_ration_controller" layoutX="377.0" layoutY="45.0" text="200" />
-                                    <Label fx:id="label_poid_max_ration_controller" layoutX="605.0" layoutY="45.0" text="900" />
+                                    <Slider fx:id="popup2_poid_min_slider_ration" layoutX="229.0" layoutY="47.0" max="1400" min="0" value="0" AnchorPane.bottomAnchor="24.0" />
+                                    <Slider fx:id="popup2_poid_max_slider_ration" layoutX="455.0" layoutY="46.0" max="1400" min="0" value="0" AnchorPane.bottomAnchor="24.0" />
+                                    <Label fx:id="label_poid_min_ration_controller" layoutX="377.0" layoutY="45.0" text="" />
+                                    <Label fx:id="label_poid_max_ration_controller" layoutX="605.0" layoutY="45.0" text="" />
                                  </children>
                               </AnchorPane>
                               <Label layoutX="65.0" layoutY="295.0" prefHeight="17.0" prefWidth="109.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="poids et sexe :" />
@@ -896,16 +785,36 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <ComboBox fx:id="status_combobox_ration1" layoutX="65.0" layoutY="175.0" prefWidth="150.0" promptText="Statut (en gestation/...)" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
+                              <ComboBox fx:id="status_combobox_ration_popup" layoutX="65.0" layoutY="175.0" prefWidth="150.0" promptText="Statut (en gestation/...)" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
                               <ComboBox fx:id="combobox_bute_production_popup2_ration" layoutX="69.0" layoutY="250.0" prefWidth="162.0" promptText="lait oeuf ...." styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
-                              <TextField fx:id="budget_popup_ration" layoutX="64.0" layoutY="474.0" promptText="Budget" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
-                              <Label layoutX="64.0" layoutY="444.0" prefHeight="17.0" prefWidth="65.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Budget :" />
-                              <Button fx:id="btn_enregistrer_popup1_ration" layoutX="537.0" layoutY="527.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="enregistrer" />
-                              <ImageView fitHeight="57.0" fitWidth="55.0" layoutX="505.0" layoutY="499.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Image/rice.png" />
-                                 </image>
-                              </ImageView>
+                              <ComboBox fx:id="nom_ingredient_ration_selected" layoutX="86.0" layoutY="472.0" prefWidth="150.0" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
+                              <Label layoutX="65.0" layoutY="447.0" prefHeight="17.0" prefWidth="131.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Nom de l'ingrédient :" />
+                              <TableView fx:id="table_selected_ingrdient_ration" layoutX="242.0" layoutY="438.0" prefHeight="122.0" prefWidth="200.0">
+                                <columns>
+                                  <TableColumn fx:id="col_selcted_ingredient_ration" prefWidth="199.0" text="nom ingredient" />
+                                </columns>
+                              </TableView>
+                              <AnchorPane fx:id="anchor_enregistrer_popup_ration" layoutX="483.0" layoutY="499.0" prefHeight="68.0" prefWidth="237.0" visible="false">
+                                 <children>
+                                    <Button fx:id="btn_enregistrer_popup1_ration" layoutX="57.0" layoutY="21.0" mnemonicParsing="false" onAction="#addRation" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="enregistrer" />
+                                    <ImageView fitHeight="57.0" fitWidth="55.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/rice.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="anchor_delete_modifier_popup_ration" layoutX="467.0" layoutY="447.0" prefHeight="128.0" prefWidth="237.0">
+                                 <children>
+                                    <Button fx:id="btn_modifier_popup1_ration" layoutX="53.0" layoutY="24.0" mnemonicParsing="false" onAction="#modifySelectedRation" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="modifier" />
+                                    <ImageView fitHeight="57.0" fitWidth="55.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/rice.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button fx:id="btn_supprimer_popup1_ration" layoutX="53.0" layoutY="74.0" mnemonicParsing="false" onAction="#deleteSelectedRation" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="supprimer" />
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                      </children>
@@ -925,7 +834,7 @@
                               <String fx:value="shadow" />
                            </styleClass>
                            <children>
-                              <Button fx:id="btn_tous_filter_animal_management" layoutX="276.0" layoutY="32.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="194.0" stylesheets="@../design/TableauBordStyle.css" text="Tous " AnchorPane.leftAnchor="276.0">
+                              <Button fx:id="btn_tous_filter_animal_management" layoutX="276.0" layoutY="32.0" mnemonicParsing="false" onAction="#refreshFilters" prefHeight="43.0" prefWidth="194.0" stylesheets="@../design/TableauBordStyle.css" text="Tous " AnchorPane.leftAnchor="276.0">
                                  <styleClass>
                                     <String fx:value="com_box" />
                                     <String fx:value="btn-2" />
@@ -937,7 +846,7 @@
                                     <String fx:value="btn-2" />
                                  </styleClass>
                               </Button>
-                              <Button fx:id="btn_ovins_filter_animal_management" layoutX="470.0" layoutY="32.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="194.0" stylesheets="@../design/TableauBordStyle.css" text="ovins">
+                              <Button fx:id="btn_volaille_filter_animal_management" layoutX="470.0" layoutY="32.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="194.0" stylesheets="@../design/TableauBordStyle.css" text="volaille">
                                  <styleClass>
                                     <String fx:value="com_box" />
                                     <String fx:value="btn-2" />
@@ -969,9 +878,8 @@
                            </styleClass>
                            <children>
                               <ComboBox fx:id="espece_combobox_animal_management" layoutX="19.0" layoutY="19.0" prefHeight="34.0" prefWidth="190.0" promptText=" espèce" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
-                              <ComboBox fx:id="status_combobox_animal_management" layoutX="232.0" layoutY="19.0" prefHeight="34.0" prefWidth="190.0" promptText="Status de production" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
                               <TextField fx:id="rechercher_input3" layoutX="771.0" layoutY="20.0" prefHeight="34.0" prefWidth="190.0" promptText="rechercher" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
-                              <Button fx:id="btn_reinitialisation_filtre3" layoutX="977.0" layoutY="20.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="140.0" stylesheets="@../design/TableauBordStyle.css" text="Réinitialiser le filtre" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="20.0">
+                              <Button fx:id="btn_reinitialisation_filtre3" layoutX="977.0" layoutY="20.0" mnemonicParsing="false" onAction="#refreshFilters" prefHeight="27.0" prefWidth="140.0" stylesheets="@../design/TableauBordStyle.css" text="Réinitialiser le filtre" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="20.0">
                                  <styleClass>
                                     <String fx:value="com_box" />
                                     <String fx:value="btn-2" />
@@ -1017,12 +925,6 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button fx:id="btn_enregistrer_popup_animal_management" layoutX="490.0" layoutY="523.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="enregistrer" />
-                              <ImageView fitHeight="57.0" fitWidth="55.0" layoutX="463.0" layoutY="493.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Image/chick-broken-egg.png" />
-                                 </image>
-                              </ImageView>
                               <TextField fx:id="popup_age_animal_management" layoutX="65.0" layoutY="231.0" prefHeight="25.0" prefWidth="150.0" promptText="age" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
                               <TextField fx:id="popup_sexe_animal_management" layoutX="64.0" layoutY="308.0" promptText="sexe " styleClass="input" stylesheets="@../design/TableauBordStyle.css" AnchorPane.leftAnchor="64.0" AnchorPane.topAnchor="308.0" />
                               <Label layoutX="64.0" layoutY="280.0" prefHeight="17.0" prefWidth="37.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="sexe :" />
@@ -1040,6 +942,203 @@
                               <Slider fx:id="slide_poids_max_animal_management" layoutX="69.0" layoutY="449.0" />
                               <Label layoutX="65.0" layoutY="473.0" prefHeight="17.0" prefWidth="130.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="nombre" />
                               <TextField fx:id="popup_nombre_animal_management1" layoutX="65.0" layoutY="508.0" prefHeight="25.0" prefWidth="150.0" promptText="nombre" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
+                              <AnchorPane fx:id="anchor_btn_enregistrer_animal" layoutX="456.0" layoutY="481.0" prefHeight="79.0" prefWidth="205.0" visible="false">
+                                 <children>
+                                    <Button fx:id="btn_enregistrer_popup_animal_management" layoutX="7.0" layoutY="29.0" mnemonicParsing="false" onAction="#addAnimal" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="enregistrer" />
+                                    <ImageView fitHeight="57.0" fitWidth="55.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/chick-broken-egg.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="anchor_btn_delete_modify_animal" layoutX="260.0" layoutY="481.0" prefHeight="79.0" prefWidth="410.0">
+                                 <children>
+                                    <Button fx:id="btn_supprimer_popup_animal_management" layoutX="7.0" layoutY="29.0" mnemonicParsing="false" onAction="#deleteSelectedAnimal" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="supprimer" />
+                                    <ImageView fitHeight="57.0" fitWidth="55.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/chick-broken-egg.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button fx:id="btn_modifier_popup_animal_management" layoutX="216.0" layoutY="29.0" mnemonicParsing="false" onAction="#modifySelectedAnimal" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="modifier" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="anchore_all_modify" layoutX="401.0" layoutY="214.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <AnchorPane fx:id="anchor_modify_ingredient" prefHeight="209.0" prefWidth="379.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutY="38.0" prefHeight="171.0" prefWidth="348.0" stylesheets="@../design/TableauBordStyle.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                    <String fx:value="radius" />
+                                 </styleClass>
+                                 <children>
+                                    <Button fx:id="btn_oui_modify_ingredients" layoutX="200.0" layoutY="109.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="38.0" prefWidth="108.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="oui" />
+                                    <Button fx:id="btn_non_modify_ingredients" layoutX="41.0" layoutY="109.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="38.0" prefWidth="108.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="non" />
+                                    <Label fx:id="label_title1" layoutX="75.0" layoutY="47.0" prefHeight="17.0" prefWidth="202.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Êtes-vous sûr de vouloir modifier ?" />
+                                 </children>
+                              </AnchorPane>
+                              <ImageView fitHeight="52.0" fitWidth="56.0" layoutX="313.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/modifier.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="anchor_modify_besoin_nutritionnel" layoutX="10.0" layoutY="10.0" prefHeight="219.0" prefWidth="389.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutY="38.0" prefHeight="171.0" prefWidth="348.0" stylesheets="@../design/TableauBordStyle.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                    <String fx:value="radius" />
+                                 </styleClass>
+                                 <children>
+                                    <Button fx:id="btn_oui_modify_besoin_nutritionnel" layoutX="200.0" layoutY="109.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="38.0" prefWidth="108.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="oui" />
+                                    <Button fx:id="btn_non_modify_besoin_nutritionnel" layoutX="41.0" layoutY="109.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="38.0" prefWidth="108.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="non" />
+                                    <Label fx:id="label_title11" layoutX="75.0" layoutY="47.0" prefHeight="17.0" prefWidth="202.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Êtes-vous sûr de vouloir modifier ?" />
+                                 </children>
+                              </AnchorPane>
+                              <ImageView fitHeight="52.0" fitWidth="56.0" layoutX="313.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/modifier.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="anchor_modify_ration" layoutX="20.0" layoutY="20.0" prefHeight="229.0" prefWidth="399.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutY="38.0" prefHeight="171.0" prefWidth="348.0" stylesheets="@../design/TableauBordStyle.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                    <String fx:value="radius" />
+                                 </styleClass>
+                                 <children>
+                                    <Button fx:id="btn_oui_modify_ration" layoutX="200.0" layoutY="109.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="38.0" prefWidth="108.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="oui" />
+                                    <Button fx:id="btn_non_modify_ration" layoutX="41.0" layoutY="109.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="38.0" prefWidth="108.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="non" />
+                                    <Label fx:id="label_title111" layoutX="75.0" layoutY="47.0" prefHeight="17.0" prefWidth="202.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Êtes-vous sûr de vouloir modifier ?" />
+                                 </children>
+                              </AnchorPane>
+                              <ImageView fitHeight="52.0" fitWidth="56.0" layoutX="313.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/modifier.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="anchor_modify_animal" layoutX="10.0" layoutY="10.0" prefHeight="239.0" prefWidth="409.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutY="38.0" prefHeight="171.0" prefWidth="348.0" stylesheets="@../design/TableauBordStyle.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                    <String fx:value="radius" />
+                                 </styleClass>
+                                 <children>
+                                    <Button fx:id="btn_oui_modify_animal" layoutX="200.0" layoutY="109.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="38.0" prefWidth="108.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="oui" />
+                                    <Button fx:id="btn_non_modify_animal" layoutX="41.0" layoutY="109.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="38.0" prefWidth="108.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="non" />
+                                    <Label fx:id="label_title1111" layoutX="75.0" layoutY="47.0" prefHeight="17.0" prefWidth="202.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Êtes-vous sûr de vouloir modifier ?" />
+                                 </children>
+                              </AnchorPane>
+                              <ImageView fitHeight="52.0" fitWidth="56.0" layoutX="313.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/modifier.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="anchore_all_delete" layoutX="411.0" layoutY="224.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <AnchorPane fx:id="anchor_delete_ingredient" prefHeight="209.0" prefWidth="379.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutY="38.0" prefHeight="171.0" prefWidth="348.0" stylesheets="@../design/TableauBordStyle.css" visible="false">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                    <String fx:value="radius" />
+                                 </styleClass>
+                                 <children>
+                                    <Button fx:id="btn_oui_delete_ingredients" layoutX="200.0" layoutY="109.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="38.0" prefWidth="108.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="oui" />
+                                    <Button fx:id="btn_non_delete_ingredients" layoutX="41.0" layoutY="109.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="38.0" prefWidth="108.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="non" />
+                                    <Label layoutX="75.0" layoutY="47.0" prefHeight="17.0" prefWidth="202.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Êtes-vous sûr de vouloir supprimer ?" />
+                                 </children>
+                              </AnchorPane>
+                              <ImageView fitHeight="52.0" fitWidth="56.0" layoutX="313.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/supprimer.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="anchor_delete_besoin_nutritionnel" layoutX="10.0" layoutY="10.0" prefHeight="219.0" prefWidth="389.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutY="38.0" prefHeight="171.0" prefWidth="348.0" stylesheets="@../design/TableauBordStyle.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                    <String fx:value="radius" />
+                                 </styleClass>
+                                 <children>
+                                    <Button fx:id="btn_oui_delete_besoin_nutritionnel1" layoutX="200.0" layoutY="109.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="38.0" prefWidth="108.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="oui" />
+                                    <Button fx:id="btn_non_delete_besoin_nutritionnel1" layoutX="41.0" layoutY="109.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="38.0" prefWidth="108.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="non" />
+                                    <Label layoutX="75.0" layoutY="47.0" prefHeight="17.0" prefWidth="202.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Êtes-vous sûr de vouloir supprimer?" />
+                                 </children>
+                              </AnchorPane>
+                              <ImageView fitHeight="52.0" fitWidth="56.0" layoutX="313.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/supprimer.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="anchor_delete_ration" layoutX="20.0" layoutY="20.0" prefHeight="229.0" prefWidth="399.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutY="38.0" prefHeight="171.0" prefWidth="348.0" stylesheets="@../design/TableauBordStyle.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                    <String fx:value="radius" />
+                                 </styleClass>
+                                 <children>
+                                    <Button fx:id="btn_oui_delete_ration" layoutX="200.0" layoutY="109.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="38.0" prefWidth="108.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="oui" />
+                                    <Button fx:id="btn_non_delete_ration" layoutX="41.0" layoutY="109.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="38.0" prefWidth="108.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="non" />
+                                    <Label layoutX="75.0" layoutY="47.0" prefHeight="17.0" prefWidth="202.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Êtes-vous sûr de vouloir supprimer ?" />
+                                 </children>
+                              </AnchorPane>
+                              <ImageView fitHeight="52.0" fitWidth="56.0" layoutX="313.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/supprimer.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="anchor_delete_animal" layoutX="10.0" layoutY="10.0" prefHeight="239.0" prefWidth="409.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutY="38.0" prefHeight="171.0" prefWidth="348.0" stylesheets="@../design/TableauBordStyle.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                    <String fx:value="radius" />
+                                 </styleClass>
+                                 <children>
+                                    <Button fx:id="btn_oui_delete_animal" layoutX="200.0" layoutY="109.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="38.0" prefWidth="108.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="oui" />
+                                    <Button fx:id="btn_non_delete_animal" layoutX="41.0" layoutY="109.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="38.0" prefWidth="108.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="non" />
+                                    <Label fx:id="label_title11111" layoutX="75.0" layoutY="47.0" prefHeight="17.0" prefWidth="202.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="Êtes-vous sûr de vouloir supprimer ?" />
+                                 </children>
+                              </AnchorPane>
+                              <ImageView fitHeight="52.0" fitWidth="56.0" layoutX="313.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/supprimer.png" />
+                                 </image>
+                              </ImageView>
                            </children>
                         </AnchorPane>
                      </children>

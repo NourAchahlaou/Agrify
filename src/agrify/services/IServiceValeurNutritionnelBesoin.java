@@ -5,15 +5,10 @@
  */
 package agrify.services;
 
-import java.util.List;
-
 /**
  *
  * @author alien kami sama
  */
-public interface IServiceIngredient<T> {
-    public void ajouter(T t);
-    public void update(T t);
-    public void supprimer(int id);
-   
+public interface IServiceValeurNutritionnelBesoin<T> {
+     public void ajouter(T t);
 }
