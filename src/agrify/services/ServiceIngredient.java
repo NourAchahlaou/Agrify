@@ -166,6 +166,28 @@ public void supprimer(int idIngredient) {
 
     return ingrediants;
 }
+  public List<String> getIngredientNamesFromDatabase() {
+    List<String> ingredientNames = new ArrayList<>();
+    
+    try {
+        if (connect != null) {
+            String query = "SELECT name FROM ingrediants"; // Correct table name if needed
+            PreparedStatement statement = connect.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String ingredientName = resultSet.getString("name");
+                ingredientNames.add(ingredientName);
+            }
+        } else {
+            System.err.println("Database connection is null");
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    
+    return ingredientNames;
+}
 
 
 

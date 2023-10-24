@@ -8,7 +8,6 @@ package agrify.controllers;
 import agrify.entities.Animal;
 import agrify.entities.AnimauxEnGestationEntity;
 import agrify.entities.BesoinNutritionnelsEntity;
-import agrify.entities.DataPoint;
 import agrify.entities.IngrediantEntity;
 import agrify.entities.Ration;
 import agrify.entities.ValeurNutritionnelBesoinNutritionnelEntity;
@@ -83,6 +82,8 @@ public class AnimalManagementController implements Initializable {
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
+    @FXML
+public ComboBox<String> nom_ingredient_ration_selected;
     @FXML
     private LineChart<String, Number> ingredient_quantity;
     @FXML
@@ -1037,13 +1038,14 @@ public class AnimalManagementController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             // TODO
-            
+            updateLabelWithTotalAnimalsInGestation();
             
             createAnimalWeightLineChart();
         } catch (SQLException ex) {
             Logger.getLogger(AnimalManagementController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
+       
+
         page_tableau_bord.setVisible(true);
         nutriment_principal_combobox.setItems(FXCollections.observableArrayList("All", "Fibre", "Energie", "Proteine", "Mineral"));
         combobox_bute_production_popup2_ration.setItems(FXCollections.observableArrayList("Viande", "Lait", "Œufs"));
@@ -1314,31 +1316,7 @@ public class AnimalManagementController implements Initializable {
 
     }
 
- public void createLineChart(List<IngrediantEntity> ingredients) {
-    CategoryAxis xAxis = new CategoryAxis();
-    NumberAxis yAxis = new NumberAxis();
-    xAxis.setLabel("Time");
-    yAxis.setLabel("Quantity");
-
-    ingredient_quantity = new LineChart<>(xAxis, yAxis);
-
-    for (IngrediantEntity ingredient : ingredients) {
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.setName(ingredient.getNameIngredient());
-
-        // Assuming you have a List of DataPoint objects
-        List<DataPoint> dataPoints = new ArrayList<>();
-        dataPoints.add(new DataPoint("Time1", ingredient.getItemQuantityIngredient()));
-        // Add more data points if needed.
-
-        for (DataPoint dataPoint : dataPoints) {
-            series.getData().add(new XYChart.Data<>(dataPoint.getTime(), dataPoint.getQuantity()));
-        }
-
-        ingredient_quantity.getData().add(series);
-    }
-}
-
+ 
 
     @FXML
     private void refreshFilters() {
@@ -2177,33 +2155,37 @@ void addValeurNutritionnelBesoin(ActionEvent event) throws IOException {
 
     //ajouter 
     @FXML
-    void addAnimal(ActionEvent event) {
-        // Check if any data needs to be saved
-        if (dataNeedsSaving()) {
-            Alert saveAlert = new Alert(AlertType.CONFIRMATION);
-            saveAlert.setTitle("Unsaved Data");
-            saveAlert.setHeaderText(null);
-            saveAlert.setContentText("You have unsaved data. Do you want to save it?");
+void addAnimal(ActionEvent event) {
+    // Check if there is unsaved data
+    if (dataNeedsSaving()) {
+        Alert saveAlert = new Alert(AlertType.CONFIRMATION);
+        saveAlert.setTitle("Unsaved Data");
+        saveAlert.setHeaderText(null);
+        saveAlert.setContentText("You have unsaved data. Do you want to save it?");
 
-            ButtonType saveButtonType = new ButtonType("Save");
-            ButtonType discardButtonType = new ButtonType("Discard");
-            ButtonType cancelButtonType = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+        ButtonType saveButtonType = new ButtonType("Save");
+        ButtonType discardButtonType = new ButtonType("Discard");
+        ButtonType cancelButtonType = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
 
-            saveAlert.getButtonTypes().setAll(saveButtonType, discardButtonType, cancelButtonType);
+        saveAlert.getButtonTypes().setAll(saveButtonType, discardButtonType, cancelButtonType);
 
-            Optional<ButtonType> result = saveAlert.showAndWait();
+        Optional<ButtonType> result = saveAlert.showAndWait();
 
-            if (result.get() == saveButtonType) {
-                saveData(); // Implement your save logic here
-            } else if (result.get() == cancelButtonType) {
-                return; // Cancel the operation
-            }
+        if (result.get() == saveButtonType) {
+            // Implement your save logic here
+            saveData();
+        } else if (result.get() == cancelButtonType) {
+            return; // Cancel the operation
         }
+    }
 
-        // Continue with adding the new animal
+    // Continue with adding the new animal
+    if (isInputValid()) {
+        // Fields are not empty, proceed with adding the Animal
         System.out.println("Database instance connection");
         System.out.println(Database.getInstance().getConnection());
         ServiceAnimal animalService = new ServiceAnimal(Database.getInstance().getConnection());
+
         // Hide other sections
         page_tableau_bord.setVisible(false);
         page_ingredient_main.setVisible(false);
@@ -2241,6 +2223,23 @@ void addValeurNutritionnelBesoin(ActionEvent event) throws IOException {
         animalService.ajouter(animal);
         table_anaimal_management.refresh();
     }
+}
+
+private boolean isInputValid() {
+    // Validate that all required fields are not empty
+    if (popup_combobox_espece_animal_amanagement.getValue() == null
+            || popup_sexe_animal_management.getText().isEmpty()
+            || popup_age_animal_management.getText().isEmpty()
+            || popup_nombre_animal_management1.getText().isEmpty()) {
+        Alert errorAlert = new Alert(AlertType.ERROR);
+        errorAlert.setTitle("Input Error");
+        errorAlert.setHeaderText(null);
+        errorAlert.setContentText("Please fill in all the required fields.");
+        errorAlert.showAndWait();
+        return false;
+    }
+    return true;
+}
 
     //modifier
     @FXML
@@ -2383,7 +2382,10 @@ void addValeurNutritionnelBesoin(ActionEvent event) throws IOException {
 
     //ajout 
     @FXML
-    void addRation(ActionEvent event) {
+void addRation(ActionEvent event) {
+    // Validate input fields
+    if (isInputValidRation()) {
+        // Fields are not empty, proceed with adding the Ration
         Alert confirmationAlert = new Alert(AlertType.CONFIRMATION);
         confirmationAlert.setTitle("Confirmation");
         confirmationAlert.setHeaderText(null);
@@ -2437,6 +2439,22 @@ void addValeurNutritionnelBesoin(ActionEvent event) throws IOException {
         }
         // If the user clicked "Cancel" or the result is not present, do nothing.
     }
+}
+
+private boolean isInputValidRation() {
+    // Validate that all required fields are not empty
+    if (combobox_popup_espece_ration.getValue() == null || status_combobox_ration_popup.getValue() == null
+            || sexe_popup2_ration.getText().isEmpty() || combobox_bute_production_popup2_ration.getValue() == null) {
+        Alert errorAlert = new Alert(AlertType.ERROR);
+        errorAlert.setTitle("Input Error");
+        errorAlert.setHeaderText(null);
+        errorAlert.setContentText("Please fill in all the required fields.");
+        errorAlert.showAndWait();
+        return false;
+    }
+    return true;
+}
+
 
     //modifier 
     @FXML
@@ -2626,8 +2644,15 @@ private void createAnimalWeightLineChart() throws SQLException {
     linechart_animal.getData().clear(); // Clear previous data if any
     linechart_animal.getData().add(series);
 }
+///statics ?? 
 
-
+    public void updateLabelWithTotalAnimalsInGestation() {
+        ServiceAnimal animalService = new ServiceAnimal(Database.getInstance().getConnection());
+    List<Animal> animals = animalService.getAllAnimal();
+        int totalAnimalsInGestation = animalService.getTotalAnimalsInGestation();
+        label_betails_en_gestation.setText("" + totalAnimalsInGestation);
+        
+    }
 
 
 }

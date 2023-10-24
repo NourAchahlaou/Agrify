@@ -83,9 +83,9 @@
          <center>
             <AnchorPane prefHeight="717.0" prefWidth="1214.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="page_tableau_bord" layoutX="77.0" layoutY="25.0" prefHeight="661.0" prefWidth="1181.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="page_tableau_bord" layoutX="77.0" layoutY="25.0" prefHeight="661.0" prefWidth="1181.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <AnchorPane fx:id="linechart12" layoutX="-5.0" prefHeight="661.0" prefWidth="1181.0" stylesheets="@../design/TableauBordStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="linechart12" layoutX="-5.0" prefHeight="661.0" prefWidth="1181.0" stylesheets="@../design/TableauBordStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <styleClass>
                               <String fx:value="shadow" />
                               <String fx:value="radius" />
@@ -747,7 +747,7 @@
                         <String fx:value="shadow" />
                      </styleClass>
                      <children>
-                        <AnchorPane fx:id="anchor_ration_management" prefHeight="585.0" prefWidth="722.0" visible="false" AnchorPane.bottomAnchor="0.8000000000001819" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="anchor_ration_management" prefHeight="585.0" prefWidth="722.0" AnchorPane.bottomAnchor="0.8000000000001819" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <ComboBox fx:id="combobox_popup_espece_ration" layoutX="65.0" layoutY="95.0" prefWidth="150.0" promptText="espèce " styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
                               <Label layoutX="65.0" layoutY="66.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="espèce :" />

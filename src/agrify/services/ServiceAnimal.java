@@ -159,6 +159,30 @@ public class ServiceAnimal implements IServiceAnimal<Animal> {
 
     return animals;
 }
+    public int getTotalAnimalsInGestation() {
+        int totalAnimals = 0;
+
+        try {
+            if (connect != null) {
+                String query = "SELECT COUNT(*) AS total FROM animauxengestationentity WHERE statut = 'En gestation'";
+                PreparedStatement statement = connect.prepareStatement(query);
+                ResultSet resultSet = statement.executeQuery();
+
+                if (resultSet.next()) {
+                    totalAnimals = resultSet.getInt("total");
+                }
+            } else {
+                System.err.println("Database connection is null");
+            }
+        } catch (SQLException e) {
+            // Handle any potential database exceptions
+            e.printStackTrace();
+        }
+
+        return totalAnimals;
+    }
+   
+
 
 
 }
