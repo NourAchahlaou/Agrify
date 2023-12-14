@@ -84,7 +84,7 @@ public class UserAddController {
                 UserSexField.setValue("Select --------"); 
 
     ObservableList<String> RoleList = FXCollections.observableArrayList(
-                "User", "Admin");
+                "Chef", "Admin","Veterinaire");
                 UserRoleField.setItems(RoleList);
                 UserRoleField.setValue("Select --------"); 
 }
@@ -136,9 +136,11 @@ void Add0User(ActionEvent event) throws IOException
     int nbrAbsence = 0; 
     String username = UserUsernameField.getText();
     String password = UserPasswordField.getText();
+            String hashedPassword = userService.hashPassword(password);
+
     
     
-    User user = new User(nom, prenom, email, telephone, role, genre, nbrAbsence, username, password);
+    User user = new User(nom, prenom, email, telephone, role, genre, nbrAbsence, username, hashedPassword);
     userService.ajouter(user);
     SendEmail emailSender = new SendEmail();
 emailSender.sendEmail(email, "Welcome to Our Application", "Hello, " + nom + "! You have been successfully registered.\n\n"
