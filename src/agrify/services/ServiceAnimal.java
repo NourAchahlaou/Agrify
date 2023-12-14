@@ -72,4 +72,117 @@ public class ServiceAnimal implements IServiceAnimal<Animal> {
 
         return specificColumnsData;
     }
+
+    @Override
+    public void ajouter(Animal animal) {
+        try {
+            System.out.println(connect);
+            PreparedStatement statement = connect.prepareStatement("INSERT INTO `animal`(`idAnimal`, `especeAnimal`, `sexeRation`, `poidsmaxRation`, `poidsminRation`, `ageAnimal`, `nombreAnimal`) VALUES (?, ?, ?, ?, ?, ?, ?)");
+
+            statement.setInt(1, animal.getIdAnimal());
+            statement.setString(2, animal.getEspeceAnimal());
+            statement.setString(3, animal.getSexeRation());
+            statement.setDouble(4, animal.getPoidsmaxRation());
+            statement.setDouble(5, animal.getPoidsminRation());
+            statement.setInt(6, animal.getAgeAnimal());
+            statement.setInt(7, animal.getNombreAnimal());
+
+            statement.executeUpdate();
+            statement.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void update(Animal animal) {
+        try {
+            // Prepare the SQL update statement
+            String updateQuery = "UPDATE `animal` SET `especeAnimal`=?, `sexeRation`=?, `poidsmaxRation`=?, `poidsminRation`=?, `ageAnimal`=?, `nombreAnimal`=? WHERE `idAnimal`=?";
+
+            PreparedStatement statement = connect.prepareStatement(updateQuery);
+            statement.setString(1, animal.getEspeceAnimal());
+            statement.setString(2, animal.getSexeRation());
+            statement.setDouble(3, animal.getPoidsmaxRation());
+            statement.setDouble(4, animal.getPoidsminRation());
+            statement.setInt(5, animal.getAgeAnimal());
+            statement.setInt(6, animal.getNombreAnimal());
+            statement.setInt(7, animal.getIdAnimal());
+
+            statement.executeUpdate();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle exceptions appropriately
+        }
+    }
+
+    @Override
+    public void supprimer(int idAnimal) {
+        try {
+            String deleteQuery = "DELETE FROM `animal` WHERE `idAnimal`=?";
+
+            PreparedStatement preparedStatement = connect.prepareStatement(deleteQuery);
+            preparedStatement.setInt(1, idAnimal);
+
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public List<Animal> getAllAnimal() {
+    List<Animal> animals = new ArrayList<>();
+    try {
+        String query = "SELECT * FROM animal";
+
+        // Create a prepared statement
+        PreparedStatement statement = connect.prepareStatement(query);
+
+        // Execute the query and get the result set
+        ResultSet resultSet = statement.executeQuery();
+
+        while (resultSet.next()) {
+            // Use a constructor or factory method to create Animal instances
+            Animal animal = new Animal(
+                resultSet.getInt("idAnimal"),
+                resultSet.getString("especeAnimal"),
+                resultSet.getDouble("poidsmaxRation")
+            );
+
+            animals.add(animal);
+        }
+    } catch (SQLException e) {
+        // Handle any potential database exceptions
+        e.printStackTrace();
+    }
+
+    return animals;
+}
+    public int getTotalAnimalsInGestation() {
+        int totalAnimals = 0;
+
+        try {
+            if (connect != null) {
+                String query = "SELECT COUNT(*) AS total FROM animauxengestationentity WHERE statut = 'En gestation'";
+                PreparedStatement statement = connect.prepareStatement(query);
+                ResultSet resultSet = statement.executeQuery();
+
+                if (resultSet.next()) {
+                    totalAnimals = resultSet.getInt("total");
+                }
+            } else {
+                System.err.println("Database connection is null");
+            }
+        } catch (SQLException e) {
+            // Handle any potential database exceptions
+            e.printStackTrace();
+        }
+
+        return totalAnimals;
+    }
+   
+
+
+
 }

@@ -10,6 +10,7 @@ package agrify.entities;
  * @author alien kami sama
  */
 public class Ration {
+
     private int idRation;
     private String especeRation;
     private String statutRation;
@@ -17,14 +18,13 @@ public class Ration {
     private double poidsMinRation;
     private double poidsMaxRation;
     private String buteProductionRation;
-    private double budgetRation;
 
     // Constructor with no parameters
     public Ration() {
     }
 
     // Constructor with all fields
-    public Ration(int idRation, String especeRation, String statutRation, String sexeRation, double poidsMinRation, double poidsMaxRation, String buteProductionRation, double budgetRation) {
+    public Ration(int idRation, String especeRation, String statutRation, String sexeRation, double poidsMinRation, double poidsMaxRation, String buteProductionRation) {
         this.idRation = idRation;
         this.especeRation = especeRation;
         this.statutRation = statutRation;
@@ -32,11 +32,19 @@ public class Ration {
         this.poidsMinRation = poidsMinRation;
         this.poidsMaxRation = poidsMaxRation;
         this.buteProductionRation = buteProductionRation;
-        this.budgetRation = budgetRation;
+
+    }
+
+    public Ration(String especeRation, String statutRation, String sexeRation, double poidsMinRation, double poidsMaxRation, String buteProductionRation) {
+        this.especeRation = especeRation;
+        this.statutRation = statutRation;
+        this.sexeRation = sexeRation;
+        this.poidsMinRation = poidsMinRation;
+        this.poidsMaxRation = poidsMaxRation;
+        this.buteProductionRation = buteProductionRation;
     }
 
     // Getters and setters for all fields
-
     public int getIdRation() {
         return idRation;
     }
@@ -91,13 +99,5 @@ public class Ration {
 
     public void setButeProductionRation(String buteProductionRation) {
         this.buteProductionRation = buteProductionRation;
-    }
-
-    public double getBudgetRation() {
-        return budgetRation;
-    }
-
-    public void setBudgetRation(double budgetRation) {
-        this.budgetRation = budgetRation;
     }
 }

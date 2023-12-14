@@ -10,5 +10,10 @@ package agrify.services;
  * @author alien kami sama
  */
 public interface IServiceAnimal<T> {
-    
+
+    public void ajouter(T t);
+
+    public void update(T t);
+
+    public void supprimer(int id);
 }

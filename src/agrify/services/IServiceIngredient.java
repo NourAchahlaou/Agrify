@@ -13,5 +13,7 @@ import java.util.List;
  */
 public interface IServiceIngredient<T> {
     public void ajouter(T t);
-    
+    public void update(T t);
+    public void supprimer(int id);
+   
 }
