@@ -108,7 +108,19 @@ void Sginin0(ActionEvent event) throws IOException {
                 
                 
             } 
-            else if ("User".equals(role)) {
+            else if ("Chef".equals(role)) {
+                Parent animalDashboardRoot = FXMLLoader.load(getClass().getResource("/agrify/views/UserDashboard.fxml"));
+                Scene animalDashboardScene = new Scene(animalDashboardRoot);
+
+                Stage animalDashboardStage = new Stage();
+                animalDashboardStage.initStyle(StageStyle.TRANSPARENT);
+                animalDashboardStage.setScene(animalDashboardScene);
+                animalDashboardStage.show();
+
+                Stage signInStage = (Stage) SgininBtn0.getScene().getWindow();
+                signInStage.close();
+            }
+             else if ("Veterinaire".equals(role)) {
                 Parent animalDashboardRoot = FXMLLoader.load(getClass().getResource("/agrify/views/UserDashboard.fxml"));
                 Scene animalDashboardScene = new Scene(animalDashboardRoot);
 

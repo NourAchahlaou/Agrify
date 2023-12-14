@@ -19,7 +19,7 @@ public class DataSource {
     
     private static  String url = "jdbc:mysql://localhost:3306/agrify";
     private static String user = "root";
-    private static  String password = "271746451";
+    private static  String password = "";
     
     private DataSource(){
         try {
