@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agrify.controllers.DeleteUserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agrify.controllers.UserDeleteController">
    <children>
       <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -80,7 +80,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="EditUserMessage11" layoutX="603.0" layoutY="216.0" prefHeight="44.0" prefWidth="570.0" style="-fx-font-size: 14px; -fx-text-fill: #fff; -fx-font-family: Berlin Sans FB; -fx-font-size: 16px;" text="ID Non Trouvé" textAlignment="CENTER" textFill="#d01010">
+      <Label fx:id="EditUserMessage11" layoutX="603.0" layoutY="216.0" prefHeight="44.0" prefWidth="570.0" style="-fx-font-size: 14px; -fx-text-fill: #fff; -fx-font-family: Berlin Sans FB; -fx-font-size: 16px;" textAlignment="CENTER" textFill="#d01010">
          <font>
             <Font size="14.0" />
          </font>

@@ -14,7 +14,7 @@
             <Image url="@../Image/UserAcceuil.png" />
          </image>
       </ImageView>
-      <Button fx:id="AdminDashboardGestionFieldBtn" layoutX="53.0" layoutY="254.0" mnemonicParsing="false" onAction="#AdminDashboardGestionField" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia; -fx-border-color: #fff;" text="Gestion Field">
+      <Button fx:id="AdminDashboardGestionFieldBtn" layoutX="53.0" layoutY="360.0" mnemonicParsing="false" onAction="#AdminDashboardGestionField" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia; -fx-border-color: #fff;" text="Gestion Champs">
          <font>
             <Font name="Berlin Sans FB" size="18.0" />
          </font>
@@ -59,52 +59,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="AdminDashboardGestionAchatBtn" layoutX="54.0" layoutY="382.0" mnemonicParsing="false" onAction="#AdminDashboardGestionAchat" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia; -fx-border-color: #fff;" text="Gestion Achat">
-         <font>
-            <Font name="Berlin Sans FB" size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Image/icons8-shopping-cart-100.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="AdminDashboardGestionAnimalBtn" layoutX="54.0" layoutY="317.0" mnemonicParsing="false" onAction="#AdminDashboardGestionAnimal" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia; -fx-border-color: #fff;" text="Gestion Animal">
-         <font>
-            <Font name="Berlin Sans FB" size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Image/icons8-cow-100.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="AdminDashboardGestionVenteBtn" layoutX="54.0" layoutY="448.0" mnemonicParsing="false" onAction="#AdminDashboardGestionVente" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia; -fx-border-color: #fff;" text="Gestion Vente">
-         <font>
-            <Font name="Berlin Sans FB" size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Image/icons8-dollar-100.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="AdminDashboardGestionUserBtn" layoutX="53.0" layoutY="188.0" mnemonicParsing="false" onAction="#AdminDashboardGestionUser" prefHeight="50.0" prefWidth="250.0" style="-fx-text-fill: #fff; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia; -fx-border-color: #fff; -fx-background-color: transparent;" text="Gestion User">
+      <Button fx:id="AdminDashboardGestionUserBtn" layoutX="53.0" layoutY="283.0" mnemonicParsing="false" onAction="#AdminDashboardGestionUser" prefHeight="50.0" prefWidth="250.0" style="-fx-text-fill: #fff; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia; -fx-border-color: #fff; -fx-background-color: transparent;" text="Gestion User">
          <font>
             <Font name="Berlin Sans FB" size="18.0" />
          </font>
@@ -119,7 +74,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="AdminDashboardGestionMaterialBtn" layoutX="54.0" layoutY="511.0" mnemonicParsing="false" onAction="#AdminDashboardGestionMaterial" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia; -fx-border-color: #fff;" text="Gestion Material">
+      <Button fx:id="AdminDashboardGestionMaterialBtn" layoutX="53.0" layoutY="435.0" mnemonicParsing="false" onAction="#AdminDashboardGestionMaterial" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia; -fx-border-color: #fff;" text="Gestion Material">
          <font>
             <Font name="Berlin Sans FB" size="18.0" />
          </font>

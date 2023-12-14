@@ -7,22 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agrify.controllers.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agrify.controllers.SplashController">
    <children>
       <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Image/home0.png" />
          </image>
       </ImageView>
-      <Button fx:id="HomeRegisterBtn" layoutX="1053.0" layoutY="21.0" mnemonicParsing="false" onAction="#HomeRegister" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #000; -fx-text-fill: #8d8; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia;" text="Register">
-         <font>
-            <Font name="Berlin Sans FB" size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button fx:id="HomeLoginBtn" layoutX="890.0" layoutY="21.0" mnemonicParsing="false" onAction="#HomeLogin" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #000; -fx-text-fill: #8d8; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia;" text="Login">
+      <Button fx:id="HomeLoginBtn" layoutX="1053.0" layoutY="22.0" mnemonicParsing="false" onAction="#HomeLogin" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #000; -fx-text-fill: #8d8; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia;" text="Login">
          <font>
             <Font name="Berlin Sans FB" size="18.0" />
          </font>

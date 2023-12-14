@@ -3,6 +3,7 @@ package agrify.controllers;
 import agrify.entities.User;
 import agrify.services.ServiceUser;
 import agrify.utils.DataSource;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -30,7 +31,7 @@ import javafx.stage.StageStyle;
 
 
 
-public class DeleteUserController {
+public class UserDeleteController {
 
     @FXML
     private Button DeleteBackUserBtn1;
@@ -131,30 +132,42 @@ public class DeleteUserController {
 
     
     
-    @FXML
-    void DeleteDeleteUser(ActionEvent event) 
-    
-    {
-            if (isSearching) 
-              {
-                User selectedUser = EmployeeHome.getSelectionModel().getSelectedItem();
-                    if (selectedUser != null) 
-                      {
-                        userService.supprimerByName(selectedUser.getUser_nom());
-                        usersList.remove(selectedUser);
-                        EditUserMessage11.setText("Utilisateur supprimé avec succès.");
-                      } 
-                    else 
-                      {
-                        EditUserMessage11.setText("sélectionner un utilisateur à supprimer.");
-                      }
-              }
-            else 
-              {
-                        EditUserMessage11.setText("Recherchez des utilisateurs d'abord svp.");
-              }
+  @FXML
+void DeleteDeleteUser(ActionEvent event) {
+    if (isSearching) {
+        User selectedUser = EmployeeHome.getSelectionModel().getSelectedItem();
+        if (selectedUser != null) {
+            try {
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/agrify/views/UserSupprimerNotif.fxml"));
+                Parent notifRoot = loader.load();
+                UserDeleteNotifController notifController = loader.getController();
+                notifController.setUserData(selectedUser);
+
+                Stage notifStage = new Stage();
+                notifStage.initStyle(StageStyle.TRANSPARENT);
+                notifStage.setScene(new Scene(notifRoot));
+                notifStage.showAndWait();
+
+                boolean confirmation = notifController.isConfirmed();
+
+                if (confirmation) {
+                    userService.supprimerByName(selectedUser.getUser_nom());
+                    usersList.remove(selectedUser);
+                    EditUserMessage11.setText("Utilisateur supprimé avec succès.");
+                } else {
+                    EditUserMessage11.setText("Suppression annulée.");
+                }
+            } catch (IOException e) {
+            }
+        } else {
+            EditUserMessage11.setText("Sélectionnez un utilisateur à supprimer.");
+        }
+    } else {
+        EditUserMessage11.setText("Recherchez des utilisateurs d'abord, s'il vous plaît.");
     }
-    
+}
+
     
 
 

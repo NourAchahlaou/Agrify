@@ -17,6 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -268,19 +269,88 @@ public void updateUserr(User user)
     
 
 
-
-
-public User getUserBest(int year) throws SQLException 
-{
-    String query = "SELECT u.* " +
-                   "FROM user u " +
-                   "INNER JOIN presence p ON u.user_id = p.user_id " +
-                   "WHERE YEAR(p.date) = ? " + 
-                   "ORDER BY u.user_nbrabscence ASC " + 
-                   "LIMIT 1";
+    @Override
+    public List<User> getUserBest(int year) throws SQLException {
+    String query = "            SELECT u.* \n" +
+        "                       FROM user u\n" +
+        "                       INNER JOIN presence p ON u.user_id = p.user_id\n" +
+        "                       WHERE YEAR(p.date) = ? \n" +
+        "                       AND (u.user_nbrabscence = 0 OR u.user_nbrabscence = (\n" +
+        "                       SELECT MIN(user_nbrabscence) \n" +
+        "                       FROM user u2\n" +
+        "                       INNER JOIN presence p2 ON u2.user_id = p2.user_id\n" +
+        "                       WHERE YEAR(p2.date) = ?\n" +
+                                        "))"; 
 
     try (PreparedStatement preparedStatement = connect.prepareStatement(query)) {
         preparedStatement.setInt(1, year);
+        preparedStatement.setInt(2, year);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        List<User> users = new ArrayList<>();
+
+        while (resultSet.next()) {
+            User user = new User();
+            user.setUser_id(resultSet.getInt("user_id"));
+            user.setUser_nom(resultSet.getString("user_nom"));
+            user.setUser_prenom(resultSet.getString("user_prenom"));
+            user.setUser_email(resultSet.getString("user_email"));
+            user.setUser_telephone(resultSet.getString("user_telephone"));
+            user.setUser_role(resultSet.getString("user_role"));
+            user.setUser_genre(resultSet.getString("user_genre"));
+            user.setUser_nbrabscence(resultSet.getInt("user_nbrabscence"));
+            user.setUsername(resultSet.getString("username"));
+            user.setPassword(resultSet.getString("password"));
+            users.add(user);
+        }
+
+        return users;
+    }
+}
+
+
+    @Override
+    public boolean isPhoneExists(String phone) {
+    try {
+        Connection connection = DataSource.getInstance().getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT COUNT(*) FROM user WHERE user_telephone = ?");
+        statement.setString(1, phone);
+
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            int count = resultSet.getInt(1);
+            return count > 0;
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return false;
+}
+    
+    
+    
+    
+    @Override
+    public boolean isUsernameExists(String username) {
+    try {
+        PreparedStatement statement = connect.prepareStatement("SELECT COUNT(*) FROM user WHERE username = ?");
+        statement.setString(1, username);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            int count = resultSet.getInt(1);
+            return count > 0;
+        }
+    } catch (SQLException e) {
+    }    return false;
+}
+    
+@Override
+public User authenticateUser(String username, String password) {
+    try {
+        String selectQuery = "SELECT * FROM user WHERE username = ? AND password = ?";
+        PreparedStatement preparedStatement = connect.prepareStatement(selectQuery);
+        preparedStatement.setString(1, username);
+        preparedStatement.setString(2, password);
         ResultSet resultSet = preparedStatement.executeQuery();
 
         if (resultSet.next()) {
@@ -297,10 +367,13 @@ public User getUserBest(int year) throws SQLException
             user.setPassword(resultSet.getString("password"));
             return user;
         }
+    } catch (SQLException ex) {
     }
-
-    return null; 
+    return null;
 }
+
+
+
 
     
 }

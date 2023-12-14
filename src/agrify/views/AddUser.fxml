@@ -10,18 +10,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agrify.controllers.AddUserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agrify.controllers.UserAddController">
    <children>
       <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Image/adduser1.png" />
          </image>
       </ImageView>
-      <TextField fx:id="UserFNameField" alignment="CENTER" layoutX="123.0" layoutY="241.0" prefHeight="45.0" prefWidth="300.0" promptText="Nom du Employée" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-font-size: 16px; -fx-border-color: #8d8;" />
-      <TextField fx:id="UserLNameField" alignment="CENTER" layoutX="124.0" layoutY="325.0" prefHeight="45.0" prefWidth="300.0" promptText="Prenom Du l'Employée" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-font-size: 16px; -fx-border-color: #8d8;" />
-      <TextField fx:id="UserEmailField" alignment="CENTER" layoutX="124.0" layoutY="402.0" prefHeight="45.0" prefWidth="300.0" promptText="Email" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-font-size: 16px; -fx-border-color: #8d8;" />
-      <TextField fx:id="UserPhoneField" alignment="CENTER" layoutX="124.0" layoutY="488.0" prefHeight="45.0" prefWidth="300.0" promptText="Telephone" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-font-size: 16px; -fx-border-color: #8d8;" />
-      <TextField fx:id="UserUsernameField" alignment="CENTER" layoutX="707.0" layoutY="402.0" prefHeight="45.0" prefWidth="300.0" promptText="Username" style="-fx-background-color: fff; -fx-text-fill: #000; -fx-font-size: 16px; -fx-border-color: #8d8;" />
+      <TextField fx:id="UserFNameField" alignment="CENTER" layoutX="225.0" layoutY="202.0" prefHeight="45.0" prefWidth="300.0" promptText="Nom du Employée" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-font-size: 16px; -fx-border-color: #8d8;" />
+      <TextField fx:id="UserLNameField" alignment="CENTER" layoutX="224.0" layoutY="286.0" prefHeight="45.0" prefWidth="300.0" promptText="Prenom Du l'Employée" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-font-size: 16px; -fx-border-color: #8d8;" />
+      <TextField fx:id="UserEmailField" alignment="CENTER" layoutX="224.0" layoutY="367.0" prefHeight="45.0" prefWidth="300.0" promptText="Email" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-font-size: 16px; -fx-border-color: #8d8;" />
+      <TextField fx:id="UserPhoneField" alignment="CENTER" layoutX="224.0" layoutY="445.0" prefHeight="45.0" prefWidth="300.0" promptText="Telephone" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-font-size: 16px; -fx-border-color: #8d8;" />
+      <TextField fx:id="UserUsernameField" alignment="CENTER" layoutX="872.0" layoutY="363.0" prefHeight="45.0" prefWidth="300.0" promptText="Username" style="-fx-background-color: fff; -fx-text-fill: #000; -fx-font-size: 16px; -fx-border-color: #8d8;" />
       <Button fx:id="AddUser0Btn" layoutX="1053.0" layoutY="577.0" mnemonicParsing="false" onAction="#Add0User" prefHeight="45.0" prefWidth="183.0" style="-fx-background-color: #000; -fx-text-fill: #8d8; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia;" text="Ajouter">
          <font>
             <Font name="Berlin Sans FB" size="18.0" />
@@ -52,9 +52,12 @@
             </ImageView>
          </graphic>
       </Button>
-      <TextField fx:id="UserPasswordField" alignment="CENTER" layoutX="707.0" layoutY="488.0" prefHeight="45.0" prefWidth="300.0" promptText="Password" style="-fx-background-color: fff; -fx-text-fill: #000; -fx-font-size: 16px; -fx-border-color: #8d8;" />
-      <ComboBox fx:id="UserRoleField" layoutX="707.0" layoutY="241.0" onAction="#Role" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-border-color: #8d8; -fx-font-size: 16px;" />
-      <ComboBox fx:id="UserSexField" layoutX="707.0" layoutY="325.0" onAction="#Sex" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: fff; -fx-text-fill: #000; -fx-border-color: #8d8; -fx-font-size: 16px;" />
-      <Label fx:id="AddUserMessage" layoutX="594.0" layoutY="646.0" prefHeight="45.0" prefWidth="413.0" style="-fx-text-fill: #731702; -fx-font-size: 16px;" text="Error messgae" />
+      <TextField fx:id="UserPasswordField" alignment="CENTER" layoutX="872.0" layoutY="449.0" prefHeight="45.0" prefWidth="300.0" promptText="Password" style="-fx-background-color: fff; -fx-text-fill: #000; -fx-font-size: 16px; -fx-border-color: #8d8;" />
+      <ComboBox fx:id="UserRoleField" layoutX="872.0" layoutY="202.0" onAction="#Role" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-border-color: #8d8; -fx-font-size: 16px;" />
+      <ComboBox fx:id="UserSexField" layoutX="872.0" layoutY="286.0" onAction="#Sex" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: fff; -fx-text-fill: #000; -fx-border-color: #8d8; -fx-font-size: 16px;" />
+      <Label fx:id="AddUserMessage" layoutX="464.0" layoutY="661.0" prefHeight="45.0" prefWidth="487.0" style="-fx-text-fill: #731702; -fx-font-size: 16px;" />
+      <Label fx:id="AddUserEmailMessage" layoutX="177.0" layoutY="412.0" prefHeight="35.0" prefWidth="395.0" style="-fx-text-fill: #731702; -fx-font-size: 14px;" />
+      <Label fx:id="AddUserPhoneMessage" layoutX="177.0" layoutY="493.0" prefHeight="35.0" prefWidth="395.0" style="-fx-text-fill: #731702; -fx-font-size: 14px;" />
+      <Label fx:id="AddUserUsernameMessage" layoutX="828.0" layoutY="411.0" prefHeight="35.0" prefWidth="408.0" style="-fx-text-fill: #731702; -fx-font-size: 14px;" />
    </children>
 </AnchorPane>

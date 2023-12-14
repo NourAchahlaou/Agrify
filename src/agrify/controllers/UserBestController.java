@@ -2,6 +2,7 @@ package agrify.controllers;
 
 import agrify.entities.User;
 import agrify.services.ServiceUser;
+import agrify.utils.DataSource;
 import java.sql.SQLException;
 import java.util.List;
 import javafx.collections.FXCollections;
@@ -16,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -26,7 +28,7 @@ import javafx.stage.StageStyle;
  */
 
 
-public class BestUserController {
+public class UserBestController {
     
     
 
@@ -64,35 +66,52 @@ public class BestUserController {
 
       
     
-      
-  @FXML
-void BestUserSearch(ActionEvent event)
+    
+public void initialize() 
 {
-    try 
-      {
-        int year = Integer.parseInt(BestUserSearchYear.getText());
-        User userBest = userService.getUserBest(year);
-
-            if (userBest != null)
-              {
-                ObservableList<User> observableUser = FXCollections.observableArrayList(userBest);
-                BestUserView.setItems(observableUser);
-              } 
-            else 
-              {
-                System.out.println("No user found for the specified year.");
-               }
-      } 
-    catch (NumberFormatException ex) 
-      {
-        System.out.println("Invalid year input. Please enter a valid year.");
-      } 
-    catch (SQLException ex) 
-      {
-        System.out.println("An error occurred while searching for the best user.");
-        ex.printStackTrace();
-      }
+    userService = new ServiceUser(DataSource.getInstance().getConnection());
+    initializeTableColumns();
+    loadUserData();
 }
+    
+
+private void loadUserData() 
+    
+{
+        List<User> users = userService.getAll();
+        BestUserView.getItems().setAll(users);
+    }
+
+private void initializeTableColumns() 
+    
+    {
+        BestUserUser_id.setCellValueFactory(new PropertyValueFactory<>("user_id"));
+        BestUserUser_nbrabscence.setCellValueFactory(new PropertyValueFactory<>("user_nbrabscence"));
+        BestUserUser_Nom.setCellValueFactory(new PropertyValueFactory<>("user_nom"));
+        BestUserUser_prenom.setCellValueFactory(new PropertyValueFactory<>("user_prenom"));
+    }
+    
+      
+@FXML
+void BestUserSearch(ActionEvent event) {
+    try {
+        int year = Integer.parseInt(BestUserSearchYear.getText());
+        List<User> bestUsers = userService.getUserBest(year);
+
+        if (!bestUsers.isEmpty()) {
+            ObservableList<User> observableUsers = FXCollections.observableArrayList(bestUsers);
+            BestUserView.setItems(observableUsers);
+        } else {
+           EditUserMessage11.setText("No users found for the specified year.");
+        }
+    } catch (NumberFormatException ex) {
+        EditUserMessage11.setText("Invalid year input. Please enter a valid year.");
+    } catch (SQLException ex) {
+        EditUserMessage111.setText("An error occurred while searching for the best users.");
+        ex.printStackTrace();
+    }
+}
+
 
 
     @FXML

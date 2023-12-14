@@ -24,12 +24,6 @@ public class AdminDashboardController {
     private Button AdminDashboardDeconnexionBtn;
 
     @FXML
-    private Button AdminDashboardGestionAchatBtn;
-
-    @FXML
-    private Button AdminDashboardGestionAnimalBtn;
-
-    @FXML
     private Button AdminDashboardGestionFieldBtn;
 
     @FXML
@@ -43,9 +37,6 @@ public class AdminDashboardController {
 
     @FXML
     private Button AdminDashboardGestionUserBtn;
-
-    @FXML
-    private Button AdminDashboardGestionVenteBtn;
 
     @FXML
     void AdminDashboardAccountSettings(ActionEvent event) {
@@ -122,20 +113,5 @@ public class AdminDashboardController {
 
     }
     
-     @FXML
-    void AdminDashboardGestionVente(ActionEvent event) {
-
-    }
-
-       @FXML
-    void AdminDashboardGestionAchat(ActionEvent event) {
-
-    }
-
-    @FXML
-    void AdminDashboardGestionAnimal(ActionEvent event) {
-
-    }
- 
     
 }

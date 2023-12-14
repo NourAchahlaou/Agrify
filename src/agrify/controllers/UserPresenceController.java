@@ -33,7 +33,7 @@ import javafx.stage.StageStyle;
 
 
 
-public class PresenceUserController {
+public class UserPresenceController {
 
     @FXML
     private DatePicker PrescenceUserDateSearch;
@@ -77,8 +77,8 @@ public class PresenceUserController {
     @FXML
     private CheckBox PresenceUserAbscentBtn;
 
-    @FXML
-    private CheckBox PresenceUserPrésentBtn;
+    //@FXML
+  //  private CheckBox PresenceUserPrésentBtn;
     
     @FXML
     private Label PresenceMessage1;
@@ -94,7 +94,7 @@ public class PresenceUserController {
 public void initialize() 
             
         {
-        //userService = new ServiceUser(DataSource.getInstance().getConnection());
+        userService = new ServiceUser(DataSource.getInstance().getConnection());
         presenceService = new ServicePresence(DataSource.getInstance().getConnection());
         initializeTableColumns();
         loadUserData();
@@ -119,8 +119,6 @@ private void initializeTableColumns()
         EmployeeHome_prenom.setCellValueFactory(new PropertyValueFactory<>("user_prenom"));
         EmployeeHome_role.setCellValueFactory(new PropertyValueFactory<>("user_role"));
     }
-
-
 
     
 @FXML
@@ -163,8 +161,6 @@ private void initializeTableColumns()
             }
          }
 }
-
-
  
  @FXML
   void PresenceBackUser(ActionEvent event) throws Exception 
@@ -220,11 +216,5 @@ private void initializeTableColumns()
     loadUserData();
     System.out.println("PresencePresence method finished");
 }
-
-
-
-
-
-
 
 }
